@@ -1,12 +1,11 @@
 extends Node2D
 
 
-# Declare member variables here. Examples:
+# Declare member variables here, e.g.
 # var a = 2
-# var b = "text"
 
-# below is for references to other nodes when we add them
-# onready var grid = get_node("Grid")
+# when the node is loaded into the scene we fetch references to its children
+onready var HUD = get_node("HUD")
 
 
 # Called when the node enters the scene tree for the first time.
