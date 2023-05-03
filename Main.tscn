@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
 [ext_resource path="res://assets/world/void.png" type="Texture" id=3]
+[ext_resource path="res://player/avatar/Avatar.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,13 +13,13 @@ position = Vector2( 1106.5, 709.5 )
 scale = Vector2( 34.6094, 22.1406 )
 texture = ExtResource( 3 )
 
-[node name="Player1Avatar" type="Node2D" parent="."]
+[node name="Player1Avatar" parent="." instance=ExtResource( 4 )]
 
 [node name="Player1Cards" type="Node2D" parent="."]
 
 [node name="Player2Cards" type="Node2D" parent="."]
 
-[node name="Player2Avatar" type="Node2D" parent="."]
+[node name="Player2Avatar" parent="." instance=ExtResource( 4 )]
 
 [node name="CardTray" type="Node2D" parent="."]
 
