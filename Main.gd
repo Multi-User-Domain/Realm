@@ -9,11 +9,19 @@ onready var player2_cards = get_node("Player2Cards")
 onready var player2_avatar = get_node("Player2Avatar")
 onready var card_tray = get_node("CardTray")
 
+var selected_card = null
+
 # preload scenes that we want to instantiate programatically
 var card_scene = preload("res://obj/card/Card.tscn")
 
 
-func _add_card_to_node(node: Node2D, jsonld_data):
+func _add_card_for_player(player_index: int, jsonld_data):
+	var node = null
+	if player_index == 0:
+		node = player1_cards
+	else:
+		node = player2_cards
+	
 	# instantiate card and add to scene
 	var card = card_scene.instance()
 	card.scale = card.scale * 0.5
@@ -45,26 +53,41 @@ func _ready():
 	# bottom quarter for player card actions
 	card_tray.set_position(Vector2(x_margin, y_margin + (quarter_height * 3)))
 	
-	# spawn placeholder cards to test placement
-	_add_card_to_node(player1_cards, {
-		"n:fn": "Vampire Lord",
-		"foaf:depiction": "res://assets/portrait/ospreyWithers.png"
-	})
-	_add_card_to_node(player2_cards, {
-		"n:fn": "Dryad",
-		"foaf:depiction": "res://assets/portrait/dryad.png"
-	})
-	_add_card_to_node(card_tray, {})
-	
+	# init players with JSON-LD data for the avatar, and their starting cards
+	# TODO: hardcoding is just for placeholder
 	player1_avatar.init_new_player({
 		"n:fn": "Osprey Withers",
 		"foaf:depiction": "res://assets/portrait/ospreyWithers.png"
-	})
+	},
+	[
+		{
+			"n:fn": "Vampire Lord",
+			"foaf:depiction": "res://assets/portrait/ospreyWithers.png"
+		},
+		{
+			"n:fn": "Vampire Lord",
+			"foaf:depiction": "res://assets/portrait/ospreyWithers.png"
+		}
+	]
+	)
 	player2_avatar.init_new_player({
 		"n:fn": "Sumeri",
 		"foaf:depiction": "res://assets/portrait/dryad.png"
-	})
+	},
+	[
+		{
+			"n:fn": "Dryad",
+			"foaf:depiction": "res://assets/portrait/dryad.png"
+		},
+		{
+			"n:fn": "Dryad",
+			"foaf:depiction": "res://assets/portrait/dryad.png"
+		}
+	])
 
+# NOTE: feel free to use mouse input in debugging, but the game is for an xbox controller
+# https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/2
+"""
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == BUTTON_LEFT:
@@ -73,7 +96,30 @@ func _input(event):
 		
 		elif event.button_index == BUTTON_RIGHT:
 			pass
+"""
+
+# takes a turn for both players
+func next_turn():
+	for card in player1_avatar.card_manager.play_cards():
+		_add_card_for_player(0, card)
+	
+	for card in player2_avatar.card_manager.play_cards():
+		_add_card_for_player(1, card)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	# TODO: replace with a time-based game loop
+	if Input.is_action_just_pressed("ui_accept"):
+		next_turn()
+	
+	# TODO: cycling through the selectable cards with UI controls
+	"""
+	if Input.is_action_pressed("ui_right"):
+		velocity.x += 1
+	if Input.is_action_pressed("ui_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("ui_down"):
+		velocity.y += 1
+	if Input.is_action_pressed("ui_up"):
+		velocity.y -= 1
+	"""

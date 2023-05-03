@@ -7,6 +7,8 @@ extends Node
 #	nodes in the scene tree
 #
 
+const DEFAULT_HAND_SIZE = 5
+
 #
 #	Ontology constants
 #	When using Linked Data we will often be referring to the URI of resources on the web

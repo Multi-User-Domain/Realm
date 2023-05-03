@@ -2,6 +2,7 @@ extends Node2D
 
 onready var portrait_sprite = get_node("PortraitSprite")
 onready var name_label = get_node("NameLabel")
+onready var card_manager = get_node("CardManager")
 export var default_hp = 100
 var jsonld_store = {}
 
@@ -24,7 +25,7 @@ func _init_jsonld_data(character_jsonld):
 			"mudcombat:currentP": default_hp
 		}
 
-func init_new_player(character_jsonld):
+func init_new_player(character_jsonld, cards=[]):
 	_init_jsonld_data(character_jsonld)
 	
 	# function initialises the Avatar with new player information
@@ -39,6 +40,8 @@ func init_new_player(character_jsonld):
 	
 	name_label.set_text(get_rdf_property("n:fn"))
 	name_label.set_position(portrait_sprite.position + Vector2(-half_portrait.x + 1, half_portrait.y + 1))
+	
+	card_manager.init_deck(self, cards)
 
 # TODO: find a more DRY way to do this across nodes
 func get_rdf_property(property):
