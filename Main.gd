@@ -9,11 +9,18 @@ onready var player2_cards = get_node("Player2Cards")
 onready var player2_avatar = get_node("Player2Avatar")
 onready var card_tray = get_node("CardTray")
 
+# export means that it can be set from the Scene editor
+# the scale transformation to apply to card size
+export var card_scale = 0.5
+
 var selected_card = null
 
 # preload scenes that we want to instantiate programatically
 var card_scene = preload("res://obj/card/Card.tscn")
 
+
+func get_card_size():
+	return Vector2(128, 176) * card_scale
 
 func _add_card_for_player(player_index: int, jsonld_data):
 	var node = null
@@ -24,8 +31,8 @@ func _add_card_for_player(player_index: int, jsonld_data):
 	
 	# instantiate card and add to scene
 	var card = card_scene.instance()
-	card.scale = card.scale * 0.5
-	card.set_position(node.position)
+	card.scale = card.scale * card_scale
+	card.set_position(node.position + Vector2((node.get_child_count() * get_card_size().x) * 1.2, 0))
 	node.add_child(card)
 	
 	# init card data
