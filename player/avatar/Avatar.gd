@@ -8,7 +8,7 @@ func _ready():
 
 func _init_jsonld_data(character_jsonld):
 	jsonld_store = character_jsonld
-	jsonld_store["@type"] = Globals.MUD_CHAR.CHARACTER
+	jsonld_store["@type"] = Globals.MUD_CHAR.Character
 	
 	if not "foaf:depiction" in jsonld_store:
 		jsonld_store["foaf:depiction"] = "res://assets/portrait/ospreyWithers.png"
@@ -29,7 +29,7 @@ func init_new_player(character_jsonld):
 	portrait_sprite.set_position(Vector2(get_viewport_rect().size.x * 0.5, self.position.y) + half_portrait)
 
 # TODO: find a more DRY way to do this across nodes
-func get_rdf_property(property):	
+func get_rdf_property(property):
 	if property in self.jsonld_store:
 		return self.jsonld_store[property]
 	
