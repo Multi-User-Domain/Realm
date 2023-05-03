@@ -11,6 +11,7 @@ onready var card_tray = get_node("CardTray")
 
 # export means that it can be set from the Scene editor
 # the scale transformation to apply to card size
+var full_card_size = Vector2(128, 176)
 export var card_scale = 0.5
 
 var selected_card = null
@@ -20,7 +21,7 @@ var card_scene = preload("res://obj/card/Card.tscn")
 
 
 func get_card_size():
-	return Vector2(128, 176) * card_scale
+	return full_card_size * card_scale
 
 func _add_card_for_player(player_index: int, jsonld_data):
 	var node = null
@@ -59,6 +60,8 @@ func _ready():
 	
 	# bottom quarter for player card actions
 	card_tray.set_position(Vector2(x_margin, y_margin + (quarter_height * 3)))
+	card_tray.active_card_pos_node.position.y = card_tray.position.y
+	card_tray.inactive_cards_pos_node.position.y = card_tray.position.y
 	
 	# init players with JSON-LD data for the avatar, and their starting cards
 	# TODO: hardcoding is just for placeholder
@@ -91,6 +94,16 @@ func _ready():
 			"foaf:depiction": "res://assets/portrait/dryad.png"
 		}
 	])
+	
+	var tray_deck = []
+	
+	for i in range(70):
+		tray_deck.append({
+			"n:fn": "Vampire Lord",
+			"foaf:depiction": "res://assets/portrait/ospreyWithers.png"
+		})
+	
+	card_tray.init_deck(tray_deck)
 
 # NOTE: feel free to use mouse input in debugging, but the game is for an xbox controller
 # https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/2
