@@ -19,4 +19,8 @@ const MUD_LOGIC = {
 	WITNESS_BINDING = "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#WitnessBinding"
 }
 
+const MUD_CHAR = {
+	CHARACTER = "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character"
+}
+
 # to access: Globals.MUD_LOGIC.ACTOR_BINDING

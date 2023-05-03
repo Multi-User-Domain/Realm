@@ -48,8 +48,14 @@ func _ready():
 	_add_card_to_node(player2_avatar)
 	_add_card_to_node(card_tray)
 	
-	player1_avatar.init_new_player("res://assets/portrait/ospreyWithers.png")
-	player2_avatar.init_new_player("res://assets/portrait/dryad.png")
+	player1_avatar.init_new_player({
+		"n:fn": "Osprey Withers",
+		"foaf:depiction": "res://assets/portrait/ospreyWithers.png"
+	})
+	player2_avatar.init_new_player({
+		"n:fn": "Sumeri",
+		"foaf:depiction": "res://assets/portrait/dryad.png"
+	})
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
