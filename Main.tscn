@@ -12,13 +12,15 @@ position = Vector2( 1106.5, 709.5 )
 scale = Vector2( 34.6094, 22.1406 )
 texture = ExtResource( 3 )
 
-[node name="Player1Hand" type="Node2D" parent="."]
+[node name="Player1Avatar" type="Node2D" parent="."]
 
-[node name="Player1Active" type="Node2D" parent="."]
+[node name="Player1Cards" type="Node2D" parent="."]
 
-[node name="Player2Active" type="Node2D" parent="."]
+[node name="Player2Cards" type="Node2D" parent="."]
 
-[node name="Player2Hand" type="Node2D" parent="."]
+[node name="Player2Avatar" type="Node2D" parent="."]
+
+[node name="CardTray" type="Node2D" parent="."]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource( 2 )
