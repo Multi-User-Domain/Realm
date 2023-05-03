@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var portrait_sprite = get_node("PortraitSprite")
+export var default_hp = 100
 var jsonld_store = {}
 
 func _ready():
@@ -15,6 +16,12 @@ func _init_jsonld_data(character_jsonld):
 	
 	if not "n:fn" in jsonld_store:
 		jsonld_store["n:fn"] = "Avatar"
+	
+	if not "mudcombat:hasHealthPoints" in jsonld_store:
+		jsonld_store["mudcombat:hasHealthPoints"] = {
+			"mudcombat:maximumP": default_hp,
+			"mudcombat:currentP": default_hp
+		}
 
 func init_new_player(character_jsonld):
 	_init_jsonld_data(character_jsonld)
