@@ -13,11 +13,15 @@ onready var card_tray = get_node("CardTray")
 var card_scene = preload("res://obj/card/Card.tscn")
 
 
-func _add_card_to_node(node: Node2D):
+func _add_card_to_node(node: Node2D, jsonld_data):
+	# instantiate card and add to scene
 	var card = card_scene.instance()
 	card.scale = card.scale * 0.5
 	card.set_position(node.position)
 	node.add_child(card)
+	
+	# init card data
+	card.init_card(jsonld_data)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,11 +46,15 @@ func _ready():
 	card_tray.set_position(Vector2(x_margin, y_margin + (quarter_height * 3)))
 	
 	# spawn placeholder cards to test placement
-	_add_card_to_node(player1_avatar)
-	_add_card_to_node(player1_cards)
-	_add_card_to_node(player2_cards)
-	_add_card_to_node(player2_avatar)
-	_add_card_to_node(card_tray)
+	_add_card_to_node(player1_cards, {
+		"n:fn": "Vampire Lord",
+		"foaf:depiction": "res://assets/portrait/ospreyWithers.png"
+	})
+	_add_card_to_node(player2_cards, {
+		"n:fn": "Dryad",
+		"foaf:depiction": "res://assets/portrait/dryad.png"
+	})
+	_add_card_to_node(card_tray, {})
 	
 	player1_avatar.init_new_player({
 		"n:fn": "Osprey Withers",
