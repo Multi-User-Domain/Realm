@@ -43,3 +43,5 @@ func _render_active_card(card_jsonld):
 	active_card_pos_node.add_child(card_scene_instance)
 	card_scene_instance.init_card(card_jsonld)
 	active_card = card_scene_instance
+	
+	game.set_selected_card(card_scene_instance)

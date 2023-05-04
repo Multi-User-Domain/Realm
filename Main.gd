@@ -143,3 +143,9 @@ func _process(delta):
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
 	"""
+
+func set_selected_card(card_scene):
+	if selected_card != null:
+		selected_card.animate_deselect()
+	selected_card = card_scene
+	selected_card.animate_select()

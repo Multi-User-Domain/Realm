@@ -33,11 +33,11 @@ script = ExtResource( 7 )
 [node name="CardManager" type="Node2D" parent="CardTray"]
 script = ExtResource( 6 )
 
-[node name="ActiveCardPos" type="Node2D" parent="CardTray"]
-position = Vector2( 68, 0 )
-
 [node name="InactiveCardsPos" type="Node2D" parent="CardTray"]
 position = Vector2( 146, 0 )
+
+[node name="ActiveCardPos" type="Node2D" parent="CardTray"]
+position = Vector2( 68, 0 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource( 2 )
