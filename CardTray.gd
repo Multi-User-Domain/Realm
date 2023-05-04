@@ -45,3 +45,38 @@ func _render_active_card(card_jsonld):
 	active_card = card_scene_instance
 	
 	game.set_selected_card(card_scene_instance)
+
+func _get_inactive_card_matching(this_card):
+	# sorry
+	for child in inactive_cards_pos_node.get_children():
+		if child.get_rdf_property("@id") == this_card["@id"]:
+			return child
+	return null
+
+func get_card_to_left_of(this_card):
+	"""
+	:return: card to the left of the parameterised card in the UI
+	:return: null if there is no card to the left
+	"""
+	if this_card == active_card:
+		return null
+	
+	for i in range(len(card_manager.hand)):
+		if this_card.get_rdf_property("@id") == card_manager.hand[i]["@id"]:
+			if i == 0:
+				return active_card
+			return _get_inactive_card_matching(card_manager.hand[i - 1])
+
+func get_card_to_right_of(this_card):
+	"""
+	:return: card to the left of the parameterised card in the UI
+	:return: null if there is no card to the right
+	"""
+	if this_card == active_card:
+		return _get_inactive_card_matching(card_manager.hand[0])
+	
+	for i in range(len(card_manager.hand)):
+		if this_card.get_rdf_property("@id") == card_manager.hand[i]["@id"]:
+			if i < len(card_manager.hand) - 1:
+				return _get_inactive_card_matching(card_manager.hand[i + 1])
+			return null

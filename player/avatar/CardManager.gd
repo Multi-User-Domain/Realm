@@ -12,10 +12,13 @@ func _ready():
 
 func init_deck(avatar, cards=[]):
 	self.avatar = avatar
-	deck += cards
+	for card_jsonld in cards:
+		add_to_deck(card_jsonld)
 	deck.shuffle()
 
 func add_to_deck(card_jsonld):
+	if not "@id" in card_jsonld:
+		card_jsonld["@id"] = "_Card_" + str(randi())
 	deck.append(card_jsonld)
 
 func add_to_discard_pile(card_jsonld):

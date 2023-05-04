@@ -132,20 +132,23 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		next_turn()
 	
-	# TODO: cycling through the selectable cards with UI controls
-	"""
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
-		velocity.y -= 1
-	"""
+	# cycling through the selectable cards with UI controls
+	var next_card = null
+	if Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_left"):
+		if Input.is_action_just_pressed("ui_right"):
+			next_card = card_tray.get_card_to_right_of(selected_card)
+		if Input.is_action_just_pressed("ui_left"):
+			next_card = card_tray.get_card_to_left_of(selected_card)
+	
+		if next_card != null:
+			set_selected_card(next_card)
+		else:
+			# TODO: support selecting cards in the battlefield
+			pass
 
 func set_selected_card(card_scene):
 	if selected_card != null:
 		selected_card.animate_deselect()
 	selected_card = card_scene
+	# selected_card.get_parent().move_child(selected_card, 0)
 	selected_card.animate_select()

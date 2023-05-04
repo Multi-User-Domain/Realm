@@ -22,7 +22,10 @@ func _init_jsonld_data(card_jsonld):
 	
 	if not "n:fn" in jsonld_store:
 		# TODO: find defaults via author name, etc
-		jsonld_store["n:fn"] = "Unkown"
+		jsonld_store["n:fn"] = "Unknown"
+	
+	if not "@id" in jsonld_store:
+		jsonld_store["@id"] = "_Card_" + jsonld_store["n:fn"] + str(randi())
 
 func init_card(card_jsonld):
 	# calculate and log variables used in animating select/deselect
