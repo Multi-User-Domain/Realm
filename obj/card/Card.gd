@@ -32,7 +32,7 @@ func init_card(card_jsonld):
 	# calculate and log variables used in animating select/deselect
 	init_scale = get_scale()
 	init_position = get_position()
-	focus_position = init_position + Vector2(0, -100)
+	focus_position = init_position + Vector2(0, -200)
 	
 	_init_jsonld_data(card_jsonld)
 	
