@@ -150,5 +150,6 @@ func set_selected_card(card_scene):
 	if selected_card != null:
 		selected_card.animate_deselect()
 	selected_card = card_scene
-	# selected_card.get_parent().move_child(selected_card, 0)
+	var card_parent = selected_card.get_node("..")
+	card_parent.move_child(selected_card, card_parent.get_child_count())
 	selected_card.animate_select()
