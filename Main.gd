@@ -67,32 +67,11 @@ func _ready():
 	player1_avatar.init_new_player({
 		"n:fn": "Osprey Withers",
 		"foaf:depiction": "res://assets/portrait/ospreyWithers.png"
-	},
-	[
-		{
-			"n:fn": "Vampire Lord",
-			"foaf:depiction": "res://assets/portrait/ospreyWithers.png"
-		},
-		{
-			"n:fn": "Vampire Lord",
-			"foaf:depiction": "res://assets/portrait/ospreyWithers.png"
-		}
-	]
-	)
+	})
 	player2_avatar.init_new_player({
 		"n:fn": "Sumeri",
 		"foaf:depiction": "res://assets/portrait/dryad.png"
-	},
-	[
-		{
-			"n:fn": "Dryad",
-			"foaf:depiction": "res://assets/portrait/dryad.png"
-		},
-		{
-			"n:fn": "Dryad",
-			"foaf:depiction": "res://assets/portrait/dryad.png"
-		}
-	])
+	})
 	
 	var tray_deck = []
 	
@@ -130,7 +109,10 @@ func _give_selected_card_to_player(player_index):
 		return
 	
 	# player_index is 0 or 1
-	_add_card_for_player(player_index, selected_card.jsonld_store)
+	if player_index == 0:
+		get_node("Player1Avatar").card_manager.add_to_deck(selected_card.jsonld_store)
+	else:
+		get_node("Player2Avatar").card_manager.add_to_deck(selected_card.jsonld_store)
 	
 	# remove the card from the tray and get the next one
 	var right_card = card_tray.get_card_to_right_of(selected_card)
