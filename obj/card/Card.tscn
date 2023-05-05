@@ -36,3 +36,4 @@ margin_bottom = 174.0
 [node name="Description" type="RichTextLabel" parent="ColorRect/MarginContainer2"]
 margin_right = 124.0
 margin_bottom = 71.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
