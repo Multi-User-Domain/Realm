@@ -65,12 +65,14 @@ func _ready():
 	# init players with JSON-LD data for the avatar, and their starting cards
 	# TODO: hardcoding is just for placeholder
 	player1_avatar.init_new_player({
+		"@id": "https://raw.githubusercontent.com/Multi-User-Domain/utopian-dialogue/master/public/rdf/ospreyWithers.json",
 		"n:fn": "Osprey Withers",
-		"foaf:depiction": "res://assets/portrait/ospreyWithers.png"
+		"foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ospreyWithers.png"
 	})
 	player2_avatar.init_new_player({
+		"@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json",
 		"n:fn": "Sumeri",
-		"foaf:depiction": "res://assets/portrait/dryad.png"
+		"foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/dryad.png"
 	})
 	
 	var tray_deck = []

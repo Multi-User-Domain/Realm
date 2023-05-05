@@ -16,7 +16,7 @@ func _init_jsonld_data(character_jsonld):
 	jsonld_store["@type"] = Globals.MUD_CHAR.Character
 	
 	if not "foaf:depiction" in jsonld_store:
-		jsonld_store["foaf:depiction"] = "res://assets/portrait/ospreyWithers.png"
+		jsonld_store["foaf:depiction"] = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ospreyWithers.png"
 	
 	if not "n:fn" in jsonld_store:
 		jsonld_store["n:fn"] = "Avatar"
@@ -27,11 +27,22 @@ func _init_jsonld_data(character_jsonld):
 			"mudcombat:currentP": default_hp
 		}
 
+func _get_texture_from_jsonld(depiction_url):	
+	if depiction_url == null:
+		return load(Globals.PORTRAIT_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ospreyWithers.png"])
+	
+	if depiction_url in Globals.PORTRAIT_CACHE.keys():
+		return load(Globals.PORTRAIT_CACHE[depiction_url])
+	
+	print("ERR: requested portrait not in cache, remote portraits unsupported for Avatars")
+	print(depiction_url)
+	return load(Globals.PORTRAIT_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ospreyWithers.png"])
+
 func init_new_player(character_jsonld, cards=[]):
 	_init_jsonld_data(character_jsonld)
 	
 	# function initialises the Avatar with new player information
-	portrait_sprite.set_texture(load(get_rdf_property("foaf:depiction")))
+	portrait_sprite.set_texture(_get_texture_from_jsonld(get_rdf_property("foaf:depiction")))
 	# TODO: https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/1
 	# 128, 128 with the in-built textures
 	portrait_sprite.set_scale(Vector2(0.25, 0.25))

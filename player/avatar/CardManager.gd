@@ -12,7 +12,6 @@ func _ready():
 
 func init_deck(avatar, cards=[]):
 	self.avatar = avatar
-	print(self.avatar)
 	for card_jsonld in cards:
 		add_to_deck(card_jsonld)
 	deck.shuffle()
