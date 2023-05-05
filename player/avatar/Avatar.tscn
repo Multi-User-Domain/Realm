@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://player/avatar/Avatar.gd" type="Script" id=1]
 [ext_resource path="res://player/avatar/CardManager.gd" type="Script" id=2]
+[ext_resource path="res://obj/card/Card.tscn" type="PackedScene" id=3]
 
 [node name="Avatar" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,6 +13,11 @@ margin_right = 153.0
 margin_bottom = 40.0
 
 [node name="PortraitSprite" type="Sprite" parent="."]
+
+[node name="DeckPrompt" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 39, 0 )
+scale = Vector2( 0.25, 0.25 )
 
 [node name="CardManager" type="Node2D" parent="."]
 script = ExtResource( 2 )

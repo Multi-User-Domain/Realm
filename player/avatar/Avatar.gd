@@ -2,6 +2,8 @@ extends Node2D
 
 onready var portrait_sprite = get_node("PortraitSprite")
 onready var name_label = get_node("NameLabel")
+# deck prompt is the little card icon indicating how many cards are left in the deck
+onready var deck_prompt = get_node("DeckPrompt")
 onready var card_manager = get_node("CardManager")
 export var default_hp = 100
 var jsonld_store = {}
@@ -37,6 +39,7 @@ func init_new_player(character_jsonld, cards=[]):
 	var half_portrait = portrait_size * 0.5
 	# centre along the x axis
 	portrait_sprite.set_position(Vector2(get_viewport_rect().size.x * 0.5, self.position.y) + half_portrait)
+	deck_prompt.set_position(portrait_sprite.position + Vector2(portrait_size.x + 10, 0))
 	
 	name_label.set_text(get_rdf_property("n:fn"))
 	name_label.set_position(portrait_sprite.position + Vector2(-half_portrait.x + 1, half_portrait.y + 1))

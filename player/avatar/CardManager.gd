@@ -12,6 +12,7 @@ func _ready():
 
 func init_deck(avatar, cards=[]):
 	self.avatar = avatar
+	print(self.avatar)
 	for card_jsonld in cards:
 		add_to_deck(card_jsonld)
 	deck.shuffle()
@@ -20,6 +21,8 @@ func add_to_deck(card_jsonld):
 	if not "@id" in card_jsonld:
 		card_jsonld["@id"] = "_Card_" + str(randi())
 	deck.append(card_jsonld)
+	if avatar != null:
+		avatar.deck_prompt.set_visible(true)
 
 func add_to_discard_pile(card_jsonld):
 	discard_pile.append(card_jsonld)
@@ -39,6 +42,9 @@ func draw_hand(count=hand_size):
 			shuffle_discard_pile()
 		
 		hand.append(deck.pop_back())
+	
+	if len(deck) == 0 and avatar != null:
+		avatar.deck_prompt.set_visible(false)
 
 func discard_hand():
 	discard_pile += hand
