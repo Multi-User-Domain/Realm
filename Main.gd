@@ -60,8 +60,7 @@ func _ready():
 	
 	# bottom quarter for player card actions
 	card_tray.set_position(Vector2(x_margin, y_margin + (quarter_height * 3)))
-	card_tray.active_card_pos_node.position.y = card_tray.position.y
-	card_tray.inactive_cards_pos_node.position.y = card_tray.position.y
+	card_tray.cards_start_pos.position.y = card_tray.position.y
 	
 	# init players with JSON-LD data for the avatar, and their starting cards
 	# TODO: hardcoding is just for placeholder
