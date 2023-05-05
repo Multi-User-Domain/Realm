@@ -21,6 +21,9 @@ var active_card = null
 
 func init_deck(cards):
 	card_manager.init_deck(null, cards)
+	draw_new_hand()
+
+func draw_new_hand():
 	card_manager.draw_hand(hand_size)
 	
 	# render the first card in the active card position
@@ -80,3 +83,10 @@ func get_card_to_right_of(this_card):
 			if i < len(card_manager.hand) - 1:
 				return _get_inactive_card_matching(card_manager.hand[i + 1])
 			return null
+
+func remove_card(card_scene_instance):
+	if card_scene_instance != active_card:
+		var card_jsonld = card_scene_instance.jsonld_store
+		card_manager.hand.erase(card_jsonld)
+	card_scene_instance.get_node("..").remove_child(card_scene_instance)
+	card_scene_instance.queue_free()

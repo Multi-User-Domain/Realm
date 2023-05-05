@@ -126,11 +126,35 @@ func next_turn():
 	for card in player2_avatar.card_manager.play_cards():
 		_add_card_for_player(1, card)
 
+func _give_selected_card_to_player(player_index):
+	if selected_card == null:
+		return
+	
+	# player_index is 0 or 1
+	_add_card_for_player(player_index, selected_card.jsonld_store)
+	
+	# remove the card from the tray and get the next one
+	var right_card = card_tray.get_card_to_right_of(selected_card)
+	var left_card = card_tray.get_card_to_left_of(selected_card)
+	card_tray.remove_card(selected_card)
+	if len(card_tray.card_manager.hand) == 0:
+		card_tray.draw_new_hand()
+	else:
+		if right_card != null:
+			set_selected_card(right_card)
+		else:
+			set_selected_card(left_card)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# TODO: replace with a time-based game loop
+	# UI accept is bound to Xbox A and keyboard space
 	if Input.is_action_just_pressed("ui_accept"):
-		next_turn()
+		_give_selected_card_to_player(0)
+	# UI cancel is bound to Xbox B and keyboard escape
+	elif Input.is_action_just_pressed("ui_cancel"):
+		_give_selected_card_to_player(1)
+	# TODO: pressing Xbox "X" should discard the card
 	
 	# cycling through the selectable cards with UI controls
 	var next_card = null
