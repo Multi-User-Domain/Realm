@@ -2,7 +2,7 @@
 
 [ext_resource path="res://player/avatar/Avatar.gd" type="Script" id=1]
 [ext_resource path="res://player/avatar/CardManager.gd" type="Script" id=2]
-[ext_resource path="res://obj/card/Card.tscn" type="PackedScene" id=3]
+[ext_resource path="res://obj/card/DeckPrompt.tscn" type="PackedScene" id=3]
 
 [node name="Avatar" type="Node2D"]
 script = ExtResource( 1 )
@@ -16,7 +16,7 @@ margin_bottom = 40.0
 
 [node name="DeckPrompt" parent="." instance=ExtResource( 3 )]
 visible = false
-position = Vector2( 39, 0 )
+position = Vector2( 40, 0 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="CardManager" type="Node2D" parent="."]

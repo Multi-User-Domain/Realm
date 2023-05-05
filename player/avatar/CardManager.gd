@@ -23,6 +23,7 @@ func add_to_deck(card_jsonld):
 	deck.append(card_jsonld)
 	if avatar != null:
 		avatar.deck_prompt.set_visible(true)
+		avatar.deck_prompt.text_content.set_text(str(len(deck)))
 
 func add_to_discard_pile(card_jsonld):
 	discard_pile.append(card_jsonld)
@@ -43,8 +44,11 @@ func draw_hand(count=hand_size):
 		
 		hand.append(deck.pop_back())
 	
-	if len(deck) == 0 and avatar != null:
-		avatar.deck_prompt.set_visible(false)
+	if avatar != null:
+		if len(deck) > 0:
+			avatar.deck_prompt.text_content.set_text(str(len(deck)))
+		else:
+			avatar.deck_prompt.set_visible(false)
 
 func discard_hand():
 	discard_pile += hand
