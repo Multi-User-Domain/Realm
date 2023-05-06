@@ -23,6 +23,8 @@ func init_deck(cards):
 
 func draw_new_hand():
 	card_manager.draw_hand(hand_size)
+	if len(card_manager.hand) == 0:
+		return
 	
 	# render the hand in the card tray
 	for i in range(len(card_manager.hand)):
