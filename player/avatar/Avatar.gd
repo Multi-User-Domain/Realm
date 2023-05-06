@@ -38,7 +38,17 @@ func _get_texture_from_jsonld(depiction_url):
 	print(depiction_url)
 	return load(Globals.PORTRAIT_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ospreyWithers.png"])
 
-func init_new_player(character_jsonld, cards=[]):
+func _get_deck_configured_on_jsonld():
+	var deck = get_rdf_property("mudcard:hasDeck")
+	if deck != null:
+		if "mudcard:hasCards" in deck:
+			return deck["mudcard:hasCards"]
+		print("ERR (Avatar.gd): deck configured with no cards, or with a property unknown to this game")
+		return []
+	else:
+		return []
+
+func init_new_player(character_jsonld):
 	_init_jsonld_data(character_jsonld)
 	
 	# function initialises the Avatar with new player information
@@ -55,7 +65,7 @@ func init_new_player(character_jsonld, cards=[]):
 	name_label.set_text(get_rdf_property("n:fn"))
 	name_label.set_position(portrait_sprite.position + Vector2(-half_portrait.x + 1, half_portrait.y + 1))
 	
-	card_manager.init_deck(self, cards)
+	card_manager.init_deck(self, _get_deck_configured_on_jsonld())
 
 # TODO: find a more DRY way to do this across nodes
 func get_rdf_property(property):
