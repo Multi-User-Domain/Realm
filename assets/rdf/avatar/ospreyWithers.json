@@ -1,0 +1,63 @@
+{
+    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json",
+    "n:fn": "Osprey Withers",
+    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ospreyWithers.png",
+    "mudcard:hasDeck": {
+        "mudcard:hasCards": [
+            {
+                "@context": {
+                    "n": "http://www.w3.org/2006/vcard/ns#",
+                    "foaf": "http://xmlns.com/foaf/0.1/",
+                    "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+                    "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+                },
+                "@id": "_:OspreyCard1",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+                "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+                "n:fn": "Death Goblin Gromm",
+                "n:hasGender": "n:Male",
+                "foaf:name": "Death Goblin Gromm",
+                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ghost.png",
+                "n:hasNote": "",
+                "mudcard:hasAvailableIntervalActions": [
+                    {
+                        "@id": "_:BasicAttack",
+                        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Task",
+                        "n:fn": "Basic Attack",
+                        "mudcard:playTarget": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+                        "mudlogic:patchesOnComplete": {
+                            "@id": "_:endState",
+                            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Patch",
+                            "mudlogic:deletes": [
+                    
+                            ],
+                            "mudlogic:inserts": [
+                                
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "@context": {
+                    "n": "http://www.w3.org/2006/vcard/ns#",
+                    "foaf": "http://xmlns.com/foaf/0.1/",
+                    "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+                    "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+                },
+                "@id": "_:OspreyCard2",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+                "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+                "n:fn": "Skeletal Warrior",
+                "foaf:name": "Skeletal Warrior",
+                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/skeletalWarrior.png",
+                "n:hasNote": "Reanimated skeletal warriors make for poor fighters and rely on overwhelming the enemy with their numbers",
+                "mudcard:hasAvailableIntervalActions": [
+                    
+                ]
+            }
+        ]
+    }
+}
