@@ -13,7 +13,7 @@ onready var card_manager = get_node("CardManager")
 onready var cards_start_pos = get_node("CardsStartFrom")
 
 # TODO: should the hand_size be calculated based on screen width?
-export var hand_size = 7
+export var hand_size = 8
 
 var card_scene = preload("res://obj/card/Card.tscn")
 

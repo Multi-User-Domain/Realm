@@ -8,6 +8,7 @@ onready var player1_cards = get_node("Player1Cards")
 onready var player2_cards = get_node("Player2Cards")
 onready var player2_avatar = get_node("Player2Avatar")
 onready var card_tray = get_node("CardTray")
+onready var rdf_manager = get_node("RDFManager")
 
 # export means that it can be set from the Scene editor
 # the scale transformation to apply to card size
@@ -44,6 +45,11 @@ func load_avatar_from_jsonld(file_path):
 	save_file.open(file_path, File.READ)
 	return parse_json(save_file.get_as_text())
 
+func load_cards_for_tray():
+	var save_file = File.new()
+	save_file.open("res://assets/rdf/deck/coreOptionals.json", File.READ)
+	return parse_json(save_file.get_as_text())
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# init game
@@ -71,15 +77,7 @@ func _ready():
 	player1_avatar.init_new_player(load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json"]))
 	player2_avatar.init_new_player(load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json"]))
 	
-	var tray_deck = []
-	
-	for i in range(70):
-		tray_deck.append({
-			"n:fn": "Vampire Lord",
-			"foaf:depiction": "res://assets/portrait/ospreyWithers.png"
-		})
-	
-	card_tray.init_deck(tray_deck)
+	card_tray.init_deck(load_cards_for_tray())
 
 # NOTE: feel free to use mouse input in debugging, but the game is for an xbox controller
 # https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/2
