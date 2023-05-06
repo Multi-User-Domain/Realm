@@ -1,5 +1,85 @@
 {
     "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json",
 	"n:fn": "Sumeri",
-	"foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/dryad.png"
+    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/dryad.png",
+    "mudcard:hasDeck": {
+        "mudcard:hasCards": [
+            {
+                "@context": {
+                    "n": "http://www.w3.org/2006/vcard/ns#",
+                    "foaf": "http://xmlns.com/foaf/0.1/",
+                    "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+                    "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+                },
+                "@id": "_:SumeriCard1",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+                "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+                "n:fn": "Elf",
+                "foaf:name": "Elf",
+                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/elf.png",
+                "n:hasNote": "The Elves of the forest protect all living beings that call it home",
+                "mudcard:hasAvailableIntervalActions": [
+                    
+                ]
+            },
+            {
+                "@context": {
+                    "n": "http://www.w3.org/2006/vcard/ns#",
+                    "foaf": "http://xmlns.com/foaf/0.1/",
+                    "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+                    "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+                },
+                "@id": "_:SumeriCard2",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+                "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+                "n:fn": "Mysterious Protector",
+                "foaf:name": "Mysterious Protector",
+                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/mysteriousProtector.png",
+                "n:hasNote": "An outlaw once called the forest home. He is rumored to live here still",
+                "mudcard:hasAvailableIntervalActions": [
+                    
+                ]
+            },
+            {
+                "@context": {
+                    "n": "http://www.w3.org/2006/vcard/ns#",
+                    "foaf": "http://xmlns.com/foaf/0.1/",
+                    "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+                    "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+                },
+                "@id": "_:SumeriCard3",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+                "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+                "n:fn": "Old Ranger",
+                "foaf:name": "Old Ranger",
+                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/oldRanger.png",
+                "n:hasNote": "An Old Ranger strings his bow",
+                "mudcard:hasAvailableIntervalActions": [
+                    
+                ]
+            },
+            {
+                "@context": {
+                    "n": "http://www.w3.org/2006/vcard/ns#",
+                    "foaf": "http://xmlns.com/foaf/0.1/",
+                    "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+                    "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+                },
+                "@id": "_:SumeriCard4",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+                "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+                "n:fn": "Serena the Powerful",
+                "foaf:name": "Serena the Powerful",
+                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/forestWitch.png",
+                "n:hasNote": "A powerful witch is rumored to live in this forest, and to protect those who live within",
+                "mudcard:hasAvailableIntervalActions": [
+                    
+                ]
+            }
+        ]
+    }
 }

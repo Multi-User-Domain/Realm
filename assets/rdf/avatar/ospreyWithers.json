@@ -18,7 +18,7 @@
                 "n:fn": "Death Goblin Gromm",
                 "n:hasGender": "n:Male",
                 "foaf:name": "Death Goblin Gromm",
-                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ghost.png",
+                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/gromm.png",
                 "n:hasNote": "",
                 "mudcard:hasAvailableIntervalActions": [
                     {
@@ -52,8 +52,46 @@
                 "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
                 "n:fn": "Skeletal Warrior",
                 "foaf:name": "Skeletal Warrior",
-                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/skeletalWarrior.png",
+                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/skeletalWarrior.png",
                 "n:hasNote": "Reanimated skeletal warriors make for poor fighters and rely on overwhelming the enemy with their numbers",
+                "mudcard:hasAvailableIntervalActions": [
+                    
+                ]
+            },
+            {
+                "@context": {
+                    "n": "http://www.w3.org/2006/vcard/ns#",
+                    "foaf": "http://xmlns.com/foaf/0.1/",
+                    "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+                    "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+                },
+                "@id": "_:OspreyCard3",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+                "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+                "n:fn": "Zombie",
+                "foaf:name": "Zombie",
+                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/zombie.png",
+                "n:hasNote": "Braaaiiinnnss",
+                "mudcard:hasAvailableIntervalActions": [
+                    
+                ]
+            },
+            {
+                "@context": {
+                    "n": "http://www.w3.org/2006/vcard/ns#",
+                    "foaf": "http://xmlns.com/foaf/0.1/",
+                    "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+                    "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+                },
+                "@id": "_:OspreyCard4",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+                "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+                "n:fn": "Bog Monster",
+                "foaf:name": "Bog Monster",
+                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/bogMonster.png",
+                "n:hasNote": "Villagers who wander into the bogs are wont to not return",
                 "mudcard:hasAvailableIntervalActions": [
                     
                 ]

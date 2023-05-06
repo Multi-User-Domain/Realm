@@ -1,3 +1,154 @@
 [
-    
+    {
+        "@context": {
+            "n": "http://www.w3.org/2006/vcard/ns#",
+            "foaf": "http://xmlns.com/foaf/0.1/",
+            "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+            "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+        },
+        "@id": "_:CoreOptional1",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+        "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+        "n:fn": "Gareth Heartspear",
+        "foaf:name": "Gareth Heartspear",
+        "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/garethHeartspear.png",
+        "n:hasNote": "An old Mercenary Captain has oft wondered if there is not more money to be made in trading",
+        "mudcard:hasAvailableIntervalActions": [
+            
+        ]
+    },
+    {
+        "@context": {
+            "n": "http://www.w3.org/2006/vcard/ns#",
+            "foaf": "http://xmlns.com/foaf/0.1/",
+            "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+            "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+        },
+        "@id": "_:CoreOptional2",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+        "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+        "n:fn": "Heleswynn",
+        "foaf:name": "Heleswynn",
+        "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/heleswynn.png",
+        "n:hasNote": "The Dark Elf was impossibly nimble, and caught her opponent's knife even as it span in the air",
+        "mudcard:hasAvailableIntervalActions": [
+            
+        ]
+    },
+    {
+        "@context": {
+            "n": "http://www.w3.org/2006/vcard/ns#",
+            "foaf": "http://xmlns.com/foaf/0.1/",
+            "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+            "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+        },
+        "@id": "_:CoreOptional3",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Location",
+        "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+        "n:fn": "Monastic Holds",
+        "foaf:name": "Monastic Holds",
+        "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/monasticHolds.png",
+        "n:hasNote": "These mountain holds are as peaceful and inaccessible. They make for a safe haven",
+        "mudcard:hasAvailableIntervalActions": [
+            
+        ]
+    },
+    {
+        "@context": {
+            "n": "http://www.w3.org/2006/vcard/ns#",
+            "foaf": "http://xmlns.com/foaf/0.1/",
+            "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+            "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+        },
+        "@id": "_:CoreOptional4",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Location",
+        "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+        "n:fn": "All-Expansive Industry",
+        "foaf:name": "All-Expansive Industry",
+        "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/industry.png",
+        "n:hasNote": "The factory is churning out suffocating black smoke, known by the locals as smog",
+        "mudcard:hasAvailableIntervalActions": [
+            
+        ]
+    },
+    {
+        "@context": {
+            "n": "http://www.w3.org/2006/vcard/ns#",
+            "foaf": "http://xmlns.com/foaf/0.1/",
+            "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+            "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+        },
+        "@id": "_:CoreOptional5",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+        "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+        "n:fn": "Captain Tam Tupence",
+        "foaf:name": "Captain Tam Tupence",
+        "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/tamTupence.png",
+        "n:hasNote": "The young pirate spoke elequontly and was elected captain by his peers",
+        "mudcard:hasAvailableIntervalActions": [
+            
+        ]
+    },
+    {
+        "@context": {
+            "n": "http://www.w3.org/2006/vcard/ns#",
+            "foaf": "http://xmlns.com/foaf/0.1/",
+            "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+            "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+        },
+        "@id": "_:CoreOptional6",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Location",
+        "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+        "n:fn": "The Union Meeting Place",
+        "foaf:name": "The Union Meeting Place",
+        "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/meetingPlace.png",
+        "n:hasNote": "One particular bar has become a crucial meeting place for union organisers",
+        "mudcard:hasAvailableIntervalActions": [
+            
+        ]
+    },
+    {
+        "@context": {
+            "n": "http://www.w3.org/2006/vcard/ns#",
+            "foaf": "http://xmlns.com/foaf/0.1/",
+            "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+            "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+        },
+        "@id": "_:CoreOptional7",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Location",
+        "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+        "n:fn": "Smuggler's Cove",
+        "foaf:name": "Smuggler's Cove",
+        "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/cove.png",
+        "n:hasNote": "The coastline was dotted with places where one could buy stolen goods from the pirates",
+        "mudcard:hasAvailableIntervalActions": [
+            
+        ]
+    },
+    {
+        "@context": {
+            "n": "http://www.w3.org/2006/vcard/ns#",
+            "foaf": "http://xmlns.com/foaf/0.1/",
+            "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+            "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+        },
+        "@id": "_:CoreOptional8",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Location",
+        "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+        "n:fn": "Extensive Dungeons",
+        "foaf:name": "Extensive Dungeons",
+        "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/dungeon.png",
+        "n:hasNote": "The Dungeons were a place of exceptional cruelty, and were effective in subduing the population",
+        "mudcard:hasAvailableIntervalActions": [
+            
+        ]
+    }
 ]
