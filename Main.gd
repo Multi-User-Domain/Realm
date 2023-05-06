@@ -39,6 +39,11 @@ func _add_card_for_player(player_index: int, jsonld_data):
 	# init card data
 	card.init_card(jsonld_data)
 
+func load_avatar_from_jsonld(file_path):
+	var save_file = File.new()
+	save_file.open(file_path, File.READ)
+	return parse_json(save_file.get_as_text())
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# init game
@@ -63,17 +68,8 @@ func _ready():
 	card_tray.cards_start_pos.position.y = card_tray.position.y
 	
 	# init players with JSON-LD data for the avatar, and their starting cards
-	# TODO: hardcoding is just for placeholder
-	player1_avatar.init_new_player({
-		"@id": "https://raw.githubusercontent.com/Multi-User-Domain/utopian-dialogue/master/public/rdf/ospreyWithers.json",
-		"n:fn": "Osprey Withers",
-		"foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ospreyWithers.png"
-	})
-	player2_avatar.init_new_player({
-		"@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json",
-		"n:fn": "Sumeri",
-		"foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/dryad.png"
-	})
+	player1_avatar.init_new_player(load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json"]))
+	player2_avatar.init_new_player(load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json"]))
 	
 	var tray_deck = []
 	
