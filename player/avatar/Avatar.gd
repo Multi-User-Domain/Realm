@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var game = get_tree().current_scene
 onready var portrait_sprite = get_node("PortraitSprite")
 onready var name_label = get_node("NameLabel")
 # deck prompt is the little card icon indicating how many cards are left in the deck
@@ -27,17 +28,6 @@ func _init_jsonld_data(character_jsonld):
 			"mudcombat:currentP": default_hp
 		}
 
-func _get_texture_from_jsonld(depiction_url):	
-	if depiction_url == null:
-		return load(Globals.PORTRAIT_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ospreyWithers.png"])
-	
-	if depiction_url in Globals.PORTRAIT_CACHE.keys():
-		return load(Globals.PORTRAIT_CACHE[depiction_url])
-	
-	print("ERR: requested portrait not in cache, remote portraits unsupported for Avatars")
-	print(depiction_url)
-	return load(Globals.PORTRAIT_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ospreyWithers.png"])
-
 func _get_deck_configured_on_jsonld():
 	var deck = get_rdf_property("mudcard:hasDeck")
 	if deck != null:
@@ -52,7 +42,7 @@ func init_new_player(character_jsonld):
 	_init_jsonld_data(character_jsonld)
 	
 	# function initialises the Avatar with new player information
-	portrait_sprite.set_texture(_get_texture_from_jsonld(get_rdf_property("foaf:depiction")))
+	portrait_sprite.set_texture(game.rdf_manager.get_texture_from_jsonld(get_rdf_property("foaf:depiction")))
 	# TODO: https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/1
 	# 128, 128 with the in-built textures
 	portrait_sprite.set_scale(Vector2(0.25, 0.25))

@@ -39,7 +39,7 @@ func init_card(card_jsonld):
 	# TODO: https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/1
 	var depiction = get_rdf_property("foaf:depiction")
 	if depiction != null:
-		sprite.set_texture(load(depiction))
+		sprite.set_texture(game.rdf_manager.get_texture_from_jsonld(depiction))
 		# 128, 128 with the in-built textures
 		sprite.set_scale(Vector2(0.125, 0.125))
 	
