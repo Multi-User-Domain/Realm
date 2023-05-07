@@ -87,3 +87,20 @@ func play_card_actions(opponent_active=[]):
 		})
 	
 	return actions_to_play
+
+func damage_card(urlid_to_damage, damage):
+	"""
+	damages a card with given urlid
+	:return: card urlid if the card was destroyed, otherwise null
+	"""
+	for card in active_cards:
+		if card["@id"] == urlid_to_damage:
+			if "mudcombat:hasHealthPoints" in card:
+				card["mudcombat:hasHealthPoints"]["mudcombat:currentP"] -= damage
+
+				# discard card if it's been destroyed
+				if card["mudcombat:hasHealthPoints"]["mudcombat:currentP"] <= 0:
+					active_cards.erase(card)
+					add_to_discard_pile(card)
+					return card["@id"]
+	return null

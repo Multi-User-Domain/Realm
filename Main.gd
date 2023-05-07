@@ -41,6 +41,26 @@ func _add_card_for_player(player_index: int, jsonld_data):
 	# init card data
 	card.init_card(jsonld_data)
 
+func _remove_card_with_urlid(urlid):
+	var card_found = null
+	
+	for card in player1_cards.get_children():
+		if card.has_method("get_rdf_property") and card.get_rdf_property("@id") == urlid:
+			card_found = card
+			break
+	
+	if card_found == null:
+		for card in player2_cards.get_children():
+			if card.has_method("get_rdf_property") and card.get_rdf_property("@id") == urlid:
+				card_found = card
+				break
+	
+	if card_found != null:
+		card_found.get_node("..").remove_child(card_found)
+		card_found.queue_free()
+	else:
+		print("ERR _remove_card_with_urlid. Card not found in active cards " + urlid)
+
 func load_avatar_from_jsonld(file_path):
 	var save_file = File.new()
 	save_file.open(file_path, File.READ)

@@ -23,11 +23,30 @@ func _on_TurnTimer_timeout():
 	game.player1_avatar.play_cards()
 	game.player2_avatar.play_cards()
 
+func _get_attackable_cards(cards):
+	var attackable_cards = []
+	for card in cards:
+		if "mudcombat:hasHealthPoints" in card:
+			attackable_cards.append(card)
+	return attackable_cards
+
+func _handle_basic_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards):
+	# attack the enemy avatar if they have no protection
+	if len(opponent_attackable_cards) == 0:
+		opponent_avatar_scene.health_bar.remove_health(1)
+		return
+	
+	# otherwise attack the first card
+	var destroyed = opponent_avatar_scene.card_manager.damage_card(opponent_attackable_cards[0]["@id"], 1)
+	if destroyed != null:
+		game._remove_card_with_urlid(destroyed)
+
 func _play_card_actions(player_avatar_scene, opponent_avatar_scene):
 	elapsed_card_turns += 1
+	var opponent_attackable_cards = _get_attackable_cards(opponent_avatar_scene.card_manager.active_cards)
 	for action in player_avatar_scene.card_manager.play_card_actions():
-		# card.take_turn(elapsed_card_turns, opponent_avatar_scene, opponent_avatar_scene.card_manager.active_cards)
-		opponent_avatar_scene.health_bar.remove_health(1)
+		if action["@id"] == Globals.BUILT_IN_ACTIONS.BASIC_ATTACK:
+			_handle_basic_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards)
 
 # allow active cards to make attacks
 func _on_CardActionTimer_timeout():
