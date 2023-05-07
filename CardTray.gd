@@ -21,6 +21,9 @@ func init_deck(cards):
 	card_manager.init_deck(null, cards)
 	draw_new_hand()
 
+func has_empty_hand():
+	return len(card_manager.hand) == 0
+
 func draw_new_hand():
 	card_manager.draw_hand(hand_size)
 	if len(card_manager.hand) == 0:

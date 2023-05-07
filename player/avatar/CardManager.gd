@@ -3,6 +3,7 @@ extends Node2D
 export var hand_size = Globals.DEFAULT_HAND_SIZE
 var avatar = null;
 # hand and deck contain JSON-LD representations of the cards
+var active_cards = [] # a list of cards in play
 var hand = []
 var deck = []
 var discard_pile = []
@@ -23,6 +24,15 @@ func add_to_deck(card_jsonld):
 	if avatar != null:
 		avatar.deck_prompt.set_visible(true)
 		avatar.deck_prompt.text_content.set_text(str(len(deck)))
+
+func add_to_active_cards(card_jsonld):
+	active_cards.append(card_jsonld)
+
+func discard_active_card(card_id):
+	for card in active_cards:
+		if card["@id"] == card_id:
+			add_to_discard_pile(active_cards.pop(card))
+			break
 
 func add_to_discard_pile(card_jsonld):
 	discard_pile.append(card_jsonld)
@@ -54,7 +64,7 @@ func discard_hand():
 	hand = []
 
 # TODO: AI component, ask it to play some cards, and return those played
-func play_cards():
+func get_cards_to_play():
 	discard_hand()
 	draw_hand()
 	return [hand.pop_back()]
