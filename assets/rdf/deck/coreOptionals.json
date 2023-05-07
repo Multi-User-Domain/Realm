@@ -20,7 +20,12 @@
             "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
             "mudcombat:maximumP": 10,
             "mudcombat:currentP": 10
-        }
+        },
+        "mudcard:hasAvailableInstantActions": [
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
+            }
+        ]
     },
     {
         "@context": {
@@ -43,7 +48,12 @@
             "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
             "mudcombat:maximumP": 10,
             "mudcombat:currentP": 10
-        }
+        },
+        "mudcard:hasAvailableInstantActions": [
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
+            }
+        ]
     },
     {
         "@context": {
@@ -106,7 +116,12 @@
             "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
             "mudcombat:maximumP": 10,
             "mudcombat:currentP": 10
-        }
+        },
+        "mudcard:hasAvailableInstantActions": [
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
+            }
+        ]
     },
     {
         "@context": {
