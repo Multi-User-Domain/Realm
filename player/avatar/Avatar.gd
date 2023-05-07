@@ -3,6 +3,7 @@ extends Node2D
 onready var game = get_tree().current_scene
 onready var portrait_sprite = get_node("PortraitSprite")
 onready var name_label = get_node("NameLabel")
+onready var health_bar = get_node("HealthBar")
 # deck prompt is the little card icon indicating how many cards are left in the deck
 onready var deck_prompt = get_node("DeckPrompt")
 onready var card_manager = get_node("CardManager")
@@ -29,6 +30,10 @@ func _init_jsonld_data(character_jsonld):
 			"mudcombat:currentP": default_hp
 		}
 
+func _init_health_bar():
+	var health_points = get_rdf_property("mudcombat:hasHealthPoints")
+	health_bar.set_health(health_points["mudcombat:currentP"], health_points["mudcombat:maximumP"])
+
 func _get_deck_configured_on_jsonld():
 	var deck = get_rdf_property("mudcard:hasDeck")
 	if deck != null:
@@ -52,10 +57,13 @@ func init_player(player_index, character_jsonld):
 	var half_portrait = portrait_size * 0.5
 	# centre along the x axis
 	portrait_sprite.set_position(Vector2(get_viewport_rect().size.x * 0.5, self.position.y) + half_portrait)
+	health_bar.set_position(portrait_sprite.position - Vector2(portrait_size.x + 20, 0))
 	deck_prompt.set_position(portrait_sprite.position + Vector2(portrait_size.x + 10, 0))
 	
 	name_label.set_text(get_rdf_property("n:fn"))
 	name_label.set_position(portrait_sprite.position + Vector2(-half_portrait.x + 1, half_portrait.y + 1))
+	
+	_init_health_bar()
 	
 	card_manager.init_deck(self, _get_deck_configured_on_jsonld())
 
