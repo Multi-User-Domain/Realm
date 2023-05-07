@@ -7,7 +7,7 @@ extends Node
 #	nodes in the scene tree
 #
 
-const DEFAULT_HAND_SIZE = 5
+const DEFAULT_HAND_SIZE = 3
 
 const BUILT_IN_ACTIONS = {
 	BASIC_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
