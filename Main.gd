@@ -128,7 +128,6 @@ func _give_selected_card_to_player(player_index):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# TODO: replace with a time-based game loop
 	# UI accept is bound to Xbox A and keyboard space
 	if Input.is_action_just_pressed("ui_accept"):
 		_give_selected_card_to_player(0)

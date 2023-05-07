@@ -63,11 +63,27 @@ func discard_hand():
 	discard_pile += hand
 	hand = []
 
-# TODO: AI component, ask it to play some cards, and return those played
+# AI component, ask it to play some cards, and return those played
 func get_cards_to_play():
 	discard_hand()
 	draw_hand()
+	
+	# greedy algorithm: play the first card you see
 	var top_card = hand.pop_back()
 	if top_card == null:
 		return []
 	return [top_card]
+
+# AI component, ask it to use the active effects of cards on the table
+func play_card_actions(opponent_active=[]):
+	var actions_to_play = []
+	
+	# greedy algorithm, play every action
+	# TODO: consider opponent active cards?
+	# TODO: read actions from cards, for now just doing a basic attack
+	for card in active_cards:
+		actions_to_play.append({
+			"@id": Globals.BUILT_IN_ACTIONS.BASIC_ATTACK
+		})
+	
+	return actions_to_play

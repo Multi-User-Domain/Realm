@@ -9,6 +9,10 @@ extends Node
 
 const DEFAULT_HAND_SIZE = 5
 
+const BUILT_IN_ACTIONS = {
+	BASIC_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
+}
+
 #
 #	Ontology constants
 #	When using Linked Data we will often be referring to the URI of resources on the web
@@ -70,4 +74,8 @@ const PORTRAIT_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/meetingPlace.png": "res://assets/portrait/card/meetingPlace.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/cove.png": "res://assets/portrait/card/cove.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/dungeon.png": "res://assets/portrait/card/dungeon.png"
+}
+
+const ACTION_CACHE = {
+	
 }
