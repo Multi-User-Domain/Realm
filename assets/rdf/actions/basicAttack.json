@@ -1,4 +1,14 @@
 {
+    "@context": {
+        "mudlogic": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#",
+        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
+    },
     "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json",
-    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action"
+    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action",
+    "mudcombat:hasAttackDetails": {
+        "@id": "_:BasicAttackDetails",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#AttackDetails",
+        "mudcombat:attackDamagesPoints": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+        "mudcombat:fixedDamage": 1
+    }
 }
