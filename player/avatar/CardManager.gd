@@ -67,4 +67,7 @@ func discard_hand():
 func get_cards_to_play():
 	discard_hand()
 	draw_hand()
-	return [hand.pop_back()]
+	var top_card = hand.pop_back()
+	if top_card == null:
+		return []
+	return [top_card]
