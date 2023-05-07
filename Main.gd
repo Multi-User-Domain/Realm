@@ -9,6 +9,7 @@ onready var player2_cards = get_node("Player2Cards")
 onready var player2_avatar = get_node("Player2Avatar")
 onready var card_tray = get_node("CardTray")
 onready var rdf_manager = get_node("RDFManager")
+onready var turn_manager = get_node("TurnManager")
 
 # export means that it can be set from the Scene editor
 # the scale transformation to apply to card size
@@ -74,8 +75,8 @@ func _ready():
 	card_tray.cards_start_pos.position.y = card_tray.position.y
 	
 	# init players with JSON-LD data for the avatar, and their starting cards
-	player1_avatar.init_new_player(load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json"]))
-	player2_avatar.init_new_player(load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json"]))
+	player1_avatar.init_player(0, load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json"]))
+	player2_avatar.init_player(1, load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json"]))
 	
 	card_tray.init_deck(load_cards_for_tray())
 
@@ -114,8 +115,11 @@ func _give_selected_card_to_player(player_index):
 	var right_card = card_tray.get_card_to_right_of(selected_card)
 	var left_card = card_tray.get_card_to_left_of(selected_card)
 	card_tray.remove_card(selected_card)
-	if len(card_tray.card_manager.hand) == 0:
+	if card_tray.has_empty_hand():
 		card_tray.draw_new_hand()
+		# still has empty hand after drawing - ran out of cards
+		if card_tray.has_empty_hand():
+			turn_manager.start()
 	else:
 		if right_card != null:
 			set_selected_card(right_card)

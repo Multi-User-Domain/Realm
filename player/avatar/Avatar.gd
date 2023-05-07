@@ -7,6 +7,7 @@ onready var name_label = get_node("NameLabel")
 onready var deck_prompt = get_node("DeckPrompt")
 onready var card_manager = get_node("CardManager")
 export var default_hp = 100
+export var player_index = 0
 var jsonld_store = {}
 
 func _ready():
@@ -38,7 +39,8 @@ func _get_deck_configured_on_jsonld():
 	else:
 		return []
 
-func init_new_player(character_jsonld):
+func init_player(player_index, character_jsonld):
+	self.player_index = player_index
 	_init_jsonld_data(character_jsonld)
 	
 	# function initialises the Avatar with new player information
@@ -66,3 +68,8 @@ func get_rdf_property(property):
 
 func set_rdf_property(property, value):
 	self.jsonld_store[property] = value
+
+func play_cards():
+	for card in card_manager.get_cards_to_play():
+		card_manager.add_to_active_cards(card)
+		game._add_card_for_player(player_index, card)
