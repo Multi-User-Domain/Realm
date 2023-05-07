@@ -66,12 +66,29 @@ func discard_hand():
 	discard_pile += hand
 	hand = []
 
+# gets a list of types in the active card tray
+# used for informing the AI script what kind of cards they have in a set (active, hand, deck)
+func _get_card_types(cards=[]):
+	var active_types = []
+	for card in cards:
+		if "@type" in card:
+			active_types.append(card["@type"])
+	return active_types
+
 # AI component, ask it to play some cards, and return those played
 func get_cards_to_play():
 	discard_hand()
 	draw_hand()
 	
-	# greedy algorithm: play the first card you see
+	# if there are no active characters, prioritise that
+	if not Globals.MUD_CHAR.Character in _get_card_types(active_cards):
+		if Globals.MUD_CHAR.Character in _get_card_types(hand):
+			# select the first character in hand
+			for card in hand:
+				if "@type" in card and card["@type"] == Globals.MUD_CHAR.Character:
+					return [card]
+	
+	# default to greedy algorithm: play the first card you see
 	var top_card = hand.pop_back()
 	if top_card == null:
 		return []
