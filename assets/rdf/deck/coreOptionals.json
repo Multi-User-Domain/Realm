@@ -5,7 +5,8 @@
             "foaf": "http://xmlns.com/foaf/0.1/",
             "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
             "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+            "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
         },
         "@id": "_:CoreOptional1",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
@@ -14,9 +15,12 @@
         "foaf:name": "Gareth Heartspear",
         "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/garethHeartspear.png",
         "n:hasNote": "An old Mercenary Captain has oft wondered if there is not more money to be made in trading",
-        "mudcard:hasAvailableIntervalActions": [
-            
-        ]
+        "mudcombat:hasHealthPoints": {
+            "@id": "_:GarethHeartspearHP",
+            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+            "mudcombat:maximumP": 10,
+            "mudcombat:currentP": 10
+        }
     },
     {
         "@context": {
@@ -24,7 +28,8 @@
             "foaf": "http://xmlns.com/foaf/0.1/",
             "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
             "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+            "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
         },
         "@id": "_:CoreOptional2",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
@@ -33,9 +38,12 @@
         "foaf:name": "Heleswynn",
         "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/heleswynn.png",
         "n:hasNote": "The Dark Elf was impossibly nimble, and caught her opponent's knife even as it span in the air",
-        "mudcard:hasAvailableIntervalActions": [
-            
-        ]
+        "mudcombat:hasHealthPoints": {
+            "@id": "_:HeleswynnHP",
+            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+            "mudcombat:maximumP": 10,
+            "mudcombat:currentP": 10
+        }
     },
     {
         "@context": {
@@ -43,7 +51,8 @@
             "foaf": "http://xmlns.com/foaf/0.1/",
             "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
             "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+            "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
         },
         "@id": "_:CoreOptional3",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Location",
@@ -62,7 +71,8 @@
             "foaf": "http://xmlns.com/foaf/0.1/",
             "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
             "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+            "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
         },
         "@id": "_:CoreOptional4",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Location",
@@ -81,7 +91,8 @@
             "foaf": "http://xmlns.com/foaf/0.1/",
             "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
             "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+            "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
         },
         "@id": "_:CoreOptional5",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
@@ -90,9 +101,12 @@
         "foaf:name": "Captain Tam Tupence",
         "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/tamTupence.png",
         "n:hasNote": "The young pirate spoke elequontly and was elected captain by his peers",
-        "mudcard:hasAvailableIntervalActions": [
-            
-        ]
+        "mudcombat:hasHealthPoints": {
+            "@id": "_:CaptainTamTuppenceHP",
+            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+            "mudcombat:maximumP": 10,
+            "mudcombat:currentP": 10
+        }
     },
     {
         "@context": {
@@ -100,7 +114,8 @@
             "foaf": "http://xmlns.com/foaf/0.1/",
             "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
             "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+            "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
         },
         "@id": "_:CoreOptional6",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Location",
@@ -119,7 +134,8 @@
             "foaf": "http://xmlns.com/foaf/0.1/",
             "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
             "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+            "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
         },
         "@id": "_:CoreOptional7",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Location",
@@ -138,7 +154,8 @@
             "foaf": "http://xmlns.com/foaf/0.1/",
             "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
             "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+            "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
         },
         "@id": "_:CoreOptional8",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Location",

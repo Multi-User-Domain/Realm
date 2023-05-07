@@ -1,17 +1,18 @@
 {
+    "@context": {
+        "n": "http://www.w3.org/2006/vcard/ns#",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+        "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+        "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
+    },
     "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json",
     "n:fn": "Osprey Withers",
     "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ospreyWithers.png",
     "mudcard:hasDeck": {
         "mudcard:hasCards": [
             {
-                "@context": {
-                    "n": "http://www.w3.org/2006/vcard/ns#",
-                    "foaf": "http://xmlns.com/foaf/0.1/",
-                    "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
-                    "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
-                },
                 "@id": "_:OspreyCard1",
                 "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
                 "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
@@ -19,34 +20,15 @@
                 "n:hasGender": "n:Male",
                 "foaf:name": "Death Goblin Gromm",
                 "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/gromm.png",
-                "n:hasNote": "",
-                "mudcard:hasAvailableIntervalActions": [
-                    {
-                        "@id": "_:BasicAttack",
-                        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Task",
-                        "n:fn": "Basic Attack",
-                        "mudcard:playTarget": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
-                        "mudlogic:patchesOnComplete": {
-                            "@id": "_:endState",
-                            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Patch",
-                            "mudlogic:deletes": [
-                    
-                            ],
-                            "mudlogic:inserts": [
-                                
-                            ]
-                        }
-                    }
-                ]
+                "n:hasNote": "Bound to Osprey via a Blood Oath, Death Goblin Gromm has long been carrying out the will of his Dark Lord",
+                "mudcombat:hasHealthPoints": {
+                    "@id": "_:DeathGoblinGrommHP",
+                    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+                    "mudcombat:maximumP": 10,
+                    "mudcombat:currentP": 10
+                }
             },
             {
-                "@context": {
-                    "n": "http://www.w3.org/2006/vcard/ns#",
-                    "foaf": "http://xmlns.com/foaf/0.1/",
-                    "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
-                    "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
-                },
                 "@id": "_:OspreyCard2",
                 "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
                 "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
@@ -54,18 +36,14 @@
                 "foaf:name": "Skeletal Warrior",
                 "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/skeletalWarrior.png",
                 "n:hasNote": "Reanimated skeletal warriors make for poor fighters and rely on overwhelming the enemy with their numbers",
-                "mudcard:hasAvailableIntervalActions": [
-                    
-                ]
+                "mudcombat:hasHealthPoints": {
+                    "@id": "_:SkeletalWarriorHP",
+                    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+                    "mudcombat:maximumP": 5,
+                    "mudcombat:currentP": 5
+                }
             },
             {
-                "@context": {
-                    "n": "http://www.w3.org/2006/vcard/ns#",
-                    "foaf": "http://xmlns.com/foaf/0.1/",
-                    "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
-                    "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
-                },
                 "@id": "_:OspreyCard3",
                 "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
                 "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
@@ -73,9 +51,12 @@
                 "foaf:name": "Zombie",
                 "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/zombie.png",
                 "n:hasNote": "Braaaiiinnnss",
-                "mudcard:hasAvailableIntervalActions": [
-                    
-                ]
+                "mudcombat:hasHealthPoints": {
+                    "@id": "_:ZombieHP",
+                    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+                    "mudcombat:maximumP": 5,
+                    "mudcombat:currentP": 5
+                }
             },
             {
                 "@context": {
@@ -92,9 +73,12 @@
                 "foaf:name": "Bog Monster",
                 "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/bogMonster.png",
                 "n:hasNote": "Villagers who wander into the bogs are wont to not return",
-                "mudcard:hasAvailableIntervalActions": [
-                    
-                ]
+                "mudcombat:hasHealthPoints": {
+                    "@id": "_:BogMonsterHP",
+                    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+                    "mudcombat:maximumP": 20,
+                    "mudcombat:currentP": 20
+                }
             }
         ]
     }
