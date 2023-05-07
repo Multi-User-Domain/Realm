@@ -47,9 +47,12 @@ func shuffle_discard_pile():
 func draw_hand(count=hand_size):
 	for i in range(count):
 		if len(deck) == 0:
+			"""
 			if len(discard_pile) == 0:
 				break
 			shuffle_discard_pile()
+			"""
+			break
 		
 		hand.append(deck.pop_back())
 	
