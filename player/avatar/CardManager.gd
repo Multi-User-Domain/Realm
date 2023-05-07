@@ -78,13 +78,13 @@ func get_cards_to_play():
 func play_card_actions(opponent_active=[]):
 	var actions_to_play = []
 	
-	# greedy algorithm, play every action
 	# TODO: consider opponent active cards?
-	# TODO: read actions from cards, for now just doing a basic attack
 	for card in active_cards:
-		actions_to_play.append({
-			"@id": Globals.BUILT_IN_ACTIONS.BASIC_ATTACK
-		})
+		# greedy algorithm, play every action
+		# TODO: choose an action
+		# TODO: actions should have constraints about usage
+		if "mudcard:hasAvailableInstantActions" in card:
+			actions_to_play.append(card["mudcard:hasAvailableInstantActions"][0])
 	
 	return actions_to_play
 
