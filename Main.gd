@@ -10,6 +10,7 @@ onready var player2_avatar = get_node("Player2Avatar")
 onready var card_tray = get_node("CardTray")
 onready var rdf_manager = get_node("RDFManager")
 onready var turn_manager = get_node("TurnManager")
+onready var world_manager = get_node("WorldManager")
 
 # export means that it can be set from the Scene editor
 # the scale transformation to apply to card size
@@ -99,6 +100,7 @@ func _ready():
 	player2_avatar.init_player(1, load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json"]))
 	
 	card_tray.init_deck(load_cards_for_tray())
+	world_manager.init_world()
 
 # NOTE: feel free to use mouse input in debugging, but the game is for an xbox controller
 # https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/2
