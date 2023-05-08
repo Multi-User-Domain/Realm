@@ -8,8 +8,13 @@ onready var game = get_tree().current_scene
 var jsonld_store = {}
 var history = []
 
+func load_world(file_path):
+	var save_file = File.new()
+	save_file.open(file_path, File.READ)
+	return parse_json(save_file.get_as_text())
+
 func init_world():
-	pass
+	jsonld_store = load_world("res://assets/rdf/world/defaultWorld.json")
 
 # TODO: find a more DRY way to do this across nodes
 func get_rdf_property(property):
