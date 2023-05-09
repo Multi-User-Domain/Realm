@@ -13,7 +13,7 @@ export(bool) var use_ssl = false
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var response_data = parse_json(body.get_string_from_utf8())
-	print(str(response_data))
+	game.world_manager.effect_action_consequences(response_data)
 
 
 func perform_action(url_endpoint, action_data, actor_data):
