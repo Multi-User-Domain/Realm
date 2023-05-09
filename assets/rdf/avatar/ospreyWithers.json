@@ -22,7 +22,8 @@
                 "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Region",
                 "mudworld:hasPopulations": [
                     {
-                        "mudworld:populationNumber": 53,
+                        "@id": "_:WitheringHeightsHumanPopulation",
+                        "mudworld:populationNumber": 6,
                         "mud:species": {
                             "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud.ttl#Human"
                         }
@@ -116,7 +117,8 @@
                     "foaf": "http://xmlns.com/foaf/0.1/",
                     "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
                     "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#"
+                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+                    "mudlogic": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#"
                 },
                 "@id": "_:OspreyCard4",
                 "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
@@ -134,6 +136,15 @@
                 "mudcard:hasAvailableInstantActions": [
                     {
                         "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
+                    },
+                    {
+                        "@id": "_:EatVillager",
+                        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action",
+                        "mudcard:playTarget": {
+                            "@id": "_:WitheringHeights",
+                            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Region"
+                        },
+                        "mudlogic:actAt": "http://127.0.0.1:5000/bogMonsterEatsVillager/"
                     }
                 ]
             }

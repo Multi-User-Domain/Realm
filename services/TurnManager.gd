@@ -47,12 +47,24 @@ func _handle_basic_attack(player_avatar_scene, opponent_avatar_scene, opponent_a
 	if destroyed != null:
 		game._remove_card_with_urlid(destroyed)
 
+func _handle_unknown_action(actor, action):
+	if "mudlogic:actAt" in action:
+		game.federation_manager.perform_action(action["mudlogic:actAt"], action, actor)
+	else:
+		print("ERR _handle_unknown_action given an action without required mudlogic:actAt property")
+		print(action["@id"])
+
 func _play_card_actions(player_avatar_scene, opponent_avatar_scene):
 	elapsed_card_turns += 1
 	var opponent_attackable_cards = _get_attackable_cards(opponent_avatar_scene.card_manager.active_cards)
 	for action in player_avatar_scene.card_manager.play_card_actions():
+		var actor = action[0]
+		action = action[1]
+		
 		if action["@id"] == Globals.BUILT_IN_ACTIONS.BASIC_ATTACK:
 			_handle_basic_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards)
+		else:
+			_handle_unknown_action(actor, action)
 
 # allow active cards to make attacks
 func _on_CardActionTimer_timeout():

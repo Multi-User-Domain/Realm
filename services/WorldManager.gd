@@ -8,6 +8,9 @@ onready var game = get_tree().current_scene
 var jsonld_store = {}
 var history = []
 
+func get_world_data():
+	return jsonld_store
+
 func load_world(file_path):
 	var save_file = File.new()
 	save_file.open(file_path, File.READ)

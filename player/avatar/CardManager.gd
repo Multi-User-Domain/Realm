@@ -98,13 +98,12 @@ func get_cards_to_play():
 func play_card_actions(opponent_active=[]):
 	var actions_to_play = []
 	
-	# TODO: consider opponent active cards?
 	for card in active_cards:
-		# greedy algorithm, play every action
-		# TODO: choose an action
-		# TODO: actions should have constraints about usage
+		# greedy algorithm, play first available action
+		# TODO: choose an action randomly
+		# TODO: actions should have constraints about usage. Probably not in this game jam
 		if "mudcard:hasAvailableInstantActions" in card:
-			actions_to_play.append(card["mudcard:hasAvailableInstantActions"][0])
+			actions_to_play.append([card, card["mudcard:hasAvailableInstantActions"][0]])
 	
 	return actions_to_play
 
