@@ -19,6 +19,10 @@ func start():
 	game.player1_avatar.card_manager.deck.shuffle()
 	game.player2_avatar.card_manager.deck.shuffle()
 
+func stop():
+	turn_timer.stop()
+	card_action_timer.stop()
+
 func _on_TurnTimer_timeout():
 	game.player1_avatar.play_cards()
 	game.player2_avatar.play_cards()
@@ -34,6 +38,8 @@ func _handle_basic_attack(player_avatar_scene, opponent_avatar_scene, opponent_a
 	# attack the enemy avatar if they have no protection
 	if len(opponent_attackable_cards) == 0:
 		opponent_avatar_scene.health_bar.remove_health(1)
+		if opponent_avatar_scene.health_bar.health_value <= 0:
+			game.end_battle()
 		return
 	
 	# otherwise attack the first card

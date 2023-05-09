@@ -15,7 +15,8 @@ const BUILT_IN_ACTIONS = {
 
 const GAME_PHASE = {
 	DECK_BUILDING = 0,
-	BATTLE = 1
+	BATTLE = 1,
+	BATTLE_SUMMARY = 2
 }
 
 #

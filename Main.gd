@@ -179,3 +179,8 @@ func set_selected_card(card_scene):
 	var card_parent = selected_card.get_node("..")
 	card_parent.move_child(selected_card, card_parent.get_child_count())
 	selected_card.animate_select()
+
+func end_battle():
+	game_phase = Globals.GAME_PHASE.BATTLE_SUMMARY
+	turn_manager.stop()
+	print("Battle over!")
