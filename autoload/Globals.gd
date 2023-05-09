@@ -78,7 +78,8 @@ const PORTRAIT_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/tamTupence.png": "res://assets/portrait/card/tamTupence.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/meetingPlace.png": "res://assets/portrait/card/meetingPlace.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/cove.png": "res://assets/portrait/card/cove.png",
-	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/dungeon.png": "res://assets/portrait/card/dungeon.png"
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/dungeon.png": "res://assets/portrait/card/dungeon.png",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/dwarfWarrior.png": "res://assets/portrait/card/dwarfWarrior.png"
 }
 
 const ACTION_CACHE = {
