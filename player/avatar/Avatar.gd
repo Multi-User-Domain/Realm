@@ -34,6 +34,14 @@ func _init_health_bar():
 	var health_points = get_rdf_property("mudcombat:hasHealthPoints")
 	health_bar.set_health(health_points["mudcombat:currentP"], health_points["mudcombat:maximumP"])
 
+func _init_starting_region():
+	"""
+	Players might be configured as the lord of a starting region
+	This function incorporates that region into the world state
+	"""
+	if "twt2023:lordOfRegion" in jsonld_store:
+		game.world_manager.add_new_sub_region(get_rdf_property("twt2023:lordOfRegion"))
+
 func _get_deck_configured_on_jsonld():
 	var deck = get_rdf_property("mudcard:hasDeck")
 	if deck != null:
@@ -64,8 +72,8 @@ func init_player(player_index, character_jsonld):
 	name_label.set_position(portrait_sprite.position + Vector2(-half_portrait.x + 1, half_portrait.y + 1))
 	
 	_init_health_bar()
-	
 	card_manager.init_deck(self, _get_deck_configured_on_jsonld())
+	_init_starting_region()
 
 # TODO: find a more DRY way to do this across nodes
 func get_rdf_property(property):

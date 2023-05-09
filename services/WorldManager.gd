@@ -16,6 +16,10 @@ func load_world(file_path):
 func init_world():
 	jsonld_store = load_world("res://assets/rdf/world/defaultWorld.json")
 
+# uses the region & subregion schema of mudworld (https://github.com/Multi-User-Domain/vocab/blob/main/mudworld.ttl)
+func add_new_sub_region(sub_region):
+	jsonld_store["mudworld:hasRegions"].append(sub_region)
+
 # TODO: find a more DRY way to do this across nodes
 func get_rdf_property(property):
 	if property in self.jsonld_store:

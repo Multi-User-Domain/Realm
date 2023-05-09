@@ -75,6 +75,8 @@ func load_cards_for_tray():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# init game
+	world_manager.init_world()
+	
 	# position the UI in segments
 	var viewport_size = get_viewport().size
 	var y_margin = 5
@@ -100,7 +102,6 @@ func _ready():
 	player2_avatar.init_player(1, load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json"]))
 	
 	card_tray.init_deck(load_cards_for_tray())
-	world_manager.init_world()
 
 # NOTE: feel free to use mouse input in debugging, but the game is for an xbox controller
 # https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/2
