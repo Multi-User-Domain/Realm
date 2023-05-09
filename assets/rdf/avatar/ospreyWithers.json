@@ -5,11 +5,48 @@
         "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
         "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
         "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
-        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
+        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#",
+        "mudworld": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#",
+        "twt2023": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#"
     },
     "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json",
     "n:fn": "Osprey Withers",
     "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ospreyWithers.png",
+    "twt2023:lordOfRegion": {
+        "@id": "_:OspreyWithersStartingRegion",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Region",
+        "n:fn": "The Deadlands",
+        "mudworld:hasRegions": [
+            {
+                "@id": "_:WitheringHeights",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Region",
+                "mudworld:hasPopulations": [
+                    {
+                        "mudworld:populationNumber": 53,
+                        "mud:species": {
+                            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud.ttl#Human"
+                        }
+                    }
+                ],
+                "n:fn": "Withering Heights",
+                "n:hasNote": "The scant villagers who live here live under constant fear of their master's cruelty"
+            },
+            {
+                "@id": "_:ThundridgeBog",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Region",
+                "mudworld:hasPopulations": [],
+                "n:fn": "Thundridge Bog",
+                "n:hasNote": "Villagers who wander into the bogs are wont to not return. It is the subject of wild tales in popular folklore, of witches and monsters"
+            },
+            {
+                "@id": "_:WithersManor",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Region",
+                "mudworld:hasPopulations": [],
+                "n:fn": "Withers Manor",
+                "n:hasNote": "The lair of the Vampire Lord of the Deadlands"
+            }
+        ]
+    },
     "mudcard:hasDeck": {
         "mudcard:hasCards": [
             {

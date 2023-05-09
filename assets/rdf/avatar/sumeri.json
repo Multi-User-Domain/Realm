@@ -5,11 +5,18 @@
         "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
         "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
         "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
-        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
+        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#",
+        "mudworld": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#",
+        "twt2023": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#"
     },
     "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json",
 	"n:fn": "Sumeri",
     "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/dryad.png",
+    "twt2023:lordOfRegion": {
+        "@id": "_:SumeriStartingRegion",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Region",
+        "n:fn": "The Great Forest"
+    },
     "mudcard:hasDeck": {
         "mudcard:hasCards": [
             {

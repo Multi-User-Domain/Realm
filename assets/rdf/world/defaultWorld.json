@@ -1,8 +1,15 @@
 {
     "@context": {
+        "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+        "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
         "mudlogic": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#",
-        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
+        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#",
+        "mudworld": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#",
+        "twt2023": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#"
     },
     "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/world/defaultWorld.json",
-    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Region"
+    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Region",
+    "mudworld:hasRegions": [
+
+    ]
 }
