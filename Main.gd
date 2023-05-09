@@ -180,7 +180,12 @@ func set_selected_card(card_scene):
 	card_parent.move_child(selected_card, card_parent.get_child_count())
 	selected_card.animate_select()
 
+func display_battle_results():
+	var recorded_history = world_manager.get_rdf_property("twt2023:hasRecordedHistory")
+	if recorded_history != null:
+		print(str(recorded_history))
+
 func end_battle():
 	game_phase = Globals.GAME_PHASE.BATTLE_SUMMARY
 	turn_manager.stop()
-	print("Battle over!")
+	display_battle_results()
