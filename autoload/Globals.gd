@@ -13,6 +13,11 @@ const BUILT_IN_ACTIONS = {
 	BASIC_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
 }
 
+const GAME_PHASE = {
+	DECK_BUILDING = 0,
+	BATTLE = 1
+}
+
 #
 #	Ontology constants
 #	When using Linked Data we will often be referring to the URI of resources on the web

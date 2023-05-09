@@ -18,6 +18,7 @@ var full_card_size = Vector2(128, 176)
 export var card_scale = 0.5
 
 var selected_card = null
+var game_phase = Globals.GAME_PHASE.DECK_BUILDING
 
 # preload scenes that we want to instantiate programatically
 var card_scene = preload("res://obj/card/Card.tscn")
@@ -140,8 +141,9 @@ func _give_selected_card_to_player(player_index):
 	card_tray.remove_card(selected_card)
 	if card_tray.has_empty_hand():
 		card_tray.draw_new_hand()
-		# still has empty hand after drawing - ran out of cards
+		# still has empty hand after drawing - ran out of cards, so start the game!
 		if card_tray.has_empty_hand():
+			game_phase = Globals.GAME_PHASE.BATTLE
 			turn_manager.start()
 	else:
 		if right_card != null:
@@ -169,9 +171,6 @@ func _process(delta):
 	
 		if next_card != null:
 			set_selected_card(next_card)
-		else:
-			# TODO: support selecting cards in the battlefield
-			pass
 
 func set_selected_card(card_scene):
 	if selected_card != null:
