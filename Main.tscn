@@ -28,6 +28,12 @@ position = Vector2( 1106.5, 709.5 )
 scale = Vector2( 34.6094, 22.1406 )
 texture = ExtResource( 3 )
 
+[node name="HistoryStream" type="RichTextLabel" parent="."]
+margin_left = 730.0
+margin_top = 8.0
+margin_right = 1521.0
+margin_bottom = 585.0
+
 [node name="Player1Avatar" parent="." instance=ExtResource( 4 )]
 
 [node name="Player1Cards" type="Node2D" parent="."]

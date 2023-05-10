@@ -29,8 +29,15 @@ func init_world():
 func add_new_sub_region(sub_region):
 	jsonld_store["mudworld:hasRegions"].append(sub_region)
 
+func render_history():
+	var history_text = ""
+	for item in history:
+		history_text += item["n:hasNote"] + "\n"
+	game.history_stream.set_text(history_text)
+
 func add_to_history(recorded_history_item):
 	history.append(recorded_history_item)
+	render_history()
 
 # TODO: seriously unoptimised
 func _exhaustively_search_world_data_for_obj(world_data, urlid, search_chain=[]):

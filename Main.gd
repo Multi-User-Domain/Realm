@@ -3,6 +3,7 @@ extends Node2D
 
 # when the node is loaded into the scene we fetch references to its children
 onready var HUD = get_node("HUD")
+onready var history_stream = get_node("HistoryStream")
 onready var player1_avatar = get_node("Player1Avatar")
 onready var player1_cards = get_node("Player1Cards")
 onready var player2_cards = get_node("Player2Cards")
@@ -102,6 +103,10 @@ func _ready():
 	# init players with JSON-LD data for the avatar, and their starting cards
 	player1_avatar.init_player(0, load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json"]))
 	player2_avatar.init_player(1, load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json"]))
+	
+	history_stream.set_position(Vector2(player1_avatar.portrait_sprite.position.x + 300, y_margin))
+	# TODO: viewport size isn't corresponding in full screen
+	# history_stream.set_size(Vector2(viewport_size.x - history_stream.rect_global_position.x, viewport_size.y - 5))
 	
 	card_tray.init_deck(load_cards_for_tray())
 
