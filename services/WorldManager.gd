@@ -104,7 +104,7 @@ func _handle_generic_insert(data):
 	_merge_inserted_data(jsonld_store, search_chain, data)
 
 func effect_action_consequences(consequences_jsonld):
-	if not "mudlogic:patchesOnComplete" in consequences_jsonld:
+	if consequences_jsonld == null or not "mudlogic:patchesOnComplete" in consequences_jsonld:
 		return
 	
 	var patch = consequences_jsonld["mudlogic:patchesOnComplete"]
