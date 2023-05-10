@@ -37,7 +37,7 @@ func _get_attackable_cards(cards):
 func _handle_basic_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards):
 	# attack the enemy avatar if they have no protection
 	if len(opponent_attackable_cards) == 0:
-		opponent_avatar_scene.health_bar.remove_health(1)
+		opponent_avatar_scene.health_bar.remove_health(3)
 		if opponent_avatar_scene.health_bar.health_value <= 0:
 			game.end_battle()
 		return

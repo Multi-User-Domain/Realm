@@ -9,6 +9,6 @@
         "@id": "_:BasicAttackDetails",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#AttackDetails",
         "mudcombat:attackDamagesPoints": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
-        "mudcombat:fixedDamage": 1
+        "mudcombat:fixedDamage": 3
     }
 }
