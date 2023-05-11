@@ -36,10 +36,18 @@ func _get_attackable_cards(cards):
 
 func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, attack_data=null):
 	var attack_dmg = Globals.DEFAULT_ATTACK_DAMAGE
+	var damage_type = Globals.DEFAULT_DAMAGE_TYPE
 	if attack_data != null:
 		if "mudcombat:hasAttackDetails" in attack_data:
 			if "mudcombat:fixedDamage" in attack_data["mudcombat:hasAttackDetails"]:
 				attack_dmg = attack_data["mudcombat:hasAttackDetails"]["mudcombat:fixedDamage"]
+			
+			if "mudcombat:typeDamage" in attack_data["mudcombat:hasAttackDetails"]:
+				if "@id" in attack_data["mudcombat:hasAttackDetails"]["mudcombat:typeDamage"]:
+					damage_type = attack_data["mudcombat:hasAttackDetails"]["mudcombat:typeDamage"]["@id"]
+				else:
+					print("ERR _handle_attack. Misformed action has typeDamage which doesn't include id key")
+					print(str(attack_data["mudcombat:hasAttackDetails"]))
 	
 	# attack the enemy avatar if they have no protection
 	if len(opponent_attackable_cards) == 0:
@@ -50,7 +58,7 @@ func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attacka
 	
 	# otherwise attack the first card
 	var destroyed = opponent_avatar_scene.card_manager.damage_card(
-		opponent_attackable_cards[0]["@id"], attack_dmg
+		opponent_attackable_cards[0]["@id"], attack_dmg, damage_type
 	)
 	if destroyed != null:
 		game.battle_scene._remove_card_with_urlid(destroyed)

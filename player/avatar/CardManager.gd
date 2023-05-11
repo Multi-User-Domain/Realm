@@ -107,7 +107,18 @@ func play_card_actions(opponent_active=[]):
 	
 	return actions_to_play
 
-func damage_card(urlid_to_damage, damage):
+func get_resistance_points(resistance, damage):
+	"""
+	:param resistance: JSON-LD data of type mudcombat:DamageResistance
+	:param damage: the integer amount of damage being done of this type
+	:return: the amount to change the damage by (e.g. -1 for a resistance, or +1 for a weakness)
+	"""
+	var res_factor = resistance["mudcombat:resistanceValue"] # a value between -1.0 to +1.0
+	var res_val = damage * res_factor
+	return -damage * res_val
+	
+
+func damage_card(urlid_to_damage, damage, damage_type):
 	"""
 	damages a card with given urlid
 	:return: card urlid if the card was destroyed, otherwise null
@@ -115,6 +126,12 @@ func damage_card(urlid_to_damage, damage):
 	for card in active_cards:
 		if card["@id"] == urlid_to_damage:
 			if "mudcombat:hasHealthPoints" in card:
+				if "mudcombat:hasResistances" in card:
+					for resistance in card["mudcombat:hasResistances"]:
+						if resistance["@id"] == damage_type:
+							damage = max(0, damage - get_resistance_points(resistance, damage))
+							break
+				
 				card["mudcombat:hasHealthPoints"]["mudcombat:currentP"] -= damage
 
 				# discard card if it's been destroyed

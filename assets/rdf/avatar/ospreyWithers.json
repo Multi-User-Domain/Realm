@@ -111,6 +111,24 @@
                     {
                         "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
                     }
+                ],
+                "mudcombat:hasResistances": [
+                    {
+                        "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#PoisonDamage",
+                        "mudcombat:resistanceValue": 0.75
+                    },
+                    {
+                        "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#NecraticDamage",
+                        "mudcombat:resistanceValue": 1.0
+                    },
+                    {
+                        "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#RadiantDamage",
+                        "mudcombat:resistanceValue": -1.0
+                    },
+                    {
+                        "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#FireDamage",
+                        "mudcombat:resistanceValue": -0.75
+                    }
                 ]
             },
             {
@@ -139,6 +157,16 @@
                             "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Region"
                         },
                         "mudlogic:actAt": "http://127.0.0.1:5000/bogMonsterEatsVillager/"
+                    }
+                ],
+                "mudcombat:hasResistances": [
+                    {
+                        "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#RadiantDamage",
+                        "mudcombat:resistanceValue": -0.5
+                    },
+                    {
+                        "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#waterDamage",
+                        "mudcombat:resistanceValue": 0.5
                     }
                 ]
             }
