@@ -34,16 +34,24 @@ func _get_attackable_cards(cards):
 			attackable_cards.append(card)
 	return attackable_cards
 
-func _handle_basic_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards):
+func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, attack_data=null):
+	var attack_dmg = Globals.DEFAULT_ATTACK_DAMAGE
+	if attack_data != null:
+		if "mudcombat:hasAttackDetails" in attack_data:
+			if "mudcombat:fixedDamage" in attack_data["mudcombat:hasAttackDetails"]:
+				attack_dmg = attack_data["mudcombat:hasAttackDetails"]["mudcombat:fixedDamage"]
+	
 	# attack the enemy avatar if they have no protection
 	if len(opponent_attackable_cards) == 0:
-		opponent_avatar_scene.health_bar.remove_health(3)
+		opponent_avatar_scene.health_bar.remove_health(attack_dmg)
 		if opponent_avatar_scene.health_bar.health_value <= 0:
 			game.end_battle()
 		return
 	
 	# otherwise attack the first card
-	var destroyed = opponent_avatar_scene.card_manager.damage_card(opponent_attackable_cards[0]["@id"], 1)
+	var destroyed = opponent_avatar_scene.card_manager.damage_card(
+		opponent_attackable_cards[0]["@id"], attack_dmg
+	)
 	if destroyed != null:
 		game.battle_scene._remove_card_with_urlid(destroyed)
 
@@ -61,8 +69,8 @@ func _play_card_actions(player_avatar_scene, opponent_avatar_scene):
 		var actor = action[0]
 		action = action[1]
 		
-		if action["@id"] == Globals.BUILT_IN_ACTIONS.BASIC_ATTACK:
-			_handle_basic_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards)
+		if action["@id"] in Globals.BUILT_IN_ATTACK_ACTIONS:
+			_handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards)
 		else:
 			_handle_unknown_action(actor, action)
 

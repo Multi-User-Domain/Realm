@@ -8,10 +8,15 @@ extends Node
 #
 
 const DEFAULT_HAND_SIZE = 3
+const DEFAULT_ATTACK_DAMAGE = 3
 
 const BUILT_IN_ACTIONS = {
 	BASIC_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
 }
+
+const BUILT_IN_ATTACK_ACTIONS = [
+	BUILT_IN_ACTIONS.BASIC_ATTACK
+]
 
 const GAME_PHASE = {
 	DECK_BUILDING = 0,
