@@ -84,7 +84,16 @@ func has_active_effect(effect_urlid):
 func add_effect(effect):
 	if not has_active_effect(effect["@id"]):
 		active_effects.append(effect.duplicate(true))
-		print("added effect to " + str(jsonld_store["@id"]))
+		
+		if effect["@id"] == Globals.BUILT_IN_EFFECTS.POISON:
+			# TODO: Godot 4, set_color
+			get_node("ColorRect").set_frame_color(Color(0, 1, 0, 1))
+
+func remove_effect(effect):
+	active_effects.erase(effect)
+	
+	if effect["@id"] == Globals.BUILT_IN_EFFECTS.POISON:
+		get_node("ColorRect").set_frame_color(Color(0, 0, 0, 1))
 
 func apply_effects():
 	for effect in active_effects:
@@ -114,4 +123,4 @@ func apply_effects():
 			effect["mudlogic:expiresAfterOccurences"] = 0
 		
 		if effect["mudlogic:expiresAfterOccurences"] <= 0:
-			active_effects.erase(effect)
+			remove_effect(effect)
