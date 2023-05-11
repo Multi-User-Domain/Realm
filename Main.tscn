@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
 [ext_resource path="res://assets/world/void.png" type="Texture" id=3]
+[ext_resource path="res://gui/PlayerSelectScene.tscn" type="PackedScene" id=4]
 [ext_resource path="res://services/TurnManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/BattleScene.tscn" type="PackedScene" id=6]
 [ext_resource path="res://RDFManager.gd" type="Script" id=8]
@@ -27,6 +28,8 @@ scale = Vector2( 34.6094, 22.1406 )
 texture = ExtResource( 3 )
 
 [node name="BattleScene" parent="." instance=ExtResource( 6 )]
+
+[node name="PlayerSelectScene" parent="." instance=ExtResource( 4 )]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource( 2 )

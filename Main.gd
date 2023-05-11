@@ -8,13 +8,14 @@ onready var rdf_manager = get_node("RDFManager")
 onready var turn_manager = get_node("TurnManager")
 onready var world_manager = get_node("WorldManager")
 onready var battle_scene = get_node("BattleScene")
+onready var player_select_scene = get_node("PlayerSelectScene")
 
 # export means that it can be set from the Scene editor
 # the scale transformation to apply to card size
 var full_card_size = Vector2(128, 176)
 export var card_scale = 0.5
 
-var game_phase = Globals.GAME_PHASE.DECK_BUILDING
+var game_phase = null
 
 # preload scenes that we want to instantiate programatically
 var card_scene = preload("res://obj/card/Card.tscn")
@@ -35,12 +36,12 @@ func load_cards_for_tray():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# TODO: set a random seed - do for prod
+	# randomize()
+	
 	# init game
 	world_manager.init_world()
-	battle_scene.init(
-		load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json"]),
-		load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json"])
-	)
+	set_game_phase(Globals.GAME_PHASE.PLAYER_SELECTION)
 
 # NOTE: feel free to use mouse input in debugging, but the game is for an xbox controller
 # https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/2
@@ -56,10 +57,21 @@ func _input(event):
 """
 
 func set_game_phase(new_phase):
+	# tear down the old phase
+	if game_phase == Globals.GAME_PHASE.PLAYER_SELECTION:
+		player_select_scene.tear_down()
+	
 	game_phase = new_phase
 	
 	# set up the new phase
-	if game_phase == Globals.GAME_PHASE.BATTLE:
+	if game_phase == Globals.GAME_PHASE.PLAYER_SELECTION:
+		player_select_scene.init()
+	elif game_phase == Globals.GAME_PHASE.DECK_BUILDING:
+		battle_scene.init(
+			load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json"]),
+			load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json"])
+		)
+	elif game_phase == Globals.GAME_PHASE.BATTLE:
 		turn_manager.start()
 
 func display_battle_results():

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/avatar/Avatar.gd" type="Script" id=1]
 [ext_resource path="res://player/avatar/CardManager.gd" type="Script" id=2]
 [ext_resource path="res://obj/card/DeckPrompt.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gui/HealthBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/effects/avatar_glow_green.png" type="Texture" id=5]
 
 [node name="Avatar" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,6 +15,10 @@ script = ExtResource( 1 )
 margin_left = -150.0
 margin_right = 153.0
 margin_bottom = 40.0
+
+[node name="BackgroundGlow" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 5 )
 
 [node name="PortraitSprite" type="Sprite" parent="."]
 

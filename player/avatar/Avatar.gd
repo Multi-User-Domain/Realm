@@ -96,3 +96,9 @@ func play_cards():
 	for card in card_manager.get_cards_to_play():
 		card_manager.add_to_active_cards(card)
 		game.battle_scene._add_card_for_player(player_index, card)
+
+func animate_select():
+	get_node("BackgroundGlow").set_visible(true)
+
+func animate_deselect():
+	get_node("BackgroundGlow").set_visible(false)
