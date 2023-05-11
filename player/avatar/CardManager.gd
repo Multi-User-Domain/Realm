@@ -80,6 +80,13 @@ func get_cards_to_play():
 	discard_hand()
 	draw_hand()
 	
+	# useful for debugging
+	"""
+	for card in hand:
+		if card["@id"] == "_:CoreOptional9":
+			return [card]
+	"""
+	
 	# if there are no active characters, prioritise that
 	if not Globals.MUD_CHAR.Character in _get_card_types(active_cards):
 		if Globals.MUD_CHAR.Character in _get_card_types(hand):

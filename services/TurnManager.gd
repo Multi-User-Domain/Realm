@@ -92,6 +92,28 @@ func _apply_card_effects(attack_data, opponent_card=null):
 		# TODO: support effects on either player
 		# TODO: support other effects
 
+func _handle_generate_card(player_avatar_scene, opponent_avatar_scene, action):
+	if not "twt2023:generatesCardFrom" in action:
+		print("ERR _handle_generate_card given an action without any cards to generate from")
+		print(str(action))
+		return
+	
+	var generate_probability = 0.1
+	if "twt2023:generateCardProbability" in action:
+		generate_probability = max(0, min(action["twt2023:generateCardProbability"], 1.0))
+	
+	# if the probability check passes, add it to the player's deck
+	if generate_probability >= ((randi() % 10) * 0.1):
+		var idx = randi()%len(action["twt2023:generatesCardFrom"])
+		var gen_card = action["twt2023:generatesCardFrom"][idx]
+		player_avatar_scene.card_manager.add_to_deck(gen_card)
+		if "n:fn" in action and "n:fn" in gen_card:
+			game.world_manager.add_to_history({
+				"@id": "_generate_card_history_" + str(randi()),
+				"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
+				"n:hasNote": str(gen_card["n:fn"]) + " emerged from " + str(action["n:fn"]) + " and joined the faction " + player_avatar_scene.get_rdf_property("n:fn")
+			})
+
 func _play_card_actions(player_avatar_scene, opponent_avatar_scene):
 	elapsed_card_turns += 1
 	var opponent_attackable_cards = _get_attackable_cards(opponent_avatar_scene.card_manager.active_cards)
@@ -101,6 +123,8 @@ func _play_card_actions(player_avatar_scene, opponent_avatar_scene):
 		
 		if action["@id"] in Globals.BUILT_IN_ATTACK_ACTIONS:
 			_handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, action)
+		elif action["@id"] == Globals.BUILT_IN_ACTIONS.GENERATE_CARD:
+			_handle_generate_card(player_avatar_scene, opponent_avatar_scene, action)
 		else:
 			_handle_unknown_action(actor, action)
 
