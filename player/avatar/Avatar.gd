@@ -52,16 +52,23 @@ func _get_deck_configured_on_jsonld():
 	else:
 		return []
 
+func init_sprite(character_jsonld=jsonld_store):
+	if "foaf:depiction" in character_jsonld:
+		# function initialises the Avatar with new player information
+		portrait_sprite.set_texture(game.rdf_manager.get_texture_from_jsonld(character_jsonld["foaf:depiction"]))
+		# TODO: https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/1
+		# 128, 128 with the in-built textures
+		portrait_sprite.set_scale(Vector2(0.25, 0.25))
+
+func get_portrait_size():
+	return Vector2(128, 128) # TODO: actually calculate this
+
 func init_player(player_index, character_jsonld):
 	self.player_index = player_index
 	_init_jsonld_data(character_jsonld)
+	init_sprite(character_jsonld)
 	
-	# function initialises the Avatar with new player information
-	portrait_sprite.set_texture(game.rdf_manager.get_texture_from_jsonld(get_rdf_property("foaf:depiction")))
-	# TODO: https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/1
-	# 128, 128 with the in-built textures
-	portrait_sprite.set_scale(Vector2(0.25, 0.25))
-	var portrait_size = Vector2(128, 128) # also needs to become relative to size
+	var portrait_size = get_portrait_size()
 	var half_portrait = portrait_size * 0.5
 	# centre along the x axis
 	portrait_sprite.set_position(Vector2(get_viewport_rect().size.x * 0.5, self.position.y) + half_portrait)
