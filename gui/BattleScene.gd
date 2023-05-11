@@ -96,17 +96,10 @@ func next_turn():
 	for card in player2_avatar.card_manager.play_cards():
 		_add_card_for_player(1, card)
 
-func _give_selected_card_to_player(player_index):
+func _remove_selected_card_from_tray():
 	if selected_card == null:
 		return
 	
-	# player_index is 0 or 1
-	if player_index == 0:
-		player1_avatar.card_manager.add_to_deck(selected_card.jsonld_store)
-	else:
-		player2_avatar.card_manager.add_to_deck(selected_card.jsonld_store)
-	
-	# remove the card from the tray and get the next one
 	var right_card = card_tray.get_card_to_right_of(selected_card)
 	var left_card = card_tray.get_card_to_left_of(selected_card)
 	card_tray.remove_card(selected_card)
@@ -121,6 +114,19 @@ func _give_selected_card_to_player(player_index):
 		else:
 			set_selected_card(left_card)
 
+func _give_selected_card_to_player(player_index):
+	if selected_card == null:
+		return
+	
+	# player_index is 0 or 1
+	if player_index == 0:
+		player1_avatar.card_manager.add_to_deck(selected_card.jsonld_store)
+	else:
+		player2_avatar.card_manager.add_to_deck(selected_card.jsonld_store)
+	
+	# remove the card from the tray and get the next one
+	_remove_selected_card_from_tray()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# UI accept is bound to Xbox A and keyboard space
@@ -129,7 +135,9 @@ func _process(delta):
 	# UI cancel is bound to Xbox B and keyboard escape
 	elif Input.is_action_just_pressed("ui_cancel"):
 		_give_selected_card_to_player(1)
-	# TODO: pressing Xbox "X" should discard the card
+	# pressing keyboard or Xbox "X" should discard the card
+	elif Input.is_action_just_pressed("x_button"):
+		_remove_selected_card_from_tray()
 	
 	# cycling through the selectable cards with UI controls
 	var next_card = null
