@@ -156,7 +156,8 @@
                             "@id": "_:WitheringHeights",
                             "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Region"
                         },
-                        "mudlogic:actAt": "http://127.0.0.1:5000/bogMonsterEatsVillager/"
+                        "mudlogic:actAt": "http://127.0.0.1:5000/bogMonsterEatsVillager/",
+                        "n:hasNote": "The Bog Monster eats nearby villagers"
                     }
                 ],
                 "mudcombat:hasResistances": [

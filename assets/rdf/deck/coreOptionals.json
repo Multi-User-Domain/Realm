@@ -52,6 +52,9 @@
         "mudcard:hasAvailableInstantActions": [
             {
                 "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
+            },
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/poisonAttack.json"
             }
         ]
     },
