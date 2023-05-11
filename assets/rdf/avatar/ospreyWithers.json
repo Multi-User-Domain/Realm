@@ -7,11 +7,13 @@
         "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
         "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#",
         "mudworld": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#",
-        "twt2023": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#"
+        "twt2023": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#",
+        "dcterms": "http://purl.org/dc/terms/"
     },
     "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json",
     "n:fn": "Osprey Withers",
     "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ospreyWithers.png",
+    "dcterms:creator": "https://calum.inrupt.net/profile/card#me",
     "twt2023:lordOfRegion": {
         "@id": "_:OspreyWithersStartingRegion",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Region",
@@ -112,14 +114,6 @@
                 ]
             },
             {
-                "@context": {
-                    "n": "http://www.w3.org/2006/vcard/ns#",
-                    "foaf": "http://xmlns.com/foaf/0.1/",
-                    "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
-                    "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
-                    "mudlogic": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#"
-                },
                 "@id": "_:OspreyCard4",
                 "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
                 "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",

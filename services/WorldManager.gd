@@ -33,7 +33,7 @@ func render_history():
 	var history_text = ""
 	for item in history:
 		history_text += item["n:hasNote"] + "\n"
-	game.history_stream.set_text(history_text)
+	game.battle_scene.history_stream.set_text(history_text)
 
 func add_to_history(recorded_history_item):
 	history.append(recorded_history_item)

@@ -88,4 +88,4 @@ func set_rdf_property(property, value):
 func play_cards():
 	for card in card_manager.get_cards_to_play():
 		card_manager.add_to_active_cards(card)
-		game._add_card_for_player(player_index, card)
+		game.battle_scene._add_card_for_player(player_index, card)

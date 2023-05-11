@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
 [ext_resource path="res://assets/world/void.png" type="Texture" id=3]
-[ext_resource path="res://player/avatar/Avatar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://services/TurnManager.tscn" type="PackedScene" id=5]
-[ext_resource path="res://player/avatar/CardManager.gd" type="Script" id=6]
-[ext_resource path="res://CardTray.gd" type="Script" id=7]
+[ext_resource path="res://gui/BattleScene.tscn" type="PackedScene" id=6]
 [ext_resource path="res://RDFManager.gd" type="Script" id=8]
 [ext_resource path="res://services/WorldManager.tscn" type="PackedScene" id=9]
 [ext_resource path="res://services/FederationManager.tscn" type="PackedScene" id=10]
@@ -28,28 +26,7 @@ position = Vector2( 1106.5, 709.5 )
 scale = Vector2( 34.6094, 22.1406 )
 texture = ExtResource( 3 )
 
-[node name="HistoryStream" type="RichTextLabel" parent="."]
-margin_left = 730.0
-margin_top = 8.0
-margin_right = 1521.0
-margin_bottom = 585.0
-
-[node name="Player1Avatar" parent="." instance=ExtResource( 4 )]
-
-[node name="Player1Cards" type="Node2D" parent="."]
-
-[node name="Player2Cards" type="Node2D" parent="."]
-
-[node name="Player2Avatar" parent="." instance=ExtResource( 4 )]
-
-[node name="CardTray" type="Node2D" parent="."]
-script = ExtResource( 7 )
-
-[node name="CardManager" type="Node2D" parent="CardTray"]
-script = ExtResource( 6 )
-
-[node name="CardsStartFrom" type="Node2D" parent="CardTray"]
-position = Vector2( 68, 0 )
+[node name="BattleScene" parent="." instance=ExtResource( 6 )]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource( 2 )

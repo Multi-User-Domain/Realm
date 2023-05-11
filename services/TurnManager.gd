@@ -16,16 +16,16 @@ func start():
 	# start game timer
 	turn_timer.start()
 	card_action_timer.start()
-	game.player1_avatar.card_manager.deck.shuffle()
-	game.player2_avatar.card_manager.deck.shuffle()
+	game.battle_scene.player1_avatar.card_manager.deck.shuffle()
+	game.battle_scene.player2_avatar.card_manager.deck.shuffle()
 
 func stop():
 	turn_timer.stop()
 	card_action_timer.stop()
 
 func _on_TurnTimer_timeout():
-	game.player1_avatar.play_cards()
-	game.player2_avatar.play_cards()
+	game.battle_scene.player1_avatar.play_cards()
+	game.battle_scene.player2_avatar.play_cards()
 
 func _get_attackable_cards(cards):
 	var attackable_cards = []
@@ -45,7 +45,7 @@ func _handle_basic_attack(player_avatar_scene, opponent_avatar_scene, opponent_a
 	# otherwise attack the first card
 	var destroyed = opponent_avatar_scene.card_manager.damage_card(opponent_attackable_cards[0]["@id"], 1)
 	if destroyed != null:
-		game._remove_card_with_urlid(destroyed)
+		game.battle_scene._remove_card_with_urlid(destroyed)
 
 func _handle_unknown_action(actor, action):
 	if "mudlogic:actAt" in action:
@@ -69,5 +69,5 @@ func _play_card_actions(player_avatar_scene, opponent_avatar_scene):
 # allow active cards to make attacks
 func _on_CardActionTimer_timeout():
 	elapsed_player_turns += 1
-	self._play_card_actions(game.player1_avatar, game.player2_avatar)
-	self._play_card_actions(game.player2_avatar, game.player1_avatar)
+	self._play_card_actions(game.battle_scene.player1_avatar, game.battle_scene.player2_avatar)
+	self._play_card_actions(game.battle_scene.player2_avatar, game.battle_scene.player1_avatar)

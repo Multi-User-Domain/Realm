@@ -38,7 +38,7 @@ func draw_new_hand():
 		cards_start_pos.add_child(card_scene_instance)
 		card_scene_instance.init_card(card_jsonld)
 	
-	game.set_selected_card(cards_start_pos.get_child(0))
+	game.battle_scene.set_selected_card(cards_start_pos.get_child(0))
 
 func _get_card_from_hand(this_card):
 	# sorry
