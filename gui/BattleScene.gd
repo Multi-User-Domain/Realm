@@ -135,6 +135,10 @@ func _give_selected_card_to_player(player_index):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# only process input if the scene is active
+	if game.game_phase != Globals.GAME_PHASE.BATTLE:
+		return
+	
 	# UI accept is bound to Xbox A and keyboard space
 	if Input.is_action_just_pressed("ui_accept"):
 		_give_selected_card_to_player(0)
