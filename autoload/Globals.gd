@@ -12,12 +12,18 @@ const DEFAULT_HAND_SIZE = 3
 const DEFAULT_ATTACK_DAMAGE = 3
 
 const BUILT_IN_ACTIONS = {
-	BASIC_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
+	BASIC_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json",
+	POISON_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/poisonAttack.json"
 }
 
 const BUILT_IN_ATTACK_ACTIONS = [
-	BUILT_IN_ACTIONS.BASIC_ATTACK
+	BUILT_IN_ACTIONS.BASIC_ATTACK,
+	BUILT_IN_ACTIONS.POISON_ATTACK
 ]
+
+const BUILT_IN_EFFECTS = {
+	POISON =  "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/effects/poison.json",
+}
 
 const GAME_PHASE = {
 	DECK_BUILDING = 0,

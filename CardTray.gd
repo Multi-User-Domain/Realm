@@ -36,7 +36,7 @@ func draw_new_hand():
 		card_scene_instance.scale = card_scene_instance.scale * game.card_scale
 		card_scene_instance.set_position(Vector2(cards_start_pos.position.x + ((i * game.get_card_size().x) * 1.2), -game.get_card_size().y * 0.125))
 		cards_start_pos.add_child(card_scene_instance)
-		card_scene_instance.init_card(card_jsonld)
+		card_scene_instance.init_card(card_jsonld, card_manager)
 	
 	game.battle_scene.set_selected_card(cards_start_pos.get_child(0))
 

@@ -46,10 +46,13 @@ func init(player1_jsonld, player2_jsonld):
 
 func _add_card_for_player(player_index: int, jsonld_data):
 	var node = null
+	var player_cm = null
 	if player_index == 0:
 		node = player1_cards
+		player_cm = player1_avatar.card_manager
 	else:
 		node = player2_cards
+		player_cm = player2_avatar.card_manager
 	
 	# instantiate card and add to scene
 	var card = card_scene.instance()
@@ -58,25 +61,28 @@ func _add_card_for_player(player_index: int, jsonld_data):
 	node.add_child(card)
 	
 	# init card data
-	card.init_card(jsonld_data)
+	card.init_card(jsonld_data, player_cm)
 
-func _remove_card_with_urlid(urlid):
-	var card_found = null
-	
+func get_card_with_urlid(urlid):
+	"""
+	:return: card_scene matching urlid, null if not found
+	"""
 	for card in player1_cards.get_children():
 		if card.has_method("get_rdf_property") and card.get_rdf_property("@id") == urlid:
-			card_found = card
-			break
+			return card
 	
-	if card_found == null:
-		for card in player2_cards.get_children():
-			if card.has_method("get_rdf_property") and card.get_rdf_property("@id") == urlid:
-				card_found = card
-				break
+	for card in player2_cards.get_children():
+		if card.has_method("get_rdf_property") and card.get_rdf_property("@id") == urlid:
+			return card
 	
-	if card_found != null:
-		card_found.get_node("..").remove_child(card_found)
-		card_found.queue_free()
+	return null
+
+func _remove_card_with_urlid(urlid):
+	var card_scene = get_card_with_urlid(urlid)
+	
+	if card_scene != null:
+		card_scene.get_node("..").remove_child(card_scene)
+		card_scene.queue_free()
 	else:
 		print("ERR _remove_card_with_urlid. Card not found in active cards " + urlid)
 
