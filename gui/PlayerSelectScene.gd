@@ -50,6 +50,8 @@ func init():
 	
 	if len(player_avatars) > 0:
 		set_selected_avatar(0, 0)
+		get_node("Heading").set_position(Vector2(get_viewport_rect().size.x * 0.5, 10))
+		get_node("Heading").set_visible(true)
 
 func tear_down():
 	for row in player_avatars:
@@ -60,6 +62,7 @@ func tear_down():
 			avatar.queue_free()
 	
 	player_avatars = []
+	get_node("Heading").set_visible(false)
 
 func set_selected_avatar(row_idx, col_idx):
 	# animating the deselection of current avatar
