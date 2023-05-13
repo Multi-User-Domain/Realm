@@ -8,6 +8,8 @@ var player_avatars = []
 # preload scenes that we want to instantiate programatically
 var avatar_scene = preload("res://player/avatar/Avatar.tscn")
 var selected_avatar = null
+var _selected_avatar_row_idx = null
+var _selected_avatar_col_idx = null
 
 func get_avatar_count():
 	var row_count = len(player_avatars)
@@ -44,7 +46,7 @@ func init():
 		player_avatars[row_idx].append(avatar_instance)
 	
 	if len(player_avatars) > 0:
-		set_selected_avatar(player_avatars[0][0])
+		set_selected_avatar(0, 0)
 
 func tear_down():
 	for row in player_avatars:
@@ -54,8 +56,40 @@ func tear_down():
 	
 	player_avatars = []
 
-func set_selected_avatar(avatar_scene):
+func set_selected_avatar(row_idx, col_idx):
+	# animating the deselection of current avatar
 	if selected_avatar != null:
+		var ava = player_avatars[_selected_avatar_row_idx][_selected_avatar_col_idx]
 		selected_avatar.animate_deselect()
-	selected_avatar = avatar_scene
+	
+	# bounding the row_idx and col_idx given
+	if row_idx >= len(player_avatars):
+		row_idx = 0
+	elif row_idx < 0:
+		row_idx = len(player_avatars) - 1
+	
+	if col_idx >= len(player_avatars[row_idx]):
+		col_idx = 0
+	elif col_idx < 0:
+		col_idx = len(player_avatars[row_idx]) - 1
+	
+	# setting the new selected avatar
+	_selected_avatar_row_idx = row_idx
+	_selected_avatar_col_idx = col_idx
+	selected_avatar = player_avatars[row_idx][col_idx]
 	selected_avatar.animate_select()
+
+func _process(delta):
+	# only process input if the scene is active
+	if game.game_phase != Globals.GAME_PHASE.PLAYER_SELECTION:
+		return
+	
+	# cycling through the selectable avatars with UI controls
+	if Input.is_action_just_pressed("ui_right"):
+		set_selected_avatar(_selected_avatar_row_idx, _selected_avatar_col_idx + 1)
+	if Input.is_action_just_pressed("ui_left"):
+		set_selected_avatar(_selected_avatar_row_idx, _selected_avatar_col_idx - 1)
+	if Input.is_action_just_pressed("ui_up"):
+		set_selected_avatar(_selected_avatar_row_idx + 1, _selected_avatar_col_idx)
+	if Input.is_action_just_pressed("ui_down"):
+		set_selected_avatar(_selected_avatar_row_idx - 1, _selected_avatar_col_idx)
