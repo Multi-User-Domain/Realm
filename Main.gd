@@ -29,6 +29,13 @@ func load_avatar_from_jsonld(file_path):
 	save_file.open(file_path, File.READ)
 	return parse_json(save_file.get_as_text())
 
+func load_avatar_from_urlid(urlid):
+	if urlid in Globals.AVATAR_CACHE:
+		return load_avatar_from_jsonld(Globals.AVATAR_CACHE[urlid])
+	
+	# TODO: support distant characters
+	return null
+
 func load_cards_for_tray():
 	var save_file = File.new()
 	save_file.open("res://assets/rdf/deck/coreOptionals.json", File.READ)
@@ -67,10 +74,17 @@ func set_game_phase(new_phase):
 	if game_phase == Globals.GAME_PHASE.PLAYER_SELECTION:
 		player_select_scene.init()
 	elif game_phase == Globals.GAME_PHASE.DECK_BUILDING:
+		var selected_players = player_select_scene.confirm_selected_players
+		if len(selected_players) < 2:
+			selected_players = [
+				load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json"]),
+				load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json"])
+			]
 		battle_scene.init(
-			load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json"]),
-			load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json"])
+			selected_players[0],
+			selected_players[1]
 		)
+		
 	elif game_phase == Globals.GAME_PHASE.BATTLE:
 		turn_manager.start()
 

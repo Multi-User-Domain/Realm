@@ -24,11 +24,16 @@ func init(player1_jsonld, player2_jsonld):
 	var three_quarters = quarter_height * 3
 	var arena_quarter = three_quarters * 0.25
 	
+	var portrait_size = player1_avatar.get_portrait_size()
+	var half_portrait = portrait_size * 0.5
+	
 	# of that split into 4 (each player has an avatar and a card field)
-	player1_avatar.set_position(Vector2(x_margin, y_margin))
+	var avatar_x_pos = x_margin + viewport_size.x * 0.5
+	var avatar_y_pos = y_margin + half_portrait.y
+	player1_avatar.set_position(Vector2(avatar_x_pos, avatar_y_pos))
 	player1_cards.set_position(Vector2(x_margin, y_margin + arena_quarter))
 	player2_cards.set_position(Vector2(x_margin, y_margin + (arena_quarter * 2)))
-	player2_avatar.set_position(Vector2(x_margin, y_margin + (arena_quarter * 3)))
+	player2_avatar.set_position(Vector2(avatar_x_pos, avatar_y_pos + (arena_quarter * 3)))
 	
 	# bottom quarter for player card actions
 	card_tray.set_position(Vector2(x_margin, y_margin + (quarter_height * 3)))
@@ -43,6 +48,9 @@ func init(player1_jsonld, player2_jsonld):
 	# history_stream.set_size(Vector2(viewport_size.x - history_stream.rect_position.x, viewport_size.y - 5))
 	
 	card_tray.init_deck(game.load_cards_for_tray())
+	
+	card_tray.set_position(Vector2(0,0))
+	history_stream.set_position(Vector2(0,0))
 
 func _add_card_for_player(player_index: int, jsonld_data):
 	var node = null
@@ -136,7 +144,7 @@ func _give_selected_card_to_player(player_index):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# only process input if the scene is active
-	if game.game_phase != Globals.GAME_PHASE.BATTLE:
+	if not game.game_phase in [Globals.GAME_PHASE.DECK_BUILDING, Globals.GAME_PHASE.BATTLE]:
 		return
 	
 	# UI accept is bound to Xbox A and keyboard space

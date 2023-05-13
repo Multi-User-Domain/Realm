@@ -53,6 +53,7 @@ func _get_deck_configured_on_jsonld():
 		return []
 
 func init_sprite(character_jsonld=jsonld_store):
+	_init_jsonld_data(character_jsonld)
 	if "foaf:depiction" in character_jsonld:
 		# function initialises the Avatar with new player information
 		portrait_sprite.set_texture(game.rdf_manager.get_texture_from_jsonld(character_jsonld["foaf:depiction"]))
@@ -65,13 +66,12 @@ func get_portrait_size():
 
 func init_player(player_index, character_jsonld):
 	self.player_index = player_index
-	_init_jsonld_data(character_jsonld)
 	init_sprite(character_jsonld)
 	
 	var portrait_size = get_portrait_size()
 	var half_portrait = portrait_size * 0.5
 	# centre along the x axis
-	portrait_sprite.set_position(Vector2(get_viewport_rect().size.x * 0.5, self.position.y) + half_portrait)
+	#portrait_sprite.set_position(self.position + half_portrait)
 	health_bar.set_position(portrait_sprite.position - Vector2(portrait_size.x + 20, 0))
 	deck_prompt.set_position(portrait_sprite.position + Vector2(portrait_size.x + 10, 0))
 	

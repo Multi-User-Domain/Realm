@@ -7,9 +7,12 @@ var player_avatars = []
 
 # preload scenes that we want to instantiate programatically
 var avatar_scene = preload("res://player/avatar/Avatar.tscn")
+# the player being hovered over with the selection controls
 var selected_avatar = null
 var _selected_avatar_row_idx = null
 var _selected_avatar_col_idx = null
+# the players who have been selected by pressing "A"
+var confirm_selected_players = []
 
 func get_avatar_count():
 	var row_count = len(player_avatars)
@@ -50,7 +53,9 @@ func init():
 
 func tear_down():
 	for row in player_avatars:
-		for avatar in player_avatars[row]:
+		for avatar in row:
+			if avatar == null:
+				continue
 			avatar.get_node("..").remove_child(avatar)
 			avatar.queue_free()
 	
@@ -59,7 +64,6 @@ func tear_down():
 func set_selected_avatar(row_idx, col_idx):
 	# animating the deselection of current avatar
 	if selected_avatar != null:
-		var ava = player_avatars[_selected_avatar_row_idx][_selected_avatar_col_idx]
 		selected_avatar.animate_deselect()
 	
 	# bounding the row_idx and col_idx given
@@ -79,17 +83,35 @@ func set_selected_avatar(row_idx, col_idx):
 	selected_avatar = player_avatars[row_idx][col_idx]
 	selected_avatar.animate_select()
 
+func confirm_player_selection():
+	confirm_selected_players.append(selected_avatar.jsonld_store)
+	if len(confirm_selected_players) == 2:
+		game.set_game_phase(Globals.GAME_PHASE.DECK_BUILDING)
+		return
+	
+	var ava = selected_avatar
+	var ava_r = _selected_avatar_row_idx
+	var ava_c = _selected_avatar_col_idx
+	set_selected_avatar(_selected_avatar_row_idx, _selected_avatar_col_idx + 1)
+	ava.get_node("..").remove_child(ava)
+	ava.queue_free()
+	player_avatars[ava_r][ava_c] = null
+
 func _process(delta):
 	# only process input if the scene is active
 	if game.game_phase != Globals.GAME_PHASE.PLAYER_SELECTION:
 		return
 	
+	# selecting player
+	if Input.is_action_just_pressed("ui_accept"):
+		confirm_player_selection()
+	
 	# cycling through the selectable avatars with UI controls
-	if Input.is_action_just_pressed("ui_right"):
+	elif Input.is_action_just_pressed("ui_right"):
 		set_selected_avatar(_selected_avatar_row_idx, _selected_avatar_col_idx + 1)
-	if Input.is_action_just_pressed("ui_left"):
+	elif Input.is_action_just_pressed("ui_left"):
 		set_selected_avatar(_selected_avatar_row_idx, _selected_avatar_col_idx - 1)
-	if Input.is_action_just_pressed("ui_up"):
+	elif Input.is_action_just_pressed("ui_up"):
 		set_selected_avatar(_selected_avatar_row_idx + 1, _selected_avatar_col_idx)
-	if Input.is_action_just_pressed("ui_down"):
+	elif Input.is_action_just_pressed("ui_down"):
 		set_selected_avatar(_selected_avatar_row_idx - 1, _selected_avatar_col_idx)
