@@ -36,21 +36,17 @@ func init(player1_jsonld, player2_jsonld):
 	player2_avatar.set_position(Vector2(avatar_x_pos, avatar_y_pos + (arena_quarter * 3)))
 	
 	# bottom quarter for player card actions
-	card_tray.set_position(Vector2(x_margin, y_margin + (quarter_height * 3)))
+	card_tray.set_position(Vector2(x_margin, y_margin + (arena_quarter * 2)))
 	card_tray.cards_start_pos.position.y = card_tray.position.y
 	
 	# init players with JSON-LD data for the avatar, and their starting cards
 	player1_avatar.init_player(0, player1_jsonld)
 	player2_avatar.init_player(1, player2_jsonld)
 	
-	history_stream.set_position(Vector2(player1_avatar.portrait_sprite.position.x + 300, y_margin))
-	# TODO: viewport size isn't corresponding in full screen
-	# history_stream.set_size(Vector2(viewport_size.x - history_stream.rect_position.x, viewport_size.y - 5))
+	history_stream.set_position(Vector2(player1_avatar.position.x + 300, y_margin))
+	history_stream.set_size(Vector2(viewport_size.x - history_stream.rect_position.x, viewport_size.y - 5))
 	
 	card_tray.init_deck(game.load_cards_for_tray())
-	
-	card_tray.set_position(Vector2(0,0))
-	history_stream.set_position(Vector2(0,0))
 
 func _add_card_for_player(player_index: int, jsonld_data):
 	var node = null
