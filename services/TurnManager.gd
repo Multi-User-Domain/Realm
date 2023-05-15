@@ -76,18 +76,23 @@ func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attacka
 	else:
 		_apply_card_effects(attack_data, opponent_card)
 
-func _handle_healing_word(player_avatar_scene, data):
+# -1 for healing all valid targets
+func _handle_healing(player_avatar_scene, data, heal_number=1):
 	var attack_dmg = _get_attack_dmg(data)
 	var valid_targets = _get_attackable_cards(player_avatar_scene.card_manager.active_cards)
 	for card in valid_targets:
 		var hp = card["mudcombat:hasHealthPoints"]
 		if hp["mudcombat:maximumP"] > hp["mudcombat:currentP"]:
 			player_avatar_scene.card_manager.heal_cards([card["@id"]], attack_dmg)
-			break
+			heal_number -= 1
+			if heal_number == 0:
+				break
 
 func _handle_spell(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, data):
 	if data["@id"] == Globals.BUILT_IN_ACTIONS.HEALING_WORD:
-		return _handle_healing_word(player_avatar_scene, data)
+		return _handle_healing(player_avatar_scene, data)
+	if data["@id"] == Globals.BUILT_IN_ACTIONS.HEAL_PARTY:
+		return _handle_healing(player_avatar_scene, data, -1)
 
 func _handle_unknown_action(actor, action):
 	if "mudlogic:actAt" in action:
