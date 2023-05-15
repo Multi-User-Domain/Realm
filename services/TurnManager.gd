@@ -34,13 +34,22 @@ func _get_attackable_cards(cards):
 			attackable_cards.append(card)
 	return attackable_cards
 
+func _get_attack_dmg(attack_data):
+	if attack_data != null:
+		if "mudcombat:hasAttackDetails" in attack_data:
+			var attack_details = attack_data["mudcombat:hasAttackDetails"]
+			if "mudcombat:fixedDamage" in attack_details:
+				return attack_details["mudcombat:fixedDamage"]
+			if "mudcombat:minDamage" in attack_details and "mudcombat:maxDamage" in attack_details:
+				return (randi() % attack_details["mudcombat:maxDamage"]) + attack_details["mudcombat:minDamage"]
+	return 1
+
 func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, attack_data=null):
 	var attack_dmg = Globals.DEFAULT_ATTACK_DAMAGE
 	var damage_type = Globals.DEFAULT_DAMAGE_TYPE
 	if attack_data != null:
 		if "mudcombat:hasAttackDetails" in attack_data:
-			if "mudcombat:fixedDamage" in attack_data["mudcombat:hasAttackDetails"]:
-				attack_dmg = attack_data["mudcombat:hasAttackDetails"]["mudcombat:fixedDamage"]
+			_get_attack_dmg(attack_data)
 			
 			if "mudcombat:typeDamage" in attack_data["mudcombat:hasAttackDetails"]:
 				if "@id" in attack_data["mudcombat:hasAttackDetails"]["mudcombat:typeDamage"]:
@@ -66,6 +75,9 @@ func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attacka
 		_apply_card_effects(attack_data, null)
 	else:
 		_apply_card_effects(attack_data, opponent_card)
+
+func _handle_healing_word(player_avatar_scene, spell_data):
+	var attack_dmg = Globals.DEFAULT_ATTACK_DAMAGE
 
 func _handle_unknown_action(actor, action):
 	if "mudlogic:actAt" in action:
@@ -125,6 +137,8 @@ func _play_card_actions(player_avatar_scene, opponent_avatar_scene):
 			_handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, action)
 		elif action["@id"] == Globals.BUILT_IN_ACTIONS.GENERATE_CARD:
 			_handle_generate_card(player_avatar_scene, opponent_avatar_scene, action)
+		#elif action["@id"] == Globals.BUILT_IN_ACTIONS.HEALING_WORD:
+		#	
 		else:
 			_handle_unknown_action(actor, action)
 
