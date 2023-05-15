@@ -14,12 +14,17 @@ const DEFAULT_ATTACK_DAMAGE = 3
 const BUILT_IN_ACTIONS = {
 	BASIC_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json",
 	POISON_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/poisonAttack.json",
-	GENERATE_CARD = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateCard.json"
+	GENERATE_CARD = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateCard.json",
+	HEALING_WORD = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healingWord.json"
 }
 
 const BUILT_IN_ATTACK_ACTIONS = [
 	BUILT_IN_ACTIONS.BASIC_ATTACK,
 	BUILT_IN_ACTIONS.POISON_ATTACK
+]
+
+const BUILT_IN_SPELL_ACTIONS = [
+	BUILT_IN_ACTIONS.HEALING_WORD
 ]
 
 const BUILT_IN_EFFECTS = {

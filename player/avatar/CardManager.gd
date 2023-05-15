@@ -147,3 +147,12 @@ func damage_card(urlid_to_damage, damage, damage_type):
 					add_to_discard_pile(card)
 					return card["@id"]
 	return null
+
+func heal_cards(urlids_to_damage, damage):
+	for card in active_cards:
+		if card["@id"] in urlids_to_damage:
+			if "mudcombat:hasHealthPoints" in card:
+				var hp = card["mudcombat:hasHealthPoints"]
+				card["mudcombat:hasHealthPoints"]["mudcombat:currentP"] = min(
+					hp["mudcombat:maximumP"], hp["mudcombat:currentP"] + damage
+				)

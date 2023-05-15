@@ -42,15 +42,13 @@ func _get_attack_dmg(attack_data):
 				return attack_details["mudcombat:fixedDamage"]
 			if "mudcombat:minDamage" in attack_details and "mudcombat:maxDamage" in attack_details:
 				return (randi() % attack_details["mudcombat:maxDamage"]) + attack_details["mudcombat:minDamage"]
-	return 1
+	return Globals.DEFAULT_ATTACK_DAMAGE
 
 func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, attack_data=null):
-	var attack_dmg = Globals.DEFAULT_ATTACK_DAMAGE
+	var attack_dmg = _get_attack_dmg(attack_data)
 	var damage_type = Globals.DEFAULT_DAMAGE_TYPE
 	if attack_data != null:
 		if "mudcombat:hasAttackDetails" in attack_data:
-			_get_attack_dmg(attack_data)
-			
 			if "mudcombat:typeDamage" in attack_data["mudcombat:hasAttackDetails"]:
 				if "@id" in attack_data["mudcombat:hasAttackDetails"]["mudcombat:typeDamage"]:
 					damage_type = attack_data["mudcombat:hasAttackDetails"]["mudcombat:typeDamage"]["@id"]
@@ -76,8 +74,18 @@ func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attacka
 	else:
 		_apply_card_effects(attack_data, opponent_card)
 
-func _handle_healing_word(player_avatar_scene, spell_data):
-	var attack_dmg = Globals.DEFAULT_ATTACK_DAMAGE
+func _handle_healing_word(player_avatar_scene, data):
+	var attack_dmg = _get_attack_dmg(data)
+	var valid_targets = _get_attackable_cards(player_avatar_scene.card_manager.active_cards)
+	for card in valid_targets:
+		var hp = card["mudcombat:hasHealthPoints"]
+		if hp["mudcombat:maximumP"] > hp["mudcombat:currentP"]:
+			player_avatar_scene.card_manager.heal_cards([card["@id"]], attack_dmg)
+			break
+
+func _handle_spell(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, data):
+	if data["@id"] == Globals.BUILT_IN_ACTIONS.HEALING_WORD:
+		return _handle_healing_word(player_avatar_scene, data)
 
 func _handle_unknown_action(actor, action):
 	if "mudlogic:actAt" in action:
@@ -137,8 +145,8 @@ func _play_card_actions(player_avatar_scene, opponent_avatar_scene):
 			_handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, action)
 		elif action["@id"] == Globals.BUILT_IN_ACTIONS.GENERATE_CARD:
 			_handle_generate_card(player_avatar_scene, opponent_avatar_scene, action)
-		#elif action["@id"] == Globals.BUILT_IN_ACTIONS.HEALING_WORD:
-		#	
+		elif action["@id"] in Globals.BUILT_IN_SPELL_ACTIONS:
+			_handle_spell(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, action)
 		else:
 			_handle_unknown_action(actor, action)
 

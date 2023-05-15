@@ -36,6 +36,19 @@
                 "mudcard:hasAvailableInstantActions": [
                     {
                         "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
+                    },
+                    {
+                        "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healingWord.json",
+                        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action",
+                        "n:fn": "Healing Word",
+                        "n:hasNote": "A basic healing spell which heals 1-4 damage",
+                        "mudcombat:hasSpellDetails": {
+                            "@id": "_:HealingWordDetails",
+                            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#AttackDetails",
+                            "mudcombat:recoversPoints": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+                            "mudcombat:minDamage": 1,
+                            "mudcombat:maxDamage": 4
+                        }
                     }
                 ]
             },
