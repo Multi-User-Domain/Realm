@@ -71,6 +71,8 @@ func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attacka
 	if destroyed != null:
 		game.battle_scene._remove_card_with_urlid(destroyed)
 		_apply_card_effects(attack_data, null)
+		if "mudcombat:deathTriggersActions" in opponent_card:
+			_play_card_actions(player_avatar_scene, opponent_avatar_scene, opponent_card["mudcombat:deathTriggersActions"])
 	else:
 		_apply_card_effects(attack_data, opponent_card)
 
@@ -134,10 +136,12 @@ func _handle_generate_card(player_avatar_scene, opponent_avatar_scene, action):
 				"n:hasNote": str(gen_card["n:fn"]) + " emerged from " + str(action["n:fn"]) + " and joined the faction " + player_avatar_scene.get_rdf_property("n:fn")
 			})
 
-func _play_card_actions(player_avatar_scene, opponent_avatar_scene):
+func _play_card_actions(player_avatar_scene, opponent_avatar_scene, actions=null):
+	if actions == null:
+		actions = player_avatar_scene.card_manager.play_card_actions()
 	elapsed_card_turns += 1
 	var opponent_attackable_cards = _get_attackable_cards(opponent_avatar_scene.card_manager.active_cards)
-	for action in player_avatar_scene.card_manager.play_card_actions():
+	for action in actions:
 		var actor = action[0]
 		action = action[1]
 		
