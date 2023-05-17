@@ -1,0 +1,52 @@
+{
+    "@context": {
+        "n": "http://www.w3.org/2006/vcard/ns#",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "mudlogic": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#",
+        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
+    },
+    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/travellerArrives.json",
+    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Event",
+    "n:fn": "A Traveller Arrives",
+    "twt2023:maximumUses": 1,
+    "mudlogic:hasChoices": [
+        {
+            "n:fn": "Accept",
+            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action",
+            "twt2023:generatesCardFrom": [
+                {
+                    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+                    "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+                    "n:fn": "Errant Knight",
+                    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/knight.png",
+                    "n:hasNote": "A young landless knight in search of glory",
+                    "mudcombat:hasHealthPoints": {
+                        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+                        "mudcombat:maximumP": 15,
+                        "mudcombat:currentP": 15
+                    },
+                    "mudcard:hasAvailableInstantActions": [
+                        {
+                            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
+                        }
+                    ],
+                    "mudcombat:hasResistances": [
+                        {
+                            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#PhysicalDamage",
+                            "mudcombat:resistanceValue": 0.5
+                        },
+                        {
+                            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#NecraticDamage",
+                            "mudcombat:resistanceValue": -0.5
+                        }
+                    ]
+                }
+            ],
+            "twt2023:generateCardProbability": 1.0
+        },
+        {
+            "n:fn": "Reject",
+            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action"
+        }
+    ]
+}
