@@ -8,6 +8,8 @@
     "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/travellerArrives.json",
     "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Event",
     "n:fn": "A Traveller Arrives",
+    "n:hasNote": "A Knight has arrived at this players' court, searching for glory. Do you allow them to join your retinue?",
+    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/event/travellerArrives.png",
     "twt2023:maximumUses": 1,
     "mudlogic:hasChoices": [
         {
