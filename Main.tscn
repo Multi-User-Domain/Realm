@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://gui/PlayerSelectScene.tscn" type="PackedScene" id=4]
 [ext_resource path="res://services/TurnManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/BattleScene.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gui/EventWindow.tscn" type="PackedScene" id=7]
 [ext_resource path="res://RDFManager.gd" type="Script" id=8]
 [ext_resource path="res://services/WorldManager.tscn" type="PackedScene" id=9]
 [ext_resource path="res://services/FederationManager.tscn" type="PackedScene" id=10]
@@ -33,3 +34,5 @@ texture = ExtResource( 3 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource( 2 )
+
+[node name="EventWindow" parent="HUD" instance=ExtResource( 7 )]
