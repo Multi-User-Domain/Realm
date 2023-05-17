@@ -57,7 +57,11 @@ func configure(event_jsonld):
 		var margin = Vector2(0, 30) * (choices_pos.get_child_count() + 1)
 		button.set_position(choices_pos.position + margin)
 		button.set_text(choice["n:fn"])
+		button.connect("pressed", self, "_choice_button_pressed", [choice])
 		choices_pos.add_child(button)
 	
 	wd.popup_centered()
 	render_elements()
+
+func _choice_button_pressed(choice_jsonld):
+	print(str(choice_jsonld))
