@@ -14,6 +14,7 @@
     "mudlogic:hasChoices": [
         {
             "n:fn": "Accept",
+            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateCard.json",
             "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action",
             "twt2023:generatesCardFrom": [
                 {
@@ -22,6 +23,7 @@
                     "n:fn": "Errant Knight",
                     "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/knight.png",
                     "n:hasNote": "A young landless knight in search of glory",
+                    "twt2023:onGeneratedMessage": "An Errant Knight arrives at court",
                     "mudcombat:hasHealthPoints": {
                         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
                         "mudcombat:maximumP": 15,

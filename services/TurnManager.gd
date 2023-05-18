@@ -134,7 +134,13 @@ func _handle_generate_card(player_avatar_scene, opponent_avatar_scene, action):
 		var idx = randi()%len(action["twt2023:generatesCardFrom"])
 		var gen_card = action["twt2023:generatesCardFrom"][idx]
 		player_avatar_scene.card_manager.add_to_deck(gen_card)
-		if "n:fn" in action and "n:fn" in gen_card:
+		if "twt2023:onGeneratedMessage" in gen_card:
+			game.world_manager.add_to_history({
+				"@id": "_generate_card_history_" + str(randi()),
+				"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
+				"n:hasNote": gen_card["twt2023:onGeneratedMessage"]
+			})
+		elif "n:fn" in action and "n:fn" in gen_card:
 			game.world_manager.add_to_history({
 				"@id": "_generate_card_history_" + str(randi()),
 				"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
