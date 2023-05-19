@@ -6,6 +6,9 @@ onready var sprite = get_node("WindowDialog/Sprite")
 onready var des_label = get_node("WindowDialog/DescriptionLabel")
 onready var choices_pos = get_node("WindowDialog/ChoicesPos")
 
+var active_player_scene = null
+var opponent_scene = null
+
 func _get_sprite_size():
 	return Vector2(512, 512)
 
@@ -26,17 +29,32 @@ func render_elements():
 	choices_pos.set_position(des_label.rect_position + Vector2(0, 30))
 
 func get_title_from_event(event_jsonld):
+	var event_string = "Event"
+	
 	if "n:fn" in event_jsonld:
-		return event_jsonld["n:fn"]
+		event_string = event_jsonld["n:fn"]
 	if "foaf:name" in event_jsonld:
-		return event_jsonld["foaf:name"]
+		event_string = event_jsonld["foaf:name"]
 	if "@id" in event_jsonld:
-		return event_jsonld["@id"]
-	return "Event"
+		event_string = event_jsonld["@id"]
+	
+	var avatar_string = ""
+	if active_player_scene != null:
+		avatar_string = " - " + active_player_scene.get_rdf_property("n:fn")
+	
+	return event_string + avatar_string
 
-func configure(event_jsonld):
+func configure(event_jsonld, active_player_index=0):
 	if not "mudlogic:hasChoices" in event_jsonld:
 		return
+	
+	# configure the active player
+	if active_player_index == 0:
+		active_player_scene = game.battle_scene.player1_avatar
+		opponent_scene = game.battle_scene.player2_avatar
+	else:
+		active_player_scene = game.battle_scene.player2_avatar
+		opponent_scene = game.battle_scene.player1_avatar
 	
 	# configure event content
 	wd.set_title(get_title_from_event(event_jsonld))
@@ -57,11 +75,14 @@ func configure(event_jsonld):
 		var margin = Vector2(0, 30) * (choices_pos.get_child_count() + 1)
 		button.set_position(choices_pos.position + margin)
 		button.set_text(choice["n:fn"])
-		button.connect("pressed", self, "_choice_button_pressed", [choice])
+		button.connect("pressed", self, "_choice_button_pressed", [choice, active_player_index])
 		choices_pos.add_child(button)
 	
 	wd.popup_centered()
 	render_elements()
 
 func _choice_button_pressed(choice_jsonld):
-	print(str(choice_jsonld))
+	game.turn_manager._play_card_actions(
+		active_player_scene, opponent_scene, [[choice_jsonld, choice_jsonld]]
+	)
+	wd.hide()
