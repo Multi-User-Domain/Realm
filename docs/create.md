@@ -113,12 +113,144 @@ The following properties are optional:
 }
 ```
 
-TODO: finish section
+* Resistances (`mudcombat:hasResistances`): A list of resistances to different kinds of damage done by attacks, e.g.
+
+```json
+{
+    "mudcombat:hasResistances": [
+        {
+            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#NecraticDamage",
+            "mudcombat:resistanceValue": 1.0
+        },
+        {
+            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#RadiantDamage",
+            "mudcombat:resistanceValue": -1.0
+        }
+    ]
+}
+```
+
+In this example the character has 100% vulnerability to Radiant damage, and 100% protection to Necratic damage. The full list of damage types is defined in the [mudcombat ontology](https://github.com/Multi-User-Domain/vocab/blob/main/mudcombat.ttl#L173)
+
+* Actions (`mudcard:hasAvailableInstantActions`): A list of actions (see below), which can be perfomed by the card. Examples include attacks, spells, and the ability to generate new cards
+
+* Events (`twt2023:hasAvailableEvents`): A list of events (see below), which can be performed by the card. Events are actions which appear to the user in a pop-up and allow them to make a choice about the outcome
 
 # Actions
 
-TODO
+All actions include the following properties:
+
+* `n:fn`
+* `n:hasNote`
+
+The built-in actions are as follows:
+
+* [Basic Attack](https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json)
+* [Poison Attack](https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/poisonAttack.json)
+* [Generate Card (in the example, spawns a zombie)](https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateCard.json)
+* [Healing Word](https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healingWord.json)
+* [Heal Party](https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healParty.json)
+
+To create an attack action include the property `mudcombat:hasAttackDetails` (example is from Poison Attack)
+
+```json
+{
+    "mudcombat:hasAttackDetails": {
+        "@id": "_:PoisonAttackDetails",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#AttackDetails",
+        "mudcombat:attackDamagesPoints": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+        "mudcombat:fixedDamage": 3,
+        "mudombat:typeDamage": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#PoisonDamage",
+        "mudcombat:imbuesEffects": [
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/effects/poison.json"
+            }
+        ]
+    }
+}
+```
+
+Note the optional property `mudcombat:imbuesEffects`, which describes how a lasting effect can be made on the character, repeating each turn (poisoned). The detail on this is included below:
+
+```json
+{
+    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/effects/poison.json",
+    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Effect",
+    "mudlogic:expiresAfterOccurences": 3,
+    "mudcombat:hasAttackDetails": {
+        "@id": "_:BasicAttackDetails",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#AttackDetails",
+        "mudcombat:attackDamagesPoints": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+        "mudcombat:fixedDamage": 1,
+        "mudombat:typeDamage": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#PoisonDamage"
+    }
+}
+```
+
+The data above indicates that an action is repeated 3 turns, and that this action is to do 1 point of poison damage each turn. Note that the effects **don't** stack with each new attack
+
+The built-in effects are as follows:
+
+* [Poison](https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/effects/poison.json)
 
 # Events
 
-TODO
+Events are actions which appear to the user in a pop-up and allow them to make a choice about the outcome
+
+The built-in events are as follows:
+
+* [Traveller Arrives (spawns Errant Knight)](https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/travellerArrives.json)
+
+All events have an `@id` where the resource is retrievable, a `@type` value of `https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Event`, `n:fn`, `n:hasNote`, `foaf:depiction` (image, 512x512) (all used in the window explaining the event)
+
+Other required properties include:
+
+* Maximum Uses (`twt2023:maximumUses`): an integer indicating the number of times the event can occur before it expires
+* `mudlogic:hasChoices`: a list of Actions which indicate the choices available to a player and their consequences. A full example of this property is below:
+
+```json
+{
+    "mudlogic:hasChoices": [
+        {
+            "n:fn": "Accept",
+            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateCard.json",
+            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action",
+            "twt2023:generatesCardFrom": [
+                {
+                    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+                    "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+                    "n:fn": "Errant Knight",
+                    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/knight.png",
+                    "n:hasNote": "A young landless knight in search of glory",
+                    "twt2023:onGeneratedMessage": "An Errant Knight arrives at court",
+                    "mudcombat:hasHealthPoints": {
+                        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+                        "mudcombat:maximumP": 15,
+                        "mudcombat:currentP": 15
+                    },
+                    "mudcard:hasAvailableInstantActions": [
+                        {
+                            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
+                        }
+                    ],
+                    "mudcombat:hasResistances": [
+                        {
+                            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#PhysicalDamage",
+                            "mudcombat:resistanceValue": 0.5
+                        },
+                        {
+                            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#NecraticDamage",
+                            "mudcombat:resistanceValue": -0.5
+                        }
+                    ]
+                }
+            ],
+            "twt2023:generateCardProbability": 1.0
+        },
+        {
+            "n:fn": "Reject",
+            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action"
+        }
+    ]
+}
+```
