@@ -159,6 +159,9 @@ func _play_card_actions(player_avatar_scene, opponent_avatar_scene, actions=null
 		var actor = action[0]
 		action = action[1]
 		
+		if not "@id" in action:
+			continue
+		
 		if action["@id"] in Globals.BUILT_IN_ATTACK_ACTIONS:
 			_handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, action)
 		elif action["@id"] == Globals.BUILT_IN_ACTIONS.GENERATE_CARD:
