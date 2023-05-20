@@ -75,7 +75,7 @@ func configure(event_jsonld, active_player_index=0):
 		var margin = Vector2(0, 30) * (choices_pos.get_child_count() + 1)
 		button.set_position(choices_pos.position + margin)
 		button.set_text(choice["n:fn"])
-		button.connect("pressed", self, "_choice_button_pressed", [choice, active_player_index])
+		button.connect("pressed", self, "_choice_button_pressed", [choice])
 		choices_pos.add_child(button)
 	
 	wd.popup_centered()
