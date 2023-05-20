@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var game = get_tree().current_scene
 export var hand_size = Globals.DEFAULT_HAND_SIZE
 var avatar = null;
 # hand and deck contain JSON-LD representations of the cards
@@ -83,7 +84,7 @@ func get_cards_to_play():
 	# useful for debugging
 	"""
 	for card in hand:
-		if card["@id"] == "_:CoreOptional9":
+		if card["@id"] == "_:CoreOptional3":
 			return [card]
 	"""
 	
@@ -101,6 +102,12 @@ func get_cards_to_play():
 		return []
 	return [top_card]
 
+func _get_active_card_with_urlid(urlid):
+	for card in active_cards:
+		if card["@id"] == urlid:
+			return card
+	return null
+
 # AI component, ask it to use the active effects of cards on the table
 func play_card_actions(opponent_active=[]):
 	var actions_to_play = []
@@ -108,11 +115,39 @@ func play_card_actions(opponent_active=[]):
 	for card in active_cards:
 		# chooses action randomly
 		# TODO: actions should have constraints about usage. Probably not in this game jam
-		if "mudcard:hasAvailableInstantActions" in card:
+		if "mudcard:hasAvailableInstantActions" in card and len(card["mudcard:hasAvailableInstantActions"]) > 0:
 			var idx = randi()%len(card["mudcard:hasAvailableInstantActions"])
 			actions_to_play.append([card, card["mudcard:hasAvailableInstantActions"][idx]])
 	
 	return actions_to_play
+
+func play_card_event():
+	"""
+	plays up to one card event from a random active card with configured events
+	:return: true if card event played, otherwise false
+	"""
+	# chooses event randomly
+	var shuffled = active_cards.duplicate()
+	shuffled.shuffle()
+	var event = null
+	
+	for card in shuffled:
+		if "twt2023:hasAvailableEvents" in card and len(card["twt2023:hasAvailableEvents"]) > 0:
+			event = card["twt2023:hasAvailableEvents"][randi()%len(card["twt2023:hasAvailableEvents"])]
+			break
+	
+	if event == null:
+		return false
+	
+	# var card = _get_active_card_with_urlid(event["@id"])
+	game.HUD.get_node("EventWindow").configure(
+		game.rdf_manager.load_event_from_jsonld(event["@id"]),
+		avatar.player_index
+	)
+	
+	# TODO: remove the event if it's expired, or begin to expire it
+
+	return true
 
 func get_resistance_points(resistance, damage):
 	"""

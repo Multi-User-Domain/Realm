@@ -11,5 +11,9 @@ wait_time = 3.0
 [node name="CardActionTimer" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="EventActionTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="timeout" from="TurnTimer" to="." method="_on_TurnTimer_timeout"]
 [connection signal="timeout" from="CardActionTimer" to="." method="_on_CardActionTimer_timeout"]
+[connection signal="timeout" from="EventActionTimer" to="." method="_on_EventActionTimer_timeout"]

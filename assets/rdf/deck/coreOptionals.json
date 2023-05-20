@@ -101,8 +101,13 @@
         "foaf:name": "Monastic Holds",
         "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/monasticHolds.png",
         "n:hasNote": "These mountain holds are as peaceful and inaccessible. They make for a safe haven",
-        "mudcard:hasAvailableIntervalActions": [
+        "mudcard:hasAvailableInstantActions": [
             
+        ],
+        "twt2023:hasAvailableEvents": [
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/travellerArrives.json"
+            }
         ]
     },
     {
@@ -121,7 +126,7 @@
         "foaf:name": "All-Expansive Industry",
         "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/industry.png",
         "n:hasNote": "The factory is churning out suffocating black smoke, known by the locals as smog",
-        "mudcard:hasAvailableIntervalActions": [
+        "mudcard:hasAvailableInstantActions": [
             
         ]
     },
@@ -169,7 +174,7 @@
         "foaf:name": "The Union Meeting Place",
         "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/meetingPlace.png",
         "n:hasNote": "One particular bar has become a crucial meeting place for union organisers",
-        "mudcard:hasAvailableIntervalActions": [
+        "mudcard:hasAvailableInstantActions": [
             
         ]
     },
@@ -189,7 +194,7 @@
         "foaf:name": "Smuggler's Cove",
         "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/cove.png",
         "n:hasNote": "The coastline was dotted with places where one could buy stolen goods from the pirates",
-        "mudcard:hasAvailableIntervalActions": [
+        "mudcard:hasAvailableInstantActions": [
             
         ]
     },
@@ -209,7 +214,7 @@
         "foaf:name": "Extensive Dungeons",
         "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/dungeon.png",
         "n:hasNote": "The Dungeons were a place of exceptional cruelty, and were effective in subduing the population",
-        "mudcard:hasAvailableIntervalActions": [
+        "mudcard:hasAvailableInstantActions": [
             
         ]
     },

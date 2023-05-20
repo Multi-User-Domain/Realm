@@ -113,3 +113,7 @@ const PORTRAIT_CACHE = {
 const ACTION_CACHE = {
 	
 }
+
+const EVENT_CACHE = {
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/travellerArrives.json": "res://assets/rdf/events/travellerArrives.json",
+}

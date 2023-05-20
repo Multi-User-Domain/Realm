@@ -41,11 +41,6 @@ func load_cards_for_tray():
 	save_file.open("res://assets/rdf/deck/coreOptionals.json", File.READ)
 	return parse_json(save_file.get_as_text())
 
-func load_event_from_jsonld(file_path):
-	var save_file = File.new()
-	save_file.open(file_path, File.READ)
-	return parse_json(save_file.get_as_text())
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# TODO: set a random seed - do for prod

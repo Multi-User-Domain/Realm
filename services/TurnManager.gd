@@ -3,6 +3,7 @@ extends Node2D
 onready var game = get_tree().current_scene
 onready var turn_timer = get_node("TurnTimer")
 onready var card_action_timer = get_node("CardActionTimer")
+onready var event_timer = get_node("EventActionTimer")
 
 # the purpose of this Node is to manage turns, i.e.
 # the actions of each active card on each cycle,
@@ -18,10 +19,12 @@ func start():
 	card_action_timer.start()
 	game.battle_scene.player1_avatar.card_manager.deck.shuffle()
 	game.battle_scene.player2_avatar.card_manager.deck.shuffle()
+	event_timer.start()
 
 func stop():
 	turn_timer.stop()
 	card_action_timer.stop()
+	event_timer.stop()
 
 func _on_TurnTimer_timeout():
 	game.battle_scene.player1_avatar.play_cards()
@@ -180,3 +183,15 @@ func _on_CardActionTimer_timeout():
 	self._play_card_actions(game.battle_scene.player1_avatar, game.battle_scene.player2_avatar)
 	self._play_card_actions(game.battle_scene.player2_avatar, game.battle_scene.player1_avatar)
 	apply_effects()
+
+# active cards can also have events
+func _on_EventActionTimer_timeout():
+	turn_timer.stop()
+	card_action_timer.stop()
+
+	# play one event, from either player 1 or 2
+	if not game.battle_scene.player1_avatar.card_manager.play_card_event():
+		game.battle_scene.player2_avatar.card_manager.play_card_event()
+	
+	turn_timer.start()
+	card_action_timer.start()
