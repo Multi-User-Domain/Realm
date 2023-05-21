@@ -29,3 +29,11 @@ func load_event_from_jsonld(urlid):
 
 func load_card_from_jsonld(urlid):
 	return _load_from_cache(Globals.CARD_CACHE, urlid)
+
+func obj_through_urlid(obj):
+	"""
+	:return: an expanded version of the object (if it's just a urlid')
+	"""
+	if len(obj.keys()) == 1 and "@id" in obj:
+		obj = load_card_from_jsonld(obj["@id"])
+	return obj

@@ -120,4 +120,6 @@ const EVENT_CACHE = {
 
 const CARD_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/zombie.json": "res://assets/rdf/monsters/zombie.json",
+	
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json": "res://assets/rdf/actions/basicAttack.json",
 }

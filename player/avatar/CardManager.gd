@@ -204,7 +204,7 @@ func damage_card(urlid_to_damage, damage, damage_type):
 				if card["mudcombat:hasHealthPoints"]["mudcombat:currentP"] <= 0:
 					active_cards.erase(card)
 					add_to_discard_pile(card)
-					return card["@id"]
+					return card
 	return null
 
 func heal_cards(urlids_to_damage, damage):

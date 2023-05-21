@@ -39,6 +39,22 @@ func add_to_history(recorded_history_item):
 	history.append(recorded_history_item)
 	render_history()
 
+func record_death_by_effect(deceased, event):
+	if event["@id"] == Globals.BUILT_IN_EFFECTS.POISON:
+		add_to_history({
+			"@id": "_:death_" + str(randi()),
+			"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
+			"n:hasNote": deceased["n:fn"] + " died from an old wound"
+		})
+
+func record_death_by_attack(deceased, actor, attack):
+	attack = game.rdf_manager.obj_through_urlid(attack)
+	add_to_history({
+		"@id": "_:death_" + str(randi()),
+		"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
+		"n:hasNote": deceased["n:fn"] + " was slain by " + actor["n:fn"] + "  while performing a " + attack["n:fn"]
+	})
+
 # TODO: seriously unoptimised
 func _exhaustively_search_world_data_for_obj(world_data, urlid, search_chain=[]):
 	"""

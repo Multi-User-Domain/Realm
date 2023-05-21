@@ -118,7 +118,8 @@ func apply_effects():
 			
 			var destroyed = card_manager.damage_card(get_rdf_property("@id"), attack_dmg, damage_type)
 			if destroyed != null:
-				game.battle_scene._remove_card_with_urlid(destroyed)
+				game.battle_scene._remove_card_with_urlid(destroyed["@id"])
+				game.world_manager.record_death_by_effect(destroyed, effect)
 		
 		# check if the effect should expire
 		if "mudlogic:expiresAfterOccurences" in effect:

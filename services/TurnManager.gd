@@ -47,7 +47,7 @@ func _get_attack_dmg(attack_data):
 				return (randi() % attack_details["mudcombat:maxDamage"]) + attack_details["mudcombat:minDamage"]
 	return Globals.DEFAULT_ATTACK_DAMAGE
 
-func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, attack_data=null):
+func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, attack_data, actor_data):
 	var attack_dmg = _get_attack_dmg(attack_data)
 	var damage_type = Globals.DEFAULT_DAMAGE_TYPE
 	if attack_data != null:
@@ -72,8 +72,9 @@ func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attacka
 		opponent_card, attack_dmg, damage_type
 	)
 	if destroyed != null:
-		game.battle_scene._remove_card_with_urlid(destroyed)
+		game.battle_scene._remove_card_with_urlid(destroyed["@id"])
 		_apply_card_effects(attack_data, null)
+		game.world_manager.record_death_by_attack(destroyed, actor_data, attack_data)
 		if "mudcombat:deathTriggersActions" in opponent_card:
 			_play_card_actions(player_avatar_scene, opponent_avatar_scene, opponent_card["mudcombat:deathTriggersActions"])
 	else:
@@ -163,7 +164,7 @@ func _play_card_actions(player_avatar_scene, opponent_avatar_scene, actions=null
 			continue
 		
 		if action["@id"] in Globals.BUILT_IN_ATTACK_ACTIONS:
-			_handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, action)
+			_handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, action, actor)
 		elif action["@id"] == Globals.BUILT_IN_ACTIONS.GENERATE_CARD:
 			_handle_generate_card(player_avatar_scene, opponent_avatar_scene, action)
 		elif action["@id"] in Globals.BUILT_IN_SPELL_ACTIONS:
