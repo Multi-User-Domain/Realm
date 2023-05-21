@@ -150,7 +150,8 @@ func play_card_event():
 	if not "twt2023:maximumUses" in event or event["twt2023:maximumUses"] <= 1:
 		card_holding_event["twt2023:hasAvailableEvents"].remove(event_idx)
 	else:
-		card_holding_event["twt2023:hasAvailableEvents"][event_idx]["twt2023:maximumUses"] = event["twt2023:maximumUses"] - 1
+		event["twt2023:maximumUses"] -= 1
+		card_holding_event["twt2023:hasAvailableEvents"][event_idx] = event
 
 	return true
 
