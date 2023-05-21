@@ -82,11 +82,9 @@ func get_cards_to_play():
 	draw_hand()
 	
 	# useful for debugging
-	"""
 	for card in hand:
 		if card["@id"] == "_:CoreOptional3":
 			return [card]
-	"""
 	
 	# if there are no active characters, prioritise that
 	if not Globals.MUD_CHAR.Character in _get_card_types(active_cards):
@@ -129,23 +127,30 @@ func play_card_event():
 	# chooses event randomly
 	var shuffled = active_cards.duplicate()
 	shuffled.shuffle()
+	var card_holding_event = null
 	var event = null
+	var event_idx = null
 	
 	for card in shuffled:
 		if "twt2023:hasAvailableEvents" in card and len(card["twt2023:hasAvailableEvents"]) > 0:
-			event = card["twt2023:hasAvailableEvents"][randi()%len(card["twt2023:hasAvailableEvents"])]
+			event_idx = randi()%len(card["twt2023:hasAvailableEvents"])
+			event = card["twt2023:hasAvailableEvents"][event_idx]
+			card_holding_event = _get_active_card_with_urlid(card["@id"])
 			break
 	
 	if event == null:
 		return false
 	
-	# var card = _get_active_card_with_urlid(event["@id"])
-	game.HUD.get_node("EventWindow").configure(
-		game.rdf_manager.load_event_from_jsonld(event["@id"]),
-		avatar.player_index
-	)
+	# configure event window with jsonld content
+	if not "twt2023:maximumUses" in event:
+		event = game.rdf_manager.load_event_from_jsonld(event["@id"])
+	game.HUD.get_node("EventWindow").configure(event, avatar.player_index)
 	
-	# TODO: remove the event if it's expired, or begin to expire it
+	# remove the event if it's expired, or begin to expire it
+	if not "twt2023:maximumUses" in event or event["twt2023:maximumUses"] <= 1:
+		card_holding_event["twt2023:hasAvailableEvents"].remove(event_idx)
+	else:
+		card_holding_event["twt2023:hasAvailableEvents"][event_idx]["twt2023:maximumUses"] = event["twt2023:maximumUses"] - 1
 
 	return true
 
