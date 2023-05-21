@@ -83,7 +83,7 @@ func get_cards_to_play():
 	
 	# useful for debugging
 	for card in hand:
-		if card["@id"] == "_:CoreOptional3":
+		if card["@id"] == "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/zombie.json":
 			return [card]
 	
 	# if there are no active characters, prioritise that
@@ -105,6 +105,24 @@ func _get_active_card_with_urlid(urlid):
 		if card["@id"] == urlid:
 			return card
 	return null
+
+func replace_card_jsonld(urlid, new_jsonld):
+	for i in range(len(active_cards)):
+		if active_cards[i]["@id"] == urlid:
+			active_cards[i] = new_jsonld
+			return
+	for i in range(len(hand)):
+		if hand[i]["@id"] == urlid:
+			hand[i] = new_jsonld
+			return
+	for i in range((len(deck))):
+		if deck[i]["@id"] == urlid:
+			deck[i] = new_jsonld
+			return
+	for i in range((len(discard_pile))):
+		if discard_pile[i]["@id"] == urlid:
+			discard_pile[i] = new_jsonld
+			return
 
 # AI component, ask it to use the active effects of cards on the table
 func play_card_actions(opponent_active=[]):
