@@ -133,7 +133,7 @@
                     {
                         "@id": "_:MagicShield",
                         "n:fn": "Magic Shield",
-                        "mudcombat:onSuccessDamageResistance": 0.8,
+                        "mudcombat:resistanceValue": 0.8,
                         "mudcombat:defenceRollSuccessRate": 0.5
                     }
                 ]
