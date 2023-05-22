@@ -140,7 +140,7 @@ func _give_selected_card_to_player(player_index):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# only process input if the scene is active
-	if not game.game_phase in [Globals.GAME_PHASE.DECK_BUILDING, Globals.GAME_PHASE.BATTLE]:
+	if not game.game_phase in [Globals.GAME_PHASE.DECK_BUILDING]:
 		return
 	
 	# UI accept is bound to Xbox A and keyboard space
