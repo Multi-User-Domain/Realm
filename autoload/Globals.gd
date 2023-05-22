@@ -78,7 +78,9 @@ const DECK_CACHE = {
 
 const AVATAR_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json": "res://assets/rdf/avatar/ospreyWithers.json",
-	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json": "res://assets/rdf/avatar/sumeri.json"
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json": "res://assets/rdf/avatar/sumeri.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/waylan.json": "res://assets/rdf/avatar/waylan.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/arthurPendragon.json": "res://assets/rdf/avatar/arthurPendragon.json",
 }
 
 const PORTRAIT_CACHE = {
@@ -86,6 +88,7 @@ const PORTRAIT_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/dryad.png": "res://assets/portrait/dryad.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ghost.png": "res://assets/portrait/ghost.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/waylan.png": "res://assets/portrait/waylan.png",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/kingArthur.png": "res://assets/portrait/kingArthur.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/gromm.png": "res://assets/portrait/card/gromm.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/skeletalWarrior.png": "res://assets/portrait/card/skeletalWarrior.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/zombie.png": "res://assets/portrait/card/zombie.png",
@@ -106,7 +109,11 @@ const PORTRAIT_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/graveyard.png": "res://assets/portrait/card/graveyard.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/knight.png": "res://assets/portrait/card/knight.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/knight2.png": "res://assets/portrait/card/knight2.png",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/peasant.png": "res://assets/portrait/card/peasant.png",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/merlin.png": "res://assets/portrait/card/merlin.png",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/courtWitch.png": "res://assets/portrait/card/courtWitch.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/dwarfHunter.png": "res://assets/portrait/card/dwarfHunter.png",
+	
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/event/travellerArrives.png": "res://assets/portrait/event/travellerArrives.png",
 }
 
@@ -122,4 +129,6 @@ const CARD_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/zombie.json": "res://assets/rdf/monsters/zombie.json",
 	
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json": "res://assets/rdf/actions/basicAttack.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/poisonAttack.json": "res://assets/rdf/actions/poisonAttack.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healingWord.json": "res://assets/rdf/actions/healingWord.json",
 }
