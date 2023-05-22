@@ -55,6 +55,21 @@ func record_death_by_attack(deceased, actor, attack):
 		"n:hasNote": deceased["n:fn"] + " was slain by " + actor["n:fn"] + "  while performing a " + attack["n:fn"]
 	})
 
+func record_defense_roll_success(roller, roll):
+	var damage_evaded = roll["mudcombat:resistanceValue"] * 100
+	if damage_evaded > 0:
+		add_to_history({
+			"@id": "_:defence_roll_" + str(randi()),
+			"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
+			"n:hasNote": roller["n:fn"] + " evaded " + str(damage_evaded) + "%  of an attack damage via their defence " + roll["n:fn"]
+		})
+	elif damage_evaded < 0:
+		add_to_history({
+			"@id": "_:defence_roll_" + str(randi()),
+			"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
+			"n:hasNote": roller["n:fn"] + " was wounded by an additional " + str(damage_evaded) + "%  of damage because of their weakness " + roll["n:fn"]
+		})
+
 # TODO: seriously unoptimised
 func _exhaustively_search_world_data_for_obj(world_data, urlid, search_chain=[]):
 	"""

@@ -83,7 +83,7 @@ func get_cards_to_play():
 	
 	# useful for debugging
 	for card in hand:
-		if card["@id"] == "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/zombie.json":
+		if card["@id"] == "_:ArthurCard5":
 			return [card]
 	
 	# if there are no active characters, prioritise that
@@ -192,6 +192,14 @@ func damage_card(urlid_to_damage, damage, damage_type):
 	for card in active_cards:
 		if card["@id"] == urlid_to_damage:
 			if "mudcombat:hasHealthPoints" in card:
+				if "mudcombat:hasDefenceRolls" in card:
+					var defence_rolls = card["mudcombat:hasDefenceRolls"]
+					var roll = defence_rolls[randi() % len(defence_rolls)]
+					var success_rate = max(0, roll["mudcombat:defenceRollSuccessRate"])
+					if success_rate >= ((randi() % 10) * 0.1):
+						damage = max(0, damage - get_resistance_points(roll, damage))
+						game.world_manager.record_defense_roll_success(_get_active_card_with_urlid(urlid_to_damage), roll)
+				
 				if "mudcombat:hasResistances" in card:
 					for resistance in card["mudcombat:hasResistances"]:
 						if resistance["@id"] == damage_type:
