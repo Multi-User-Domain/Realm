@@ -37,6 +37,8 @@ func load_avatar_from_urlid(urlid):
 	return null
 
 func load_cards_for_tray():
+	federation_manager.load_game_data() # loading remote cards - async
+	# load local cards
 	var save_file = File.new()
 	save_file.open("res://assets/rdf/deck/coreOptionals.json", File.READ)
 	return parse_json(save_file.get_as_text())
