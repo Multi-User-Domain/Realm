@@ -111,8 +111,8 @@
                 "n:hasNote": "The Great Sorcerer of Arthur's Court",
                 "mudcombat:hasHealthPoints": {
                     "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
-                    "mudcombat:maximumP": 10,
-                    "mudcombat:currentP": 10
+                    "mudcombat:maximumP": 6,
+                    "mudcombat:currentP": 6
                 },
                 "mudcard:hasAvailableInstantActions": [
                     {
@@ -133,7 +133,7 @@
                     {
                         "@id": "_:MagicShield",
                         "n:fn": "Magic Shield",
-                        "mudcombat:resistanceValue": 0.8,
+                        "mudcombat:resistanceValue": 0.6,
                         "mudcombat:defenceRollSuccessRate": 0.5
                     }
                 ]
