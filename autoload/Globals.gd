@@ -8,7 +8,7 @@ extends Node
 #
 
 const DEFAULT_DAMAGE_TYPE = "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#PhysicalDamage"
-const DEFAULT_HAND_SIZE = 3
+const DEFAULT_HAND_SIZE = 2
 const DEFAULT_ATTACK_DAMAGE = 3
 
 const BUILT_IN_ACTIONS = {
