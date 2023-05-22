@@ -180,8 +180,7 @@ func get_resistance_points(resistance, damage):
 	:return: the amount to change the damage by (e.g. -1 for a resistance, or +1 for a weakness)
 	"""
 	var res_factor = resistance["mudcombat:resistanceValue"] # a value between -1.0 to +1.0
-	var res_val = damage * res_factor
-	return damage * res_val
+	return damage * res_factor
 	
 
 func damage_card(urlid_to_damage, damage, damage_type):
@@ -197,13 +196,13 @@ func damage_card(urlid_to_damage, damage, damage_type):
 					var roll = defence_rolls[randi() % len(defence_rolls)]
 					var success_rate = max(0, roll["mudcombat:defenceRollSuccessRate"])
 					if success_rate >= ((randi() % 10) * 0.1):
-						damage = max(0, damage - get_resistance_points(roll, damage))
+						damage = max(0.0, damage - get_resistance_points(roll, damage))
 						game.world_manager.record_defense_roll_success(_get_active_card_with_urlid(urlid_to_damage), roll)
 				
 				if "mudcombat:hasResistances" in card:
 					for resistance in card["mudcombat:hasResistances"]:
 						if resistance["@id"] == damage_type:
-							damage = max(0, damage - get_resistance_points(resistance, damage))
+							damage = damage - get_resistance_points(resistance, damage)
 							break
 				
 				card["mudcombat:hasHealthPoints"]["mudcombat:currentP"] -= damage
@@ -213,6 +212,8 @@ func damage_card(urlid_to_damage, damage, damage_type):
 					active_cards.erase(card)
 					add_to_discard_pile(card)
 					return card
+			
+			break
 	return null
 
 func heal_cards(urlids_to_damage, damage):
