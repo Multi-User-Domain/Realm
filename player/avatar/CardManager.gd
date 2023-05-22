@@ -161,7 +161,7 @@ func play_card_event():
 	
 	# configure event window with jsonld content
 	if not "twt2023:maximumUses" in event:
-		event = game.rdf_manager.load_event_from_jsonld(event["@id"])
+		event = game.rdf_manager.load_from_jsonld(event["@id"])
 	game.HUD.get_node("EventWindow").configure(event, avatar.player_index)
 	
 	# remove the event if it's expired, or begin to expire it

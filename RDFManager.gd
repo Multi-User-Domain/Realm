@@ -16,24 +16,23 @@ func get_texture_from_jsonld(depiction_url):
 	print(depiction_url)
 	return load(Globals.PORTRAIT_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ospreyWithers.png"])
 
-func _load_from_cache(cache, urlid):
-	if urlid in cache.keys():
-		var save_file = File.new()
-		save_file.open(cache[urlid], File.READ)
-		return parse_json(save_file.get_as_text())
+func _load_from_cache(urlid):
+	for cache in Globals.CACHES:
+		if urlid in cache.keys():
+			var save_file = File.new()
+			save_file.open(cache[urlid], File.READ)
+			return parse_json(save_file.get_as_text())
+	
 	return null
 
-func load_event_from_jsonld(urlid):
+func load_from_jsonld(urlid):
 	# TODO: read remote Event Urlid if not in cache
-	return _load_from_cache(Globals.EVENT_CACHE, urlid)
-
-func load_card_from_jsonld(urlid):
-	return _load_from_cache(Globals.CARD_CACHE, urlid)
+	return _load_from_cache(urlid)
 
 func obj_through_urlid(obj):
 	"""
 	:return: an expanded version of the object (if it's just a urlid')
 	"""
 	if len(obj.keys()) == 1 and "@id" in obj:
-		obj = load_card_from_jsonld(obj["@id"])
+		obj = load_from_jsonld(obj["@id"])
 	return obj

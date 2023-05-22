@@ -36,7 +36,7 @@ func _init_jsonld_data(card_jsonld):
 
 func init_card(card_jsonld, card_manager):
 	if len(card_jsonld.keys()) == 1 and "@id" in card_jsonld:
-		card_jsonld = game.rdf_manager.load_card_from_jsonld(card_jsonld["@id"])
+		card_jsonld = game.rdf_manager.load_from_jsonld(card_jsonld["@id"])
 		card_manager.replace_card_jsonld(card_jsonld["@id"], card_jsonld)
 	
 	# calculate and log variables used in animating select/deselect

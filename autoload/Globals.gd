@@ -79,7 +79,6 @@ const DECK_CACHE = {
 const AVATAR_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json": "res://assets/rdf/avatar/ospreyWithers.json",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json": "res://assets/rdf/avatar/sumeri.json",
-	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/waylan.json": "res://assets/rdf/avatar/waylan.json",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/arthurPendragon.json": "res://assets/rdf/avatar/arthurPendragon.json",
 }
 
@@ -115,6 +114,7 @@ const PORTRAIT_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/dwarfHunter.png": "res://assets/portrait/card/dwarfHunter.png",
 	
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/event/travellerArrives.png": "res://assets/portrait/event/travellerArrives.png",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/event/unexpectedDiscovery.png": "res://assets/portrait/event/unexpectedDiscovery.png",
 }
 
 const ACTION_CACHE = {
@@ -123,6 +123,7 @@ const ACTION_CACHE = {
 
 const EVENT_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/travellerArrives.json": "res://assets/rdf/events/travellerArrives.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/unexpectedDiscovery.json": "res://assets/rdf/events/unexpectedDiscovery.json",
 }
 
 const CARD_CACHE = {
@@ -132,3 +133,12 @@ const CARD_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/poisonAttack.json": "res://assets/rdf/actions/poisonAttack.json",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healingWord.json": "res://assets/rdf/actions/healingWord.json",
 }
+
+const CACHES = [
+	DECK_CACHE,
+	AVATAR_CACHE,
+	PORTRAIT_CACHE,
+	ACTION_CACHE,
+	EVENT_CACHE,
+	CARD_CACHE
+]
