@@ -132,6 +132,21 @@ The following properties are optional:
 
 In this example the character has 100% vulnerability to Radiant damage, and 100% protection to Necratic damage. The full list of damage types is defined in the [mudcombat ontology](https://github.com/Multi-User-Domain/vocab/blob/main/mudcombat.ttl#L173)
 
+* Defence Rolls (`mudcombat:hasDefenceRolls`): A list of rolls which can be used to evade damage (e.g. Dodge). Works similarly to resistances but with a random probability and applying to any damage. E.g.
+
+```json
+{
+    "mudcombat:hasDefenceRolls": [
+        {
+            "@id": "_:MagicShield",
+            "n:fn": "Magic Shield",
+            "mudcombat:resistanceValue": 0.8,
+            "mudcombat:defenceRollSuccessRate": 0.1
+        }
+    ]
+}
+```
+
 * Actions (`mudcard:hasAvailableInstantActions`): A list of actions (see below), which can be perfomed by the card. Examples include attacks, spells, and the ability to generate new cards
 
 * Events (`twt2023:hasAvailableEvents`): A list of events (see below), which can be performed by the card. Events are actions which appear to the user in a pop-up and allow them to make a choice about the outcome
