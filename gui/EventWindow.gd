@@ -6,8 +6,10 @@ onready var sprite = get_node("WindowDialog/Sprite")
 onready var des_label = get_node("WindowDialog/DescriptionLabel")
 onready var choices_pos = get_node("WindowDialog/ChoicesPos")
 
+var jsonld_store = null
 var active_player_scene = null
 var opponent_scene = null
+var selected_choice_idx = null
 
 func _get_sprite_size():
 	return Vector2(512, 512)
@@ -78,8 +80,49 @@ func configure(event_jsonld, active_player_index=0):
 		button.connect("pressed", self, "_choice_button_pressed", [choice])
 		choices_pos.add_child(button)
 	
+	jsonld_store = event_jsonld
+	
 	wd.popup_centered()
 	render_elements()
+	
+	if len(event_jsonld["mudlogic:hasChoices"]) > 0:
+		set_select_choice_idx(0)
+	else:
+		selected_choice_idx = null
+
+func set_select_choice_idx(val):
+	# wrap the index given
+	if val < 0:
+		val = len(jsonld_store["mudlogic:hasChoices"]) - 1
+	elif val >= len(jsonld_store["mudlogic:hasChoices"]):
+		val = 0
+	
+	# clear the previous selection
+	if selected_choice_idx != null:
+		choices_pos.get_child(selected_choice_idx).add_stylebox_override("normal", null)
+	selected_choice_idx = val
+	
+	# update the display of the new selection
+	var selected_button = choices_pos.get_child(selected_choice_idx)
+	# Resources are shared across instances, so we need to duplicate it
+	# to avoid modifying the appearance of all other buttons.
+	var new_stylebox_normal = selected_button.get_stylebox("normal").duplicate()
+	new_stylebox_normal.margin_top = 3
+	new_stylebox_normal.modulate_color = Color(0, 1, 0, 1)
+	selected_button.add_stylebox_override("normal", new_stylebox_normal)
+
+func _process(delta):
+	# only process input if the scene is active
+	if not wd.visible or selected_choice_idx == null:
+		return
+	
+	if Input.is_action_just_pressed("ui_down"):
+		set_select_choice_idx(selected_choice_idx - 1)
+	if Input.is_action_just_pressed("ui_up"):
+		set_select_choice_idx(selected_choice_idx + 1)
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		_choice_button_pressed(jsonld_store["mudlogic:hasChoices"][selected_choice_idx])
 
 func _choice_button_pressed(choice_jsonld):
 	game.turn_manager._play_card_actions(
