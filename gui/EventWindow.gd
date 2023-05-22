@@ -67,7 +67,10 @@ func configure(event_jsonld, active_player_index=0):
 		# 128, 128 with the in-built textures
 		# portrait_sprite.set_scale(Vector2(0.25, 0.25))
 	if "n:hasNote" in event_jsonld:
-		des_label.set_text(event_jsonld["n:hasNote"])
+		var avatar_string = ""
+		if active_player_scene != null:
+			avatar_string = active_player_scene.get_rdf_property("n:fn") + ": "
+		des_label.set_text(avatar_string + event_jsonld["n:hasNote"])
 	
 	# add buttons for each choice
 	for choice in event_jsonld["mudlogic:hasChoices"]:
