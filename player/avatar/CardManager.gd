@@ -83,7 +83,7 @@ func get_cards_to_play():
 	
 	# useful for debugging
 	for card in hand:
-		if card["@id"] == "_:ArthurCard5":
+		if card["@id"] == "_:CoreOptional3":
 			return [card]
 	
 	# if there are no active characters, prioritise that
@@ -181,7 +181,7 @@ func get_resistance_points(resistance, damage):
 	"""
 	var res_factor = resistance["mudcombat:resistanceValue"] # a value between -1.0 to +1.0
 	var res_val = damage * res_factor
-	return -damage * res_val
+	return damage * res_val
 	
 
 func damage_card(urlid_to_damage, damage, damage_type):
