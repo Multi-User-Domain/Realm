@@ -1,0 +1,38 @@
+{
+    "@context": {
+        "n": "http://www.w3.org/2006/vcard/ns#",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+        "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+        "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
+    },
+    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/lesserThrall.json",
+    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+    "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+    "n:fn": "LesserThrall",
+    "foaf:name": "LesserThrall",
+    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/lesserThrall.png",
+    "n:hasNote": "Without fully growing out their teeth, freshly converted vampires are not to be feared just yet.",
+    "mudcombat:hasHealthPoints": {
+        "@id": "_:LesserThrallHP",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+        "mudcombat:maximumP": 5,
+        "mudcombat:currentP": 5
+    },
+    "mudcard:hasAvailableInstantActions": [
+        {
+            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/leechAttack.json"
+        }
+    ],
+    "mudcombat:hasResistances": [
+        {
+            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#NecraticDamage",
+            "mudcombat:resistanceValue": 0.5
+        },
+        {
+            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#RadiantDamage",
+            "mudcombat:resistanceValue": -1.0
+        }
+    ]
+}
