@@ -12,8 +12,8 @@
     "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
     "n:fn": "Lycanthrope Pup",
     "foaf:name": "Lycanthrope Pup",
-    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/zombie.png",
-    "n:hasNote": "Braaaiiinnnss",
+    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/lycanthropePup.png",
+    "n:hasNote": "Inconceivably, some receive this affliction voluntarily.",
     "mudcombat:hasHealthPoints": {
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
         "mudcombat:maximumP": 10,
