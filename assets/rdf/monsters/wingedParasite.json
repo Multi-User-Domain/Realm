@@ -1,0 +1,34 @@
+{
+    "@context": {
+        "n": "http://www.w3.org/2006/vcard/ns#",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+        "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+        "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
+    },
+    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/wingedParasite.json",
+    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
+    "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+    "n:fn": "Winged Parasite",
+    "foaf:name": "Winged Parasite",
+    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/wingedParasite.png",
+    "n:hasNote": "Even the thought of it makes me itch.",
+    "mudcombat:hasHealthPoints": {
+        "@id": "_:wingedParasiteHP",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+        "mudcombat:maximumP": 4,
+        "mudcombat:currentP": 4
+    },
+    "mudcard:hasAvailableInstantActions": [
+        {
+            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/leechAttack.json"
+        }
+    ],
+    "mudcombat:hasResistances": [
+        {
+            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#PoisonDamage",
+            "mudcombat:resistanceValue": 0.5
+        }
+    ]
+}
