@@ -7,17 +7,17 @@
         "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
         "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
     },
-    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/lycanthropePup.json",
+    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/lycanthropeAlpha.json",
     "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
     "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
-    "n:fn": "Lycanthrope Pup",
-    "foaf:name": "Lycanthrope Pup",
-    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/lycanthropePup.png",
-    "n:hasNote": "Inconceivably, some receive this affliction voluntarily.",
+    "n:fn": "Lycanthrope Alpha",
+    "foaf:name": "Lycanthrope Alpha",
+    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/lycanthropeAlpha.png",
+    "n:hasNote": "Whoever survives the curse this long without being consumed or hunted down is not to be trifled with.",
     "mudcombat:hasHealthPoints": {
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
-        "mudcombat:maximumP": 10,
-        "mudcombat:currentP": 3
+        "mudcombat:maximumP": 15,
+        "mudcombat:currentP": 5
     },
     "mudcard:hasAvailableInstantActions": [
         {
@@ -30,11 +30,11 @@
     "mudcombat:hasResistances": [
         {
             "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#RadiantDamage",
-            "mudcombat:resistanceValue": -1.0
+            "mudcombat:resistanceValue": -0.5
         },
         {
             "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#FireDamage",
-            "mudcombat:resistanceValue": -1.0
+            "mudcombat:resistanceValue": -0.5
         }
     ]
 }
