@@ -9,6 +9,7 @@ onready var turn_manager = get_node("TurnManager")
 onready var world_manager = get_node("WorldManager")
 onready var battle_scene = get_node("BattleScene")
 onready var player_select_scene = get_node("PlayerSelectScene")
+onready var audio_stream_player = get_node("AudioStreamPlayer")
 
 # export means that it can be set from the Scene editor
 # the scale transformation to apply to card size
@@ -47,6 +48,8 @@ func load_cards_for_tray():
 func _ready():
 	# TODO: set a random seed - do for prod
 	# randomize()
+	
+	audio_stream_player.play()
 	
 	# init game
 	world_manager.init_world()
