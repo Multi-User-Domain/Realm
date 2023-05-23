@@ -4,15 +4,16 @@
         "mudlogic": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#",
         "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
     },
-    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/regenSelf.json",
+    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/leechAttack.json",
     "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action",
-    "n:fn": "Regeneration",
-    "n:hasNote": "Restores 2 health to self.",
-    "mudcombat:hasSpellDetails": {
-        "@id": "_:RegenerationDetails",
+    "n:fn": "Leech",
+    "n:hasNote": "A light necrotic attack that also restores health to self.",
+    "mudcombat:hasAttackDetails": {
+        "@id": "_:LeechAttackDetails",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#AttackDetails",
+        "mudcombat:attackDamagesPoints": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
         "mudcombat:recoversPoints": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
-        "mudcombat:minDamage": 2,
-        "mudcombat:maxDamage": 2
+        "mudcombat:fixedDamage": 1,
+        "mudombat:typeDamage": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#NecraticDamage"
     }
 }

@@ -1,0 +1,19 @@
+{
+    "@context": {
+        "n": "http://www.w3.org/2006/vcard/ns#",
+        "mudlogic": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#",
+        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
+    },
+    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/fireAttack.json",
+    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action",
+    "n:fn": "Fire Breath",
+    "n:hasNote": "A basic attack dealing random fire damage",
+    "mudcombat:hasAttackDetails": {
+        "@id": "_:FireAttackDetails",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#AttackDetails",
+        "mudcombat:attackDamagesPoints": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+        "mudcombat:minDamage": 1,
+        "mudcombat:maxDamage": 5,
+        "mudombat:typeDamage": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#FireDamage"
+    }
+}
