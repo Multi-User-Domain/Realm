@@ -110,7 +110,7 @@ func _process(delta):
 		confirm_player_selection()
 	
 	# cycling through the selectable avatars with UI controls
-	elif Input.is_action_just_pressed("ui_right"):
+	elif Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("x_button"):
 		set_selected_avatar(_selected_avatar_row_idx, _selected_avatar_col_idx + 1)
 	elif Input.is_action_just_pressed("ui_left"):
 		set_selected_avatar(_selected_avatar_row_idx, _selected_avatar_col_idx - 1)
