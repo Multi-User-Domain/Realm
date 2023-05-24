@@ -5,7 +5,7 @@ extends Node2D
 #	(in practice one server for now)
 #
 
-# TODO: support for federations
+# TODO: one day.. support for federations
 const SERVER_ENDPOINT = "https://api.realm.games.coop/"
 
 onready var game = get_tree().current_scene
@@ -22,7 +22,8 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 
 func perform_action(url_endpoint, action_data, actor_data):
 	var headers = [
-		"Content-Type: application/json"
+		"Content-Type: application/json",
+		"Access-Control-Allow-Origin: '*'"
 	]
 	
 	# TODO: Godot 4 this should be JSON.stringify
@@ -42,4 +43,7 @@ func _on_LoadGameDataRequest_request_completed(result, response_code, headers, b
 
 
 func load_game_data():
-	load_game_data_request.request(SERVER_ENDPOINT + "cards/")
+	var headers = [
+		"Access-Control-Allow-Origin: '*'"
+	]
+	load_game_data_request.request(SERVER_ENDPOINT + "cards/", headers, use_ssl)
