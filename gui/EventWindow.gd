@@ -6,13 +6,14 @@ onready var sprite = get_node("WindowDialog/Sprite")
 onready var des_label = get_node("WindowDialog/DescriptionLabel")
 onready var choices_pos = get_node("WindowDialog/ChoicesPos")
 
+export var sprite_scale = Vector2(0.5, 0.5)
 var jsonld_store = null
 var active_player_scene = null
 var opponent_scene = null
 var selected_choice_idx = null
 
 func _get_sprite_size():
-	return Vector2(512, 512)
+	return Vector2(512, 512) * sprite_scale
 
 func render_elements():
 	# size the window
@@ -23,6 +24,7 @@ func render_elements():
 	wd.rect_position = margin * 0.5
 	
 	# position the window elements
+	sprite.set_scale(sprite_scale)
 	sprite.set_position(wd.rect_position + Vector2(10, 10) + _get_sprite_size() * 0.5)
 	var aligned_x = sprite.position.x
 	sprite.position.x = viewport_size.x * 0.5
