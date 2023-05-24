@@ -1,0 +1,60 @@
+{
+    "@context": {
+        "n": "http://www.w3.org/2006/vcard/ns#",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+        "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+        "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#",
+        "mudworld": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#",
+        "twt2023": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#",
+        "dcterms": "http://purl.org/dc/terms/"
+    },
+    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/igneusBalvadere.json",
+    "n:fn": "Igneus Balvadere",
+    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/igneusBalvadere.png",
+    "dcterms:creator": "https://calum.inrupt.net/profile/card#me",
+    "twt2023:lordOfRegion": {
+        "@id": "_:IgneusBalvadereStartingRegion",
+        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Region",
+        "n:fn": "The Charnel Grounds",
+        "mudworld:hasRegions": [
+            {
+                "@id": "_:CloverleafBosk",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Region",
+                "mudworld:hasPopulations": [],
+                "n:fn": "Cloverleaf Bosk",
+                "n:hasNote": "An ancient forest thick with pines. Its' shade provides the perfect cover for hunting."
+            },
+            {
+                "@id": "_:JaggedPlains",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Region",
+                "mudworld:hasPopulations": [],
+                "n:fn": "The Jagged Plains",
+                "n:hasNote": "An isolated wasteland where many predators roam the skies."
+            }
+        ]
+    },
+    "mudcard:hasDeck": {
+        "mudcard:hasCards": [
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/flameImp.json"
+            },
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/lesserThrall.json"
+            },
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/swarmMother.json"
+            },
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/wingedParasite.json"
+            },
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/lycanthropePup.json"
+            },
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/lycanthropeAlpha.json"
+            }
+        ]
+    }
+}
