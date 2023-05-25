@@ -12,7 +12,6 @@
         "@id": "_:RegenerationDetails",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#AttackDetails",
         "mudcombat:recoversPoints": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
-        "mudcombat:minDamage": 2,
-        "mudcombat:maxDamage": 2
+        "mudcombat:fixedDamage": 2
     }
 }
