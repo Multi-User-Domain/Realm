@@ -10,8 +10,8 @@
     "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/lesserThrall.json",
     "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
     "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
-    "n:fn": "LesserThrall",
-    "foaf:name": "LesserThrall",
+    "n:fn": "Lesser Thrall",
+    "foaf:name": "Lesser Thrall",
     "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/lesserThrall.png",
     "n:hasNote": "Without fully growing out their teeth, freshly converted vampires are not to be feared just yet.",
     "mudcombat:hasHealthPoints": {
