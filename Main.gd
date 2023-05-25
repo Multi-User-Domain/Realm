@@ -91,6 +91,7 @@ func set_game_phase(new_phase):
 		)
 		
 	elif game_phase == Globals.GAME_PHASE.BATTLE:
+		battle_scene.start_battle()
 		turn_manager.start()
 
 func display_battle_results():

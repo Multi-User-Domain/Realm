@@ -22,8 +22,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 
 func perform_action(url_endpoint, action_data, actor_data):
 	var headers = [
-		"Content-Type: application/json",
-		"Access-Control-Allow-Origin: '*'"
+		"Content-Type: application/json"
 	]
 	
 	# TODO: Godot 4 this should be JSON.stringify
@@ -43,7 +42,5 @@ func _on_LoadGameDataRequest_request_completed(result, response_code, headers, b
 
 
 func load_game_data():
-	var headers = [
-		"Access-Control-Allow-Origin: '*'"
-	]
+	var headers = []
 	load_game_data_request.request(SERVER_ENDPOINT + "cards/", headers, use_ssl)
