@@ -16,9 +16,7 @@ var card_scene = preload("res://obj/card/Card.tscn")
 func init(player1_jsonld, player2_jsonld):
 	# position the UI in segments
 	var viewport_size = get_viewport_rect().size
-	var y_margin = 5
 	var quarter_height = viewport_size.y * 0.25
-	var x_margin = 10
 	
 	# top 3 quarters for the arena
 	var three_quarters = quarter_height * 3
@@ -28,25 +26,39 @@ func init(player1_jsonld, player2_jsonld):
 	var half_portrait = portrait_size * 0.5
 	
 	# of that split into 4 (each player has an avatar and a card field)
-	var avatar_x_pos = x_margin + viewport_size.x * 0.5
-	var avatar_y_pos = y_margin + half_portrait.y
+	var avatar_x_pos = viewport_size.x * 0.4
+	var avatar_y_pos = half_portrait.y
 	player1_avatar.set_position(Vector2(avatar_x_pos, avatar_y_pos))
-	player1_cards.set_position(Vector2(x_margin, y_margin + arena_quarter))
-	player2_cards.set_position(Vector2(x_margin, y_margin + (arena_quarter * 2)))
-	player2_avatar.set_position(Vector2(avatar_x_pos, avatar_y_pos + (arena_quarter * 3)))
+	player1_cards.set_position(Vector2(0, arena_quarter))
+	player2_cards.set_position(Vector2(0, arena_quarter * 1.5))
+	# temporary place in the same place as their cards - will later be moved down the screen
+	player2_avatar.set_position(Vector2(avatar_x_pos, avatar_y_pos + (arena_quarter * 1.5)))
 	
 	# bottom quarter for player card actions
-	card_tray.set_position(Vector2(x_margin, y_margin + (arena_quarter * 2)))
+	card_tray.set_position(Vector2(0, arena_quarter * 2))
 	card_tray.cards_start_pos.position.y = card_tray.position.y
 	
 	# init players with JSON-LD data for the avatar, and their starting cards
 	player1_avatar.init_player(0, player1_jsonld)
 	player2_avatar.init_player(1, player2_jsonld)
 	
-	history_stream.set_position(Vector2(player1_avatar.position.x + 300, y_margin))
+	history_stream.set_position(Vector2(player1_avatar.position.x + 200, 0))
 	history_stream.set_size(Vector2(viewport_size.x - history_stream.rect_position.x, viewport_size.y - 5))
 	
 	card_tray.init_deck(game.load_cards_for_tray())
+
+func start_battle():
+	var viewport_size = get_viewport_rect().size
+	var portrait_size = player1_avatar.get_portrait_size()
+	var half_portrait = portrait_size * 0.5
+	var avatar_x_pos = viewport_size.x * 0.4
+	var avatar_y_pos = half_portrait.y
+	# top 3 quarters for the arena
+	var quarter_height = viewport_size.y * 0.25
+	var three_quarters = quarter_height * 3
+	var arena_quarter = three_quarters * 0.25
+	
+	player2_avatar.set_position(Vector2(avatar_x_pos, avatar_y_pos + (arena_quarter * 3.5)))
 
 func _add_card_for_player(player_index: int, jsonld_data):
 	var node = null
