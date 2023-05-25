@@ -16,17 +16,24 @@ const BUILT_IN_ACTIONS = {
 	POISON_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/poisonAttack.json",
 	GENERATE_CARD = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateCard.json",
 	HEALING_WORD = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healingWord.json",
-	HEAL_PARTY = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healParty.json"
+	HEAL_PARTY = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healParty.json",
+	LEECH_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/leechAttack.json",
+	REGEN_SELF = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/regenSelf.json",
+	FIRE_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/fireAttack.json",
+	GENERATE_CARD_WINGED_PARASITE = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateWingedParasite.json"
 }
 
 const BUILT_IN_ATTACK_ACTIONS = [
 	BUILT_IN_ACTIONS.BASIC_ATTACK,
-	BUILT_IN_ACTIONS.POISON_ATTACK
+	BUILT_IN_ACTIONS.POISON_ATTACK,
+	BUILT_IN_ACTIONS.LEECH_ATTACK,
+	BUILT_IN_ACTIONS.FIRE_ATTACK
 ]
 
 const BUILT_IN_SPELL_ACTIONS = [
 	BUILT_IN_ACTIONS.HEALING_WORD,
-	BUILT_IN_ACTIONS.HEAL_PARTY
+	BUILT_IN_ACTIONS.HEAL_PARTY,
+	BUILT_IN_ACTIONS.REGEN_SELF
 ]
 
 const BUILT_IN_EFFECTS = {
