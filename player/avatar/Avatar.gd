@@ -7,7 +7,7 @@ onready var health_bar = get_node("HealthBar")
 # deck prompt is the little card icon indicating how many cards are left in the deck
 onready var deck_prompt = get_node("DeckPrompt")
 onready var card_manager = get_node("CardManager")
-export var default_hp = 100
+export var default_hp = 50
 export var player_index = 0
 var jsonld_store = {}
 
