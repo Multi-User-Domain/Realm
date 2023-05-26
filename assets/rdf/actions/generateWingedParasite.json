@@ -10,46 +10,35 @@
     },
     "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateCard.json",
     "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action",
-    "n:fn": "Generate Card",
+    "n:fn": "Generate Winged Parasite",
     "n:hasNote": "Has a chance to generate a card and place it in the player's deck",
     "twt2023:generatesCardFrom": [
         {
+            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/wingedParasite.json",
             "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
             "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
-            "n:fn": "Zombie",
-            "foaf:name": "Zombie",
-            "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/zombie.png",
-            "n:hasNote": "Braaaiiinnnss",
+            "n:fn": "Winged Parasite",
+            "foaf:name": "Winged Parasite",
+            "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/wingedParasite.png",
+            "n:hasNote": "Even the thought of it makes me itch.",
             "mudcombat:hasHealthPoints": {
-                "@id": "_:ZombieHP",
+                "@id": "_:wingedParasiteHP",
                 "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
-                "mudcombat:maximumP": 5,
-                "mudcombat:currentP": 5
+                "mudcombat:maximumP": 4,
+                "mudcombat:currentP": 4
             },
             "mudcard:hasAvailableInstantActions": [
                 {
-                    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
+                    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/leechAttack.json"
                 }
             ],
             "mudcombat:hasResistances": [
                 {
                     "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#PoisonDamage",
-                    "mudcombat:resistanceValue": 0.75
-                },
-                {
-                    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#NecraticDamage",
-                    "mudcombat:resistanceValue": 1.0
-                },
-                {
-                    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#RadiantDamage",
-                    "mudcombat:resistanceValue": -1.0
-                },
-                {
-                    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#FireDamage",
-                    "mudcombat:resistanceValue": -0.75
+                    "mudcombat:resistanceValue": 0.5
                 }
             ]
         }
     ],
-    "twt2023:generateCardProbability": 0.1
+    "twt2023:generateCardProbability": 1
 }

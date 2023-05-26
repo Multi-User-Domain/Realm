@@ -16,17 +16,24 @@ const BUILT_IN_ACTIONS = {
 	POISON_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/poisonAttack.json",
 	GENERATE_CARD = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateCard.json",
 	HEALING_WORD = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healingWord.json",
-	HEAL_PARTY = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healParty.json"
+	HEAL_PARTY = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healParty.json",
+	LEECH_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/leechAttack.json",
+	REGEN_SELF = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/regenSelf.json",
+	FIRE_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/fireAttack.json",
+	GENERATE_CARD_WINGED_PARASITE = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateWingedParasite.json"
 }
 
 const BUILT_IN_ATTACK_ACTIONS = [
 	BUILT_IN_ACTIONS.BASIC_ATTACK,
-	BUILT_IN_ACTIONS.POISON_ATTACK
+	BUILT_IN_ACTIONS.POISON_ATTACK,
+	BUILT_IN_ACTIONS.LEECH_ATTACK,
+	BUILT_IN_ACTIONS.FIRE_ATTACK
 ]
 
 const BUILT_IN_SPELL_ACTIONS = [
 	BUILT_IN_ACTIONS.HEALING_WORD,
-	BUILT_IN_ACTIONS.HEAL_PARTY
+	BUILT_IN_ACTIONS.HEAL_PARTY,
+	BUILT_IN_ACTIONS.REGEN_SELF
 ]
 
 const BUILT_IN_EFFECTS = {
@@ -80,6 +87,7 @@ const AVATAR_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json": "res://assets/rdf/avatar/ospreyWithers.json",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/sumeri.json": "res://assets/rdf/avatar/sumeri.json",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/arthurPendragon.json": "res://assets/rdf/avatar/arthurPendragon.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/igneusBalvadere.json": "res://assets/rdf/avatar/igneusBalvadere.json",
 }
 
 const PORTRAIT_CACHE = {
@@ -88,6 +96,7 @@ const PORTRAIT_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/ghost.png": "res://assets/portrait/ghost.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/waylan.png": "res://assets/portrait/waylan.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/kingArthur.png": "res://assets/portrait/kingArthur.png",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/igneusBalvadere.png": "res://assets/portrait/igneusBalvadere.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/gromm.png": "res://assets/portrait/card/gromm.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/skeletalWarrior.png": "res://assets/portrait/card/skeletalWarrior.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/zombie.png": "res://assets/portrait/card/zombie.png",
@@ -114,6 +123,14 @@ const PORTRAIT_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/dwarfHunter.png": "res://assets/portrait/card/dwarfHunter.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/artimancer.png": "res://assets/portrait/card/artimancer.png",
 	
+
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/flameImp.png": "res://assets/portrait/card/flameImp.png",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/lesserThrall.png": "res://assets/portrait/card/lesserThrall.png",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/lycanthropeAlpha.png": "res://assets/portrait/card/lycanthropeAlpha.png",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/lycanthropePup.png": "res://assets/portrait/card/lycanthropePup.png",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/swarmMother.png": "res://assets/portrait/card/swarmMother.png",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/wingedParasite.png": "res://assets/portrait/card/wingedParasite.png",
+
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/event/travellerArrives.png": "res://assets/portrait/event/travellerArrives.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/event/unexpectedDiscovery.png": "res://assets/portrait/event/unexpectedDiscovery.png",
 }
@@ -128,11 +145,21 @@ const EVENT_CACHE = {
 }
 
 const CARD_CACHE = {
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/flameImp.json": "res://assets/rdf/monsters/flameImp.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/lesserThrall.json": "res://assets/rdf/monsters/lesserThrall.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/lycanthropeAlpha.json": "res://assets/rdf/monsters/lycanthropeAlpha.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/lycanthropePup.json": "res://assets/rdf/monsters/lycanthropePup.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/swarmMother.json": "res://assets/rdf/monsters/swarmMother.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/wingedParasite.json": "res://assets/rdf/monsters/wingedParasite.json",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/monsters/zombie.json": "res://assets/rdf/monsters/zombie.json",
-	
+
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json": "res://assets/rdf/actions/basicAttack.json",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/poisonAttack.json": "res://assets/rdf/actions/poisonAttack.json",
-	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healingWord.json": "res://assets/rdf/actions/healingWord.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateWingedParasite.json": "res://assets/rdf/actions/generateWingedParasite.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/leechAttack.json": "res://assets/rdf/actions/leechAttack.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/regenSelf.json": "res://assets/rdf/actions/regenSelf.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/fireAttack.json": "res://assets/rdf/actions/fireAttack.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healingWord.json": "res://assets/rdf/actions/healingWord.json"
 }
 
 const CACHES = [

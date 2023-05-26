@@ -58,6 +58,8 @@ func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attacka
 				else:
 					print("ERR _handle_attack. Misformed action has typeDamage which doesn't include id key")
 					print(str(attack_data["mudcombat:hasAttackDetails"]))
+			if "mudcombat:recoversPoints" in attack_data:
+				_handle_healing(player_avatar_scene, attack_data)
 	
 	# attack the enemy avatar if they have no protection
 	if len(opponent_attackable_cards) == 0:
@@ -77,6 +79,8 @@ func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attacka
 		game.world_manager.record_death_by_attack(destroyed, actor_data, attack_data)
 		if "mudcombat:deathTriggersActions" in opponent_card:
 			_play_card_actions(player_avatar_scene, opponent_avatar_scene, opponent_card["mudcombat:deathTriggersActions"])
+		if "mudcombat:killTriggersActions" in actor_data:
+			_play_card_actions(player_avatar_scene, opponent_avatar_scene, actor_data["mudcombat:killTriggersActions"])
 	else:
 		_apply_card_effects(attack_data, opponent_card)
 
@@ -93,7 +97,8 @@ func _handle_healing(player_avatar_scene, data, heal_number=1):
 				break
 
 func _handle_spell(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, data):
-	if data["@id"] == Globals.BUILT_IN_ACTIONS.HEALING_WORD:
+	# TODO: regen self should be applied to healing self, not anyone friendly
+	if data["@id"] in [Globals.BUILT_IN_ACTIONS.HEALING_WORD, Globals.BUILT_IN_ACTIONS.REGEN_SELF]:
 		return _handle_healing(player_avatar_scene, data)
 	if data["@id"] == Globals.BUILT_IN_ACTIONS.HEAL_PARTY:
 		return _handle_healing(player_avatar_scene, data, -1)

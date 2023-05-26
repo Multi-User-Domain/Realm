@@ -8,15 +8,14 @@
         "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#",
         "twt2023": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#"
     },
-    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json",
+    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/regenSelf.json",
     "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action",
-    "n:fn": "Basic Attack",
-    "n:hasNote": "A basic attack dealing physical damage",
-    "mudcombat:hasAttackDetails": {
-        "@id": "_:BasicAttackDetails",
+    "n:fn": "Regeneration",
+    "n:hasNote": "Restores 2 health to self.",
+    "mudcombat:hasSpellDetails": {
+        "@id": "_:RegenerationDetails",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#AttackDetails",
-        "mudcombat:attackDamagesPoints": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
-        "mudcombat:fixedDamage": 3,
-        "mudombat:typeDamage": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#PhysicalDamage"
+        "mudcombat:recoversPoints": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+        "mudcombat:fixedDamage": 2
     }
 }
