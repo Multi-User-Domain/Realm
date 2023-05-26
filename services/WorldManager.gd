@@ -32,7 +32,7 @@ func add_new_sub_region(sub_region):
 func render_history():
 	var history_text = ""
 	for item in history:
-		history_text += item["n:hasNote"] + "\n"
+		history_text += item["n:hasNote"] + "\n\n"
 	game.battle_scene.history_stream.set_text(history_text)
 
 func add_to_history(recorded_history_item):
