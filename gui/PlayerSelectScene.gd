@@ -98,7 +98,7 @@ func confirm_player_selection():
 	set_selected_avatar(_selected_avatar_row_idx, _selected_avatar_col_idx + 1)
 	ava.get_node("..").remove_child(ava)
 	ava.queue_free()
-	player_avatars[ava_r][ava_c] = null
+	player_avatars[ava_r].remove(ava_c)
 
 func _process(delta):
 	# only process input if the scene is active
