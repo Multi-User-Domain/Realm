@@ -75,6 +75,21 @@ func start_battle():
 	
 	player2_avatar.set_position(Vector2(avatar_x_pos, avatar_y_pos + (arena_quarter * 3.5)))
 
+func _position_card_in_node_for_active_cards(node, card):
+	# positions the card in a tray of active cards
+	# makes sure not to overlap cards
+	for i in range(node.get_child_count() + 1):
+		var candidate_pos = node.position + Vector2((i * game.get_card_size().x) * 1.2, 0)
+		var can_place_here = true
+		for peer in node.get_children():
+			if peer.position.x - candidate_pos.x == 0:
+				can_place_here = false
+				break
+		if can_place_here:
+			card.set_position(candidate_pos)
+			return
+	card.set_position(node.position + Vector2(0, 0))
+
 func _add_card_for_player(player_index: int, jsonld_data):
 	var node = null
 	var player_cm = null
@@ -88,7 +103,7 @@ func _add_card_for_player(player_index: int, jsonld_data):
 	# instantiate card and add to scene
 	var card = card_scene.instance()
 	card.scale = card.scale * game.card_scale
-	card.set_position(node.position + Vector2((node.get_child_count() * game.get_card_size().x) * 1.2, 0))
+	_position_card_in_node_for_active_cards(node, card)
 	node.add_child(card)
 	
 	# init card data
