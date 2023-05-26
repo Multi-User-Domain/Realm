@@ -62,6 +62,10 @@ func tear_down():
 			avatar.queue_free()
 	
 	player_avatars = []
+	selected_avatar = null
+	confirm_selected_players = []
+	_selected_avatar_row_idx = null
+	_selected_avatar_col_idx = null
 	get_node("Heading").set_visible(false)
 
 func set_selected_avatar(row_idx, col_idx):
@@ -89,6 +93,7 @@ func set_selected_avatar(row_idx, col_idx):
 func confirm_player_selection():
 	confirm_selected_players.append(selected_avatar.jsonld_store)
 	if len(confirm_selected_players) == 2:
+		game.selected_players = confirm_selected_players
 		game.set_game_phase(Globals.GAME_PHASE.DECK_BUILDING)
 		return
 	

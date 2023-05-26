@@ -65,7 +65,7 @@ func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attacka
 	if len(opponent_attackable_cards) == 0:
 		opponent_avatar_scene.health_bar.remove_health(attack_dmg)
 		if opponent_avatar_scene.health_bar.health_value <= 0:
-			game.end_battle()
+			game.end_battle(player_avatar_scene)
 		return
 	
 	# otherwise attack the first card
@@ -173,7 +173,10 @@ func _play_card_actions(player_avatar_scene, opponent_avatar_scene, actions=null
 		elif action["@id"] == Globals.BUILT_IN_ACTIONS.GENERATE_CARD:
 			_handle_generate_card(player_avatar_scene, opponent_avatar_scene, action)
 		elif action["@id"] in Globals.BUILT_IN_SPELL_ACTIONS:
-			_handle_spell(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, action)
+			_handle_spell(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, action)\
+		# NOTE: please ignore this vulnerability :-)
+		elif action["@id"] == "_:SPECIAL_RESET_GAME":
+			game.set_game_phase(Globals.GAME_PHASE.PLAYER_SELECTION)
 		else:
 			_handle_unknown_action(actor, action)
 

@@ -70,6 +70,10 @@ func record_defense_roll_success(roller, roll):
 			"n:hasNote": roller["n:fn"] + " was wounded by an additional " + str(damage_evaded) + "%  of damage because of their weakness " + roll["n:fn"]
 		})
 
+func clear_history():
+	history = []
+	render_history()
+
 # TODO: seriously unoptimised
 func _exhaustively_search_world_data_for_obj(world_data, urlid, search_chain=[]):
 	"""

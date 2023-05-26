@@ -17,6 +17,7 @@ var full_card_size = Vector2(128, 176)
 export var card_scale = 0.5
 
 var game_phase = null
+var selected_players = [] # will be set by the player select scene
 
 # preload scenes that we want to instantiate programatically
 var card_scene = preload("res://obj/card/Card.tscn")
@@ -72,6 +73,9 @@ func set_game_phase(new_phase):
 	# tear down the old phase
 	if game_phase == Globals.GAME_PHASE.PLAYER_SELECTION:
 		player_select_scene.tear_down()
+	elif game_phase == Globals.GAME_PHASE.BATTLE:
+		world_manager.clear_history()
+		battle_scene.tear_down()
 	
 	game_phase = new_phase
 	
@@ -79,7 +83,6 @@ func set_game_phase(new_phase):
 	if game_phase == Globals.GAME_PHASE.PLAYER_SELECTION:
 		player_select_scene.init()
 	elif game_phase == Globals.GAME_PHASE.DECK_BUILDING:
-		var selected_players = player_select_scene.confirm_selected_players
 		if len(selected_players) < 2:
 			selected_players = [
 				load_avatar_from_jsonld(Globals.AVATAR_CACHE["https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/avatar/ospreyWithers.json"]),
@@ -89,15 +92,16 @@ func set_game_phase(new_phase):
 			selected_players[0],
 			selected_players[1]
 		)
+		battle_scene.set_visible(true)
 		
 	elif game_phase == Globals.GAME_PHASE.BATTLE:
 		battle_scene.start_battle()
 		turn_manager.start()
+	
+	elif game_phase == Globals.GAME_PHASE.BATTLE_SUMMARY:
+		HUD.display_battle_summary()
 
-func display_battle_results():
-	var recorded_history = world_manager.get_rdf_property("twt2023:hasRecordedHistory")
-
-func end_battle():
-	game_phase = Globals.GAME_PHASE.BATTLE_SUMMARY
+func end_battle(winner_avatar_scene):
 	turn_manager.stop()
-	display_battle_results()
+	battle_scene.winner = winner_avatar_scene
+	set_game_phase(Globals.GAME_PHASE.BATTLE_SUMMARY)

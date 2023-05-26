@@ -8,6 +8,7 @@ onready var player2_avatar = get_node("Player2Avatar")
 onready var history_stream = get_node("HistoryStream")
 onready var card_tray = get_node("CardTray")
 
+var winner = null
 var selected_card = null
 
 # preload scenes that we want to instantiate programatically
@@ -39,6 +40,7 @@ func init(player1_jsonld, player2_jsonld):
 	card_tray.cards_start_pos.position.y = card_tray.position.y
 	
 	# init players with JSON-LD data for the avatar, and their starting cards
+	winner = null
 	player1_avatar.init_player(0, player1_jsonld)
 	player2_avatar.init_player(1, player2_jsonld)
 	
@@ -46,6 +48,19 @@ func init(player1_jsonld, player2_jsonld):
 	history_stream.set_size(Vector2(viewport_size.x - history_stream.rect_position.x, viewport_size.y - 5))
 	
 	card_tray.init_deck(game.load_cards_for_tray())
+
+func tear_down():
+	for card in player1_cards.get_children():
+		player1_cards.remove_child(card)
+		card.queue_free()
+	for card in player2_cards.get_children():
+		player2_cards.remove_child(card)
+		card.queue_free()
+	player1_avatar.card_manager.clear_cards()
+	player2_avatar.card_manager.clear_cards()
+	winner = null
+	selected_card = null
+	set_visible(false)
 
 func start_battle():
 	var viewport_size = get_viewport_rect().size

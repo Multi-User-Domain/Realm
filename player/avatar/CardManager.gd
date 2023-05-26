@@ -26,6 +26,12 @@ func add_to_deck(card_jsonld):
 		avatar.deck_prompt.set_visible(true)
 		avatar.deck_prompt.text_content.set_text(str(len(deck)))
 
+func clear_cards():
+	active_cards = []
+	hand = []
+	deck = []
+	discard_pile = []
+
 func add_to_active_cards(card_jsonld):
 	active_cards.append(card_jsonld)
 
