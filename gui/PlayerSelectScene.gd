@@ -89,6 +89,7 @@ func set_selected_avatar(row_idx, col_idx):
 	_selected_avatar_col_idx = col_idx
 	selected_avatar = player_avatars[row_idx][col_idx]
 	selected_avatar.animate_select()
+	get_node("Heading").set_text(selected_avatar.get_rdf_property("n:fn"))
 
 func confirm_player_selection():
 	confirm_selected_players.append(selected_avatar.jsonld_store)
