@@ -16,8 +16,8 @@
     "n:hasNote": "Whoever survives the curse this long without being consumed or hunted down is not to be trifled with.",
     "mudcombat:hasHealthPoints": {
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
-        "mudcombat:maximumP": 15,
-        "mudcombat:currentP": 7
+        "mudcombat:maximumP": 40,
+        "mudcombat:currentP": 20
     },
     "mudcard:hasAvailableInstantActions": [
         {

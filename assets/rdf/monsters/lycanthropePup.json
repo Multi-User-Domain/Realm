@@ -16,8 +16,8 @@
     "n:hasNote": "Inconceivably, some receive this affliction voluntarily.",
     "mudcombat:hasHealthPoints": {
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
-        "mudcombat:maximumP": 10,
-        "mudcombat:currentP": 5
+        "mudcombat:maximumP": 15,
+        "mudcombat:currentP": 8
     },
     "mudcard:hasAvailableInstantActions": [
         {

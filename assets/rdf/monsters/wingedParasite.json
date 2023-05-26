@@ -17,8 +17,8 @@
     "mudcombat:hasHealthPoints": {
         "@id": "_:wingedParasiteHP",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
-        "mudcombat:maximumP": 4,
-        "mudcombat:currentP": 4
+        "mudcombat:maximumP": 6,
+        "mudcombat:currentP": 6
     },
     "mudcard:hasAvailableInstantActions": [
         {

@@ -17,8 +17,8 @@
     "mudcombat:hasHealthPoints": {
         "@id": "_:SwarmMotherHP",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
-        "mudcombat:maximumP": 7,
-        "mudcombat:currentP": 7
+        "mudcombat:maximumP": 15,
+        "mudcombat:currentP": 15
     },
     "mudcard:hasAvailableInstantActions": [
         {
