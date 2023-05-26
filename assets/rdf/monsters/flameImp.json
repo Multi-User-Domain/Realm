@@ -17,8 +17,8 @@
     "mudcombat:hasHealthPoints": {
         "@id": "_:FlameImpHP",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
-        "mudcombat:maximumP": 2,
-        "mudcombat:currentP": 2
+        "mudcombat:maximumP": 5,
+        "mudcombat:currentP": 5
     },
     "mudcard:hasAvailableInstantActions": [
         {
