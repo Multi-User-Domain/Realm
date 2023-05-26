@@ -11,6 +11,7 @@ var jsonld_store = null
 var active_player_scene = null
 var opponent_scene = null
 var selected_choice_idx = null
+var restart_clock = false
 
 func _get_sprite_size():
 	return Vector2(512, 512) * sprite_scale
@@ -51,6 +52,10 @@ func get_title_from_event(event_jsonld):
 func configure(event_jsonld, active_player_index=0):
 	if not "mudlogic:hasChoices" in event_jsonld:
 		return
+	
+	restart_clock = not game.turn_manager.is_stopped()
+	if restart_clock:
+		game.turn_manager.stop()
 	
 	# configure the active player
 	if active_player_index == 0:
@@ -134,3 +139,6 @@ func _choice_button_pressed(choice_jsonld):
 		active_player_scene, opponent_scene, [[choice_jsonld, choice_jsonld]]
 	)
 	wd.hide()
+	
+	if restart_clock:
+		game.turn_manager.restart()
