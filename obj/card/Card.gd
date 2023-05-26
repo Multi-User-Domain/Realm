@@ -5,7 +5,8 @@ extends Node2D
 
 onready var game = get_tree().current_scene
 onready var sprite = get_node("ColorRect/MarginContainer/Sprite")
-onready var name_label = get_node("ColorRect/MarginContainer2/Description")
+onready var name_label = get_node("ColorRect/MarginContainerName/Title")
+onready var description_label = get_node("ColorRect/MarginContainer2/Description")
 var jsonld_store = {}
 
 # for controlling the animation of card selection
@@ -55,6 +56,7 @@ func init_card(card_jsonld, card_manager):
 		sprite.set_scale(Vector2(0.125, 0.125))
 	
 	name_label.set_text(get_rdf_property("n:fn"))
+	description_label.set_text(get_rdf_property("n:hasNote"))
 
 # TODO: find a more DRY way to do this across nodes
 func get_rdf_property(property):
