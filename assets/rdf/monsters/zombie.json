@@ -45,8 +45,7 @@
     ],
     "mudcombat:killTriggersActions": [
         {
-            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateCard.json",
-            "twt2023:generateCardProbability": 1.0
+            "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateCard.json"
         }
     ]
 }
