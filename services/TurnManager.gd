@@ -58,6 +58,8 @@ func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attacka
 				else:
 					print("ERR _handle_attack. Misformed action has typeDamage which doesn't include id key")
 					print(str(attack_data["mudcombat:hasAttackDetails"]))
+			if "mudcombat:recoversPoints" in attack_data:
+				_handle_healing(player_avatar_scene, attack_data, attack_dmg)
 	
 	# attack the enemy avatar if they have no protection
 	if len(opponent_attackable_cards) == 0:
