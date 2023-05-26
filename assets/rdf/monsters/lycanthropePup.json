@@ -17,7 +17,7 @@
     "mudcombat:hasHealthPoints": {
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
         "mudcombat:maximumP": 10,
-        "mudcombat:currentP": 3
+        "mudcombat:currentP": 5
     },
     "mudcard:hasAvailableInstantActions": [
         {
