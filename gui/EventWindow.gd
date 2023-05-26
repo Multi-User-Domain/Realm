@@ -64,7 +64,7 @@ func configure(event_jsonld, active_player_index=0):
 	wd.set_title(get_title_from_event(event_jsonld))
 	if "foaf:depiction" in event_jsonld:
 		# function initialises the Avatar with new player information
-		sprite.set_texture(game.rdf_manager.get_texture_from_jsonld(event_jsonld["foaf:depiction"]))
+		sprite.set_texture(game.rdf_manager.get_texture_from_jsonld(self, event_jsonld["foaf:depiction"]))
 		# TODO: https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/1
 		# 128, 128 with the in-built textures
 		# portrait_sprite.set_scale(Vector2(0.25, 0.25))

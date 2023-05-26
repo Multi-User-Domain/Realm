@@ -10,6 +10,7 @@ extends Node
 const DEFAULT_DAMAGE_TYPE = "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#PhysicalDamage"
 const DEFAULT_HAND_SIZE = 2
 const DEFAULT_ATTACK_DAMAGE = 3
+const DEFAULT_AVATAR_HP = 50
 
 const BUILT_IN_ACTIONS = {
 	BASIC_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json",

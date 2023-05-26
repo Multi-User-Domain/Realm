@@ -63,3 +63,7 @@ margin_right = 124.0
 margin_bottom = 71.0
 theme = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+
+[node name="ImageRequest" type="HTTPRequest" parent="."]
+
+[connection signal="request_completed" from="ImageRequest" to="." method="_on_ImageRequest_request_completed"]

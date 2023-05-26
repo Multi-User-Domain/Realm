@@ -7,7 +7,6 @@ onready var health_bar = get_node("HealthBar")
 # deck prompt is the little card icon indicating how many cards are left in the deck
 onready var deck_prompt = get_node("DeckPrompt")
 onready var card_manager = get_node("CardManager")
-export var default_hp = 50
 export var player_index = 0
 var jsonld_store = {}
 
@@ -24,11 +23,7 @@ func _init_jsonld_data(character_jsonld):
 	if not "n:fn" in jsonld_store:
 		jsonld_store["n:fn"] = "Avatar"
 	
-	if not "mudcombat:hasHealthPoints" in jsonld_store:
-		jsonld_store["mudcombat:hasHealthPoints"] = {
-			"mudcombat:maximumP": default_hp,
-			"mudcombat:currentP": default_hp
-		}
+	jsonld_store = game.rdf_manager.parse_health_points(jsonld_store)
 
 func _init_health_bar():
 	var health_points = get_rdf_property("mudcombat:hasHealthPoints")
@@ -56,7 +51,7 @@ func init_sprite(character_jsonld=jsonld_store):
 	_init_jsonld_data(character_jsonld)
 	if "foaf:depiction" in character_jsonld:
 		# function initialises the Avatar with new player information
-		portrait_sprite.set_texture(game.rdf_manager.get_texture_from_jsonld(character_jsonld["foaf:depiction"]))
+		portrait_sprite.set_texture(game.rdf_manager.get_texture_from_jsonld(self, character_jsonld["foaf:depiction"]))
 		# TODO: https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/1
 		# 128, 128 with the in-built textures
 		portrait_sprite.set_scale(Vector2(0.25, 0.25))

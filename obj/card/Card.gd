@@ -7,6 +7,7 @@ onready var game = get_tree().current_scene
 onready var sprite = get_node("ColorRect/MarginContainer/Sprite")
 onready var name_label = get_node("ColorRect/MarginContainerName/Title")
 onready var description_label = get_node("ColorRect/MarginContainer2/Description")
+onready var image_request = get_node("ImageRequest")
 var jsonld_store = {}
 
 # for controlling the animation of card selection
@@ -34,6 +35,8 @@ func _init_jsonld_data(card_jsonld):
 	
 	if not "@id" in jsonld_store:
 		jsonld_store["@id"] = "_Card_" + jsonld_store["n:fn"] + str(randi())
+	
+	jsonld_store = game.rdf_manager.parse_health_points(jsonld_store)
 
 func init_card(card_jsonld, card_manager):
 	if len(card_jsonld.keys()) == 1 and "@id" in card_jsonld:
@@ -48,15 +51,21 @@ func init_card(card_jsonld, card_manager):
 	self.card_manager = card_manager
 	_init_jsonld_data(card_jsonld)
 	
-	# TODO: https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/1
 	var depiction = get_rdf_property("foaf:depiction")
 	if depiction != null:
-		sprite.set_texture(game.rdf_manager.get_texture_from_jsonld(depiction))
-		# 128, 128 with the in-built textures
-		sprite.set_scale(Vector2(0.125, 0.125))
+		var tex = game.rdf_manager.get_texture_from_jsonld(self, depiction)
+		# NOTE: texture may be null because it's being fetched from server asynchronously
+		if tex != null:
+			_set_and_scale_sprite_texture(tex)
 	
 	name_label.set_text(get_rdf_property("n:fn"))
 	description_label.set_text(get_rdf_property("n:hasNote"))
+
+func _set_and_scale_sprite_texture(tex):
+	# TODO: https://github.com/Multi-User-Domain/games-transformed-jam-2023/issues/1
+	sprite.set_texture(tex)
+	# 128, 128 with the in-built textures
+	sprite.set_scale(Vector2(0.125, 0.125))
 
 # TODO: find a more DRY way to do this across nodes
 func get_rdf_property(property):
@@ -131,3 +140,22 @@ func apply_effects():
 		
 		if effect["mudlogic:expiresAfterOccurences"] <= 0:
 			remove_effect(effect)
+
+func get_remote_image(depiction_url):
+	var http_error = image_request.request(depiction_url, PoolStringArray(), false)
+	if http_error != OK:
+		print("ERR get_texture_from_jsonld: An error occurred in the HTTP request.")
+
+func _on_ImageRequest_request_completed(result, response_code, headers, body):
+	var image = Image.new()
+	# TODO: handle other image file types
+	var image_error = image.load_png_from_buffer(body)
+	if image_error != OK:
+		print("An error occurred while trying to display the image.")
+	
+	var texture = ImageTexture.new()
+	texture.create_from_image(image)
+	
+	# Assign to the child TextureRect node
+	# TODO: sprite is not re-rendered immediately after being set
+	_set_and_scale_sprite_texture(texture)
