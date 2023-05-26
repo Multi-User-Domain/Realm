@@ -177,6 +177,31 @@
                         "mudcombat:defenceRollSuccessRate": 0.1
                     }
                 ]
+            },
+            {
+                "@context": {
+                    "n": "http://www.w3.org/2006/vcard/ns#",
+                    "foaf": "http://xmlns.com/foaf/0.1/",
+                    "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+                    "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+                    "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+                    "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
+                },
+                "@id": "_:ArthurCard6",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Location",
+                "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+                "n:fn": "Monastic Holds",
+                "foaf:name": "Monastic Holds",
+                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/monasticHolds.png",
+                "n:hasNote": "These mountain holds are as peaceful and inaccessible. They make for a safe haven",
+                "mudcard:hasAvailableInstantActions": [
+                    
+                ],
+                "twt2023:hasAvailableEvents": [
+                    {
+                        "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/travellerArrives.json"
+                    }
+                ]
             }
         ]
     }
