@@ -79,6 +79,8 @@ func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attacka
 		game.world_manager.record_death_by_attack(destroyed, actor_data, attack_data)
 		if "mudcombat:deathTriggersActions" in opponent_card:
 			_play_card_actions(player_avatar_scene, opponent_avatar_scene, opponent_card["mudcombat:deathTriggersActions"])
+		if "mudcombat:killTriggersActions" in actor_data:
+			_play_card_actions(player_avatar_scene, opponent_avatar_scene, actor_data["mudcombat:killTriggersActions"])
 	else:
 		_apply_card_effects(attack_data, opponent_card)
 
