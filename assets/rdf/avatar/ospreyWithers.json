@@ -163,6 +163,32 @@
                         "twt2023:generateCardProbability": 0.2
                     }
                 ]
+            },
+            {
+                "@id": "_:OspreyCard6",
+                "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/muchar.ttl#Character",
+                "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
+                "n:fn": "Raven",
+                "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/rogue.png",
+                "n:hasNote": "This mysterious rogue seems old beyond his years..",
+                "mudcard:hasAvailableInstantActions": [
+                    {
+                        "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
+                    }
+                ],
+                "twt2023:hasAvailableEvents": [
+                    {
+                        "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/unexpectedDiscovery.json"
+                    }
+                ],
+                "mudcombat:hasDefenceRolls": [
+                    {
+                        "@id": "_:Dodge",
+                        "n:fn": "Dodge",
+                        "mudcombat:resistanceValue": 0.4,
+                        "mudcombat:defenceRollSuccessRate": 0.8
+                    }
+                ]
             }
         ]
     }
