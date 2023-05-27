@@ -1,0 +1,43 @@
+{
+    "@context": {
+        "n": "http://www.w3.org/2006/vcard/ns#",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+        "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+        "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#",
+        "twt2023": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#"
+    },
+    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/suspiciousSandwich.json",
+    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Event",
+    "n:fn": "A Suspicious Sandwich",
+    "n:hasNote": "A traveller comes bearing a free sandwich, but something about it feels off",
+    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/waylan.png",
+    "twt2023:maximumUses": 1,
+    "mudlogic:hasChoices": [
+        {
+            "n:fn": "Accept",
+            "@id": "_:PoisonSelf",
+            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action",
+            "mudcombat:imbuesEffects": [
+                {
+                    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/effects/poison.json",
+                    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Effect",
+                    "mudlogic:expiresAfterOccurences": 3,
+                    "mudcombat:hasAttackDetails": {
+                        "@id": "_:BasicAttackDetails",
+                        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#AttackDetails",
+                        "mudcombat:attackDamagesPoints": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+                        "mudcombat:fixedDamage": 1,
+                        "mudombat:typeDamage": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#PoisonDamage"
+                    }
+                }
+            ],
+            "twt2023:targetCasterWithEffects": true
+        },
+        {
+            "n:fn": "Reject",
+            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action"
+        }
+    ]
+}
