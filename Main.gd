@@ -47,8 +47,8 @@ func load_cards_for_tray():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# TODO: set a random seed - do for prod
-	# randomize()
+	# set a random seed
+	randomize()
 	
 	audio_stream_player.play()
 	
