@@ -156,6 +156,10 @@ func _apply_card_effects(actor_data, attack_data, target_card_urlid=null):
 			target_card["mudcombat:dealExtraDamage"] = effect["mudcombat:dealExtraDamage"]
 			target_card_scene.card_manager.replace_card_jsonld(target_card_urlid, target_card)
 		
+		elif effect["@id"] == Globals.BUILT_IN_EFFECTS.INCREASE_HEALTH:
+			var target_card = target_card_scene.card_manager._get_active_card_with_urlid(target_card_urlid)
+			target_card_scene.card_manager.change_maximum_hp_by([target_card_urlid], effect["mudcombat:increaseHealth"])
+		
 		# TODO: support effects on either player
 		# TODO: support other effects
 

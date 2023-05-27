@@ -71,6 +71,11 @@
                         "@id": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#NecraticDamage",
                         "mudcombat:resistanceValue": -0.75
                     }
+                ],
+                "twt2023:hasAvailableEvents": [
+                    {
+                        "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/becomeVampire.json"
+                    }
                 ]
             },
             {

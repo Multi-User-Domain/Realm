@@ -40,6 +40,7 @@ const BUILT_IN_SPELL_ACTIONS = [
 const BUILT_IN_EFFECTS = {
 	POISON =  "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/effects/poison.json",
 	INCREASE_DAMAGE = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/effects/selfIncreaseDamage.json",
+	INCREASE_HEALTH = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/effects/selfIncreaseHealth.json",
 }
 
 const GAME_PHASE = {
@@ -145,6 +146,7 @@ const EVENT_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/travellerArrives.json": "res://assets/rdf/events/travellerArrives.json",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/unexpectedDiscovery.json": "res://assets/rdf/events/unexpectedDiscovery.json",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/suspiciousSandwich.json": "res://assets/rdf/events/suspiciousSandwich.json",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/becomeVampire.json": "res://assets/rdf/events/becomeVampire.json",
 }
 
 const CARD_CACHE = {

@@ -89,7 +89,7 @@ func get_cards_to_play():
 	
 	# useful for debugging
 	for card in hand:
-		if card["@id"] == "_:CoreOptional3":
+		if card["@id"] == "_:ArthurCard2":
 			return [card]
 	
 	# if there are no active characters, prioritise that
@@ -229,4 +229,14 @@ func heal_cards(urlids_to_damage, damage):
 				var hp = card["mudcombat:hasHealthPoints"]
 				card["mudcombat:hasHealthPoints"]["mudcombat:currentP"] = min(
 					hp["mudcombat:maximumP"], hp["mudcombat:currentP"] + damage
+				)
+
+func change_maximum_hp_by(urlids_to_change, hp_change):
+	for card in active_cards:
+		if card["@id"] in urlids_to_change:
+			if "mudcombat:hasHealthPoints" in card:
+				var hp = card["mudcombat:hasHealthPoints"]
+				card["mudcombat:hasHealthPoints"]["mudcombat:maximumP"] += hp_change
+				card["mudcombat:hasHealthPoints"]["mudcombat:currentP"] = min(
+					hp["mudcombat:maximumP"], hp["mudcombat:currentP"] + hp_change
 				)
