@@ -45,18 +45,21 @@ func _get_attackable_cards(cards):
 			attackable_cards.append(card)
 	return attackable_cards
 
-func _get_attack_dmg(attack_data):
+func _get_attack_dmg(actor_data, attack_data):
+	var base_dmg = 0
+	if actor_data != null and "mudcombat:dealExtraDamage" in actor_data:
+		base_dmg += actor_data["mudcombat:dealExtraDamage"]
 	if attack_data != null:
 		if "mudcombat:hasAttackDetails" in attack_data:
 			var attack_details = attack_data["mudcombat:hasAttackDetails"]
 			if "mudcombat:fixedDamage" in attack_details:
-				return attack_details["mudcombat:fixedDamage"]
+				return base_dmg + attack_details["mudcombat:fixedDamage"]
 			if "mudcombat:minDamage" in attack_details and "mudcombat:maxDamage" in attack_details:
-				return (randi() % attack_details["mudcombat:maxDamage"]) + attack_details["mudcombat:minDamage"]
-	return Globals.DEFAULT_ATTACK_DAMAGE
+				return base_dmg + (randi() % attack_details["mudcombat:maxDamage"]) + attack_details["mudcombat:minDamage"]
+	return base_dmg + Globals.DEFAULT_ATTACK_DAMAGE
 
 func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, attack_data, actor_data):
-	var attack_dmg = _get_attack_dmg(attack_data)
+	var attack_dmg = _get_attack_dmg(actor_data, attack_data)
 	var damage_type = Globals.DEFAULT_DAMAGE_TYPE
 	if attack_data != null:
 		if "mudcombat:hasAttackDetails" in attack_data:
@@ -94,7 +97,7 @@ func _handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attacka
 
 # -1 for healing all valid targets
 func _handle_healing(player_avatar_scene, data, heal_number=1):
-	var attack_dmg = _get_attack_dmg(data)
+	var attack_dmg = _get_attack_dmg(null, data)
 	var valid_targets = _get_attackable_cards(player_avatar_scene.card_manager.active_cards)
 	for card in valid_targets:
 		var hp = card["mudcombat:hasHealthPoints"]
@@ -132,20 +135,26 @@ func _apply_card_effects(actor_data, attack_data, target_card_urlid=null):
 			effects = attack_data["mudcombat:hasAttackDetails"]["mudcombat:imbuesEffects"]
 	
 	for effect in effects:
+		if target_card_urlid == null:
+			continue
+		var target_card_scene = game.battle_scene.get_card_with_urlid(target_card_urlid)
+		if target_card_scene == null:
+			print("ERR _apply_card_effects couldn't find card scene with urlid " + target_card_urlid)
+			continue
+		
 		if effect["@id"] == Globals.BUILT_IN_EFFECTS.POISON:
-			if target_card_urlid == null:
-				continue
-			var opponent_card_scene = game.battle_scene.get_card_with_urlid(target_card_urlid)
-			if opponent_card_scene != null:
-				opponent_card_scene.add_effect(effect)
-				if actor_data["@id"] == target_card_urlid:
-					game.world_manager.add_to_history({
-						"@id": "_:PoisonSelf_" + str(randi()),
-						"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
-						"n:hasNote": actor_data["n:fn"] + " poisoned themselves!"
-					})
-			else:
-				print("ERR _apply_card_effects couldn't find card scene with urlid " + target_card_urlid)
+			target_card_scene.add_effect(effect)
+			if actor_data["@id"] == target_card_urlid:
+				game.world_manager.add_to_history({
+					"@id": "_:PoisonSelf_" + str(randi()),
+					"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
+					"n:hasNote": actor_data["n:fn"] + " poisoned themselves!"
+				})
+		
+		elif effect["@id"] == Globals.BUILT_IN_EFFECTS.INCREASE_DAMAGE:
+			var target_card = target_card_scene.card_manager._get_active_card_with_urlid(target_card_urlid)
+			target_card["mudcombat:dealExtraDamage"] = effect["mudcombat:dealExtraDamage"]
+			target_card_scene.card_manager.replace_card_jsonld(target_card_urlid, target_card)
 		
 		# TODO: support effects on either player
 		# TODO: support other effects

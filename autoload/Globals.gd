@@ -39,6 +39,7 @@ const BUILT_IN_SPELL_ACTIONS = [
 
 const BUILT_IN_EFFECTS = {
 	POISON =  "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/effects/poison.json",
+	INCREASE_DAMAGE = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/effects/selfIncreaseDamage.json",
 }
 
 const GAME_PHASE = {
