@@ -36,26 +36,6 @@
             "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
             "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
         },
-        "@id": "_:CoreOptional4",
-        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Location",
-        "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
-        "n:fn": "All-Expansive Industry",
-        "foaf:name": "All-Expansive Industry",
-        "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/industry.png",
-        "n:hasNote": "The factory is churning out suffocating black smoke, known by the locals as smog",
-        "mudcard:hasAvailableInstantActions": [
-            
-        ]
-    },
-    {
-        "@context": {
-            "n": "http://www.w3.org/2006/vcard/ns#",
-            "foaf": "http://xmlns.com/foaf/0.1/",
-            "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
-            "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
-            "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
-        },
         "@id": "_:CoreOptional5",
         "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#Character",
         "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",

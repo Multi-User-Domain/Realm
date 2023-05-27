@@ -142,6 +142,9 @@
                 "twt2023:hasAvailableEvents": [
                     {
                         "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/suspiciousSandwich.json"
+                    },
+                    {
+                        "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/industrialTown.json"
                     }
                 ]
             }
