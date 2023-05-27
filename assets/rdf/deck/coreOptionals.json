@@ -113,6 +113,11 @@
                         "n:fn": "Nimble Rogue",
                         "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/rogue.png",
                         "n:hasNote": "Keep your eye on your purse...",
+                        "mudcombat:hasHealthPoints": {
+                            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+                            "mudcombat:maximumP": 10,
+                            "mudcombat:currentP": 10
+                        },
                         "mudcard:hasAvailableInstantActions": [
                             {
                                 "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json"
@@ -134,6 +139,11 @@
                         "n:fn": "Mounted Soldiery",
                         "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/horseback.png",
                         "n:hasNote": "Can provide a fearsome charge that could turn the tide of battle",
+                        "mudcombat:hasHealthPoints": {
+                            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#HealthPoints",
+                            "mudcombat:maximumP": 10,
+                            "mudcombat:currentP": 10
+                        },
                         "mudcard:hasAvailableInstantActions": [
                             {
                                 "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/heavyAttack.json"
