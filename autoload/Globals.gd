@@ -14,6 +14,7 @@ const DEFAULT_AVATAR_HP = 50
 
 const BUILT_IN_ACTIONS = {
 	BASIC_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/basicAttack.json",
+	HEAVY_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/heavyAttack.json",
 	POISON_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/poisonAttack.json",
 	GENERATE_CARD = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateCard.json",
 	HEALING_WORD = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/healingWord.json",
@@ -27,6 +28,7 @@ const BUILT_IN_ACTIONS = {
 
 const BUILT_IN_ATTACK_ACTIONS = [
 	BUILT_IN_ACTIONS.BASIC_ATTACK,
+	BUILT_IN_ACTIONS.HEAVY_ATTACK,
 	BUILT_IN_ACTIONS.POISON_ATTACK,
 	BUILT_IN_ACTIONS.LEECH_ATTACK,
 	BUILT_IN_ACTIONS.FIRE_ATTACK
@@ -128,6 +130,7 @@ const PORTRAIT_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/artimancer.png": "res://assets/portrait/card/artimancer.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/barzor.png": "res://assets/portrait/card/barzor.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/rogue.png": "res://assets/portrait/card/rogue.png",
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/horseback.png": "res://assets/portrait/card/horseback.png",
 
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/flameImp.png": "res://assets/portrait/card/flameImp.png",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/lesserThrall.png": "res://assets/portrait/card/lesserThrall.png",
