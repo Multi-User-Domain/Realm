@@ -150,6 +150,7 @@ const EVENT_CACHE = {
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/suspiciousSandwich.json": "res://assets/rdf/events/suspiciousSandwich.json",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/becomeVampire.json": "res://assets/rdf/events/becomeVampire.json",
 	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/industrialTown.json": "res://assets/rdf/events/industrialTown.json", 
+	"https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/smugglersCove.json": "res://assets/rdf/events/smugglersCove.json", 
 }
 
 const CARD_CACHE = {

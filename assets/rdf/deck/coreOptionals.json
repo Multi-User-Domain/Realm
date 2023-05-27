@@ -57,6 +57,12 @@
         "twt2023:hasAvailableEvents": [
             {
                 "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/unexpectedDiscovery.json"
+            },
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/smugglersCove.json"
+            },
+            {
+                "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/becomeVampire.json"
             }
         ]
     },
@@ -76,26 +82,6 @@
         "foaf:name": "The Union Meeting Place",
         "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/meetingPlace.png",
         "n:hasNote": "One particular bar has become a crucial meeting place for union organisers",
-        "mudcard:hasAvailableInstantActions": [
-            
-        ]
-    },
-    {
-        "@context": {
-            "n": "http://www.w3.org/2006/vcard/ns#",
-            "foaf": "http://xmlns.com/foaf/0.1/",
-            "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
-            "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
-            "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
-            "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#"
-        },
-        "@id": "_:CoreOptional7",
-        "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudworld.ttl#Location",
-        "mud:implementsSpecification": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#playableCard",
-        "n:fn": "Smuggler's Cove",
-        "foaf:name": "Smuggler's Cove",
-        "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/cove.png",
-        "n:hasNote": "The coastline was dotted with places where one could buy stolen goods from the pirates",
         "mudcard:hasAvailableInstantActions": [
             
         ]

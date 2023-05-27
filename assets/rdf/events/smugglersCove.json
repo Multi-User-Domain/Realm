@@ -1,0 +1,27 @@
+{
+    "@context": {
+        "n": "http://www.w3.org/2006/vcard/ns#",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "mud": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mud#",
+        "mudchar": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudchar.ttl#",
+        "mudcard": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcard.ttl#",
+        "mudcombat": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudcombat.ttl#",
+        "twt2023": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#"
+    },
+    "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/smugglersCove.json",
+    "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Event",
+    "n:fn": "Pirate Utopia",
+    "n:hasNote": "After years of delicate political engagements with the locals, an egalitarian Pirate Kingdom has been established here. The coastline was dotted with places where one can buy plunder from the pirates.",
+    "foaf:depiction": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/portrait/card/cove.png",
+    "twt2023:maximumUses": 1,
+    "mudlogic:hasChoices": [
+        {
+            "n:fn": "Accept",
+            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action"
+        },
+        {
+            "n:fn": "Reject",
+            "@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/mudlogic.ttl#Action"
+        }
+    ]
+}
