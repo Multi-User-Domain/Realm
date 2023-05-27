@@ -111,34 +111,41 @@ func _handle_spell(player_avatar_scene, opponent_avatar_scene, opponent_attackab
 	if data["@id"] == Globals.BUILT_IN_ACTIONS.HEAL_PARTY:
 		return _handle_healing(player_avatar_scene, data, -1)
 
-func _handle_unknown_action(actor, action):
+func _handle_unknown_action(player_avatar_scene, opponent_avatar_scene, actor, action):
 	if "mudlogic:actAt" in action:
 		game.federation_manager.perform_action(action["mudlogic:actAt"], action, actor)
 		_apply_card_effects(actor, action, null)
 	elif "twt2023:targetCasterWithEffects" in action:
-		_apply_card_effects(actor, action, actor["@id"])
+		var targets = _get_attackable_cards(player_avatar_scene.card_manager.active_cards)
+		if len(targets):
+			_apply_card_effects(targets[0], action, targets[0]["@id"])
 	else:
 		print("ERR _handle_unknown_action given an action without required mudlogic:actAt property")
 		print(action["@id"])
 
 func _apply_card_effects(actor_data, attack_data, target_card_urlid=null):
-	if attack_data != null and "mudcombat:hasAttackDetails" in attack_data:
+	var effects = []
+	if "mudcombat:imbuesEffects" in attack_data:
+		effects = attack_data["mudcombat:imbuesEffects"]
+	elif attack_data != null and "mudcombat:hasAttackDetails" in attack_data:
 		if "mudcombat:imbuesEffects" in attack_data["mudcombat:hasAttackDetails"]:
-			for effect in attack_data["mudcombat:hasAttackDetails"]["mudcombat:imbuesEffects"]:
-				if effect["@id"] == Globals.BUILT_IN_EFFECTS.POISON:
-					if target_card_urlid == null:
-						continue
-					var opponent_card_scene = game.battle_scene.get_card_with_urlid(target_card_urlid)
-					if opponent_card_scene != null:
-						opponent_card_scene.add_effect(effect)
-						if actor_data["@id"] == target_card_urlid:
-							game.world_manager.add_to_history({
-								"@id": "_:PoisonSelf_" + str(randi()),
-								"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
-								"n:hasNote": actor_data["n:fn"] + " poisoned themselves!"
-							})
-					else:
-						print("ERR _apply_card_effects couldn't find card scene with urlid " + target_card_urlid)
+			effects = attack_data["mudcombat:hasAttackDetails"]["mudcombat:imbuesEffects"]
+	
+	for effect in effects:
+		if effect["@id"] == Globals.BUILT_IN_EFFECTS.POISON:
+			if target_card_urlid == null:
+				continue
+			var opponent_card_scene = game.battle_scene.get_card_with_urlid(target_card_urlid)
+			if opponent_card_scene != null:
+				opponent_card_scene.add_effect(effect)
+				if actor_data["@id"] == target_card_urlid:
+					game.world_manager.add_to_history({
+						"@id": "_:PoisonSelf_" + str(randi()),
+						"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
+						"n:hasNote": actor_data["n:fn"] + " poisoned themselves!"
+					})
+			else:
+				print("ERR _apply_card_effects couldn't find card scene with urlid " + target_card_urlid)
 		
 		# TODO: support effects on either player
 		# TODO: support other effects
@@ -182,7 +189,7 @@ func _play_card_actions(player_avatar_scene, opponent_avatar_scene, actions=null
 		
 		if not "@id" in action:
 			continue
-		
+
 		if action["@id"] in Globals.BUILT_IN_ATTACK_ACTIONS:
 			_handle_attack(player_avatar_scene, opponent_avatar_scene, opponent_attackable_cards, action, actor)
 		elif action["@id"] == Globals.BUILT_IN_ACTIONS.GENERATE_CARD:
@@ -193,7 +200,7 @@ func _play_card_actions(player_avatar_scene, opponent_avatar_scene, actions=null
 		elif action["@id"] == "_:SPECIAL_RESET_GAME":
 			game.set_game_phase(Globals.GAME_PHASE.PLAYER_SELECTION)
 		else:
-			_handle_unknown_action(actor, action)
+			_handle_unknown_action(player_avatar_scene, opponent_avatar_scene, actor, action)
 
 func apply_effects():
 	for card in game.battle_scene.player1_cards.get_children():

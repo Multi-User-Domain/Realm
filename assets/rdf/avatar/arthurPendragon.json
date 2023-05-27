@@ -136,6 +136,11 @@
                         "mudcombat:resistanceValue": 0.6,
                         "mudcombat:defenceRollSuccessRate": 0.5
                     }
+                ],
+                "twt2023:hasAvailableEvents": [
+                    {
+                        "@id": "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/suspiciousSandwich.json"
+                    }
                 ]
             },
             {
