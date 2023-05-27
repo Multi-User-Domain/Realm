@@ -122,6 +122,13 @@ func _handle_unknown_action(player_avatar_scene, opponent_avatar_scene, actor, a
 		var targets = _get_attackable_cards(player_avatar_scene.card_manager.active_cards)
 		if len(targets):
 			_apply_card_effects(targets[0], action, targets[0]["@id"])
+			
+			if action["@id"] == Globals.BUILT_IN_ACTIONS.BECOME_VAMPIRE:
+				game.world_manager.add_to_history({
+					"@id": "_:BecomeVampire_" + str(randi()),
+					"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
+					"n:hasNote": targets[0]["n:fn"] + " became a vampire!"
+				})
 	else:
 		print("ERR _handle_unknown_action given an action without required mudlogic:actAt property")
 		print(action["@id"])

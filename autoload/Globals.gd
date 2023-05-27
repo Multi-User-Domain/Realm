@@ -21,7 +21,8 @@ const BUILT_IN_ACTIONS = {
 	LEECH_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/leechAttack.json",
 	REGEN_SELF = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/regenSelf.json",
 	FIRE_ATTACK = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/fireAttack.json",
-	GENERATE_CARD_WINGED_PARASITE = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateWingedParasite.json"
+	GENERATE_CARD_WINGED_PARASITE = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/actions/generateWingedParasite.json",
+	BECOME_VAMPIRE = "https://raw.githubusercontent.com/Multi-User-Domain/games-transformed-jam-2023/assets/rdf/events/becomeVampire.json"
 }
 
 const BUILT_IN_ATTACK_ACTIONS = [
