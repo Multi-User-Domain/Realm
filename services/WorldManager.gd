@@ -49,11 +49,12 @@ func record_death_by_effect(deceased, event):
 
 func record_death_by_attack(deceased, actor, attack):
 	attack = game.rdf_manager.obj_through_urlid(attack)
-	add_to_history({
-		"@id": "_:death_" + str(randi()),
-		"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
-		"n:hasNote": deceased["n:fn"] + " was slain by " + actor["n:fn"] + "  while performing a " + attack["n:fn"]
-	})
+	if "n:fn" in deceased and "n:fn" in actor and "n:fn" in attack:
+		add_to_history({
+			"@id": "_:death_" + str(randi()),
+			"@type": "https://raw.githubusercontent.com/Multi-User-Domain/vocab/main/games/twt2023.ttl#RecordedHistory",
+			"n:hasNote": deceased["n:fn"] + " was slain by " + actor["n:fn"] + "  while performing a " + attack["n:fn"]
+		})
 
 func record_defense_roll_success(roller, roll):
 	var damage_evaded = roll["mudcombat:resistanceValue"] * 100
