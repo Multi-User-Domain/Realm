@@ -29,7 +29,9 @@ func get_card_size():
 func load_avatar_from_jsonld(file_path):
 	var save_file = File.new()
 	save_file.open(file_path, File.READ)
-	return parse_json(save_file.get_as_text())
+	var card_data = parse_json(save_file.get_as_text())
+	save_file.close()
+	return card_data
 
 func load_avatar_from_urlid(urlid):
 	if urlid in Globals.AVATAR_CACHE:
